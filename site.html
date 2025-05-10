@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유용한 사이트</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        fetch("https://script.google.com/macros/s/AKfycbzqseDk9zvMLOJ7F3nZ1pGeczko5eRFmyI2Ol2bd8nRkOROMxk35CJmsIs9jm8PuyhM/exec")
+            .then(response => response.text())
+            .then(count => {
+                document.getElementById("counter").innerText = count;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f900;
+            padding: 10px;
+        }
+        #공지사항 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px; /* 화면 너비에 맞춤 */
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        #경제 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px; /* 화면 너비에 맞춤 */
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        #부동산 {
+            background: #fff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px; /* 화면 너비에 맞춤 */
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        #블로그 {
+            background: #fff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px; /* 화면 너비에 맞춤 */
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        img {
+            margin-top: 10px;
+            /* border-radius: 8px; */
+            max-width: 100%; /* 이미지가 화면을 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+        }
+        .center-img {
+            display: block;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            width: 100%;
+            font-size: 14px;
+            color: #555;
+            margin-top: 0px;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px; /* 작은 화면에서는 폰트 크기 조정 */
+            }
+            footer {
+                font-size: 12px; /* 푸터 텍스트 크기 조정 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <img src="/imgtitle.png" alt="설명 텍스트" class="center-img">
+
+    <div id="공지사항">
+        <h2 style="color: rgb(0, 0, 0);">유용한 사이트 모음</h2>
+        ☞ <a href="/index.html">자료더보기</a>
+    </div>
+
+    <br>
+
+    <div id="경제">
+        <h2 style="color: rgb(0, 0, 0);">경제</h2>
+        <img src="/imgeconomy.png" alt="설명 텍스트">
+        <ol>
+            <li><b><a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm">Federal Open Market Committee</a></b></li>
+            <li><b><a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html">FedWatch Tool</a></b></li>
+            <li><b><a href="https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions">NBER Business Cycle Dating</a></b></li>
+            <li><b><a href="https://fred.stlouisfed.org/">Federal Reserve Economic Data</a></b></li>
+            <li><b><a href="https://kr.investing.com/economic-calendar/">Investing.com 경제캘린더</a></b></li>
+            <li><b><a href="https://data-explorer.oecd.org/vis?df[ds]=DisseminateFinalDMZ&df[id]=DSD_STES%40DF_CLI&df[ag]=OECD.SDD.STES&dq=.M.LI...AA...H&lom=LASTNPERIODS&lo=10&to[TIME_PERIOD]=false&ly[cl]=REF_AREA&ly[rw]=TIME_PERIOD&vw=tb">OECD 경기선행지수</a></b></li>
+            <br>
+            <li><b><a href="https://media.naver.com/press/015/newspaper">한국경제신문 조간</a></b></li>
+            <li><b><a href="https://media.naver.com/press/009/newspaper">매일경제신문 조간</a></b></li>
+        </ol>
+    </div>
+
+    <br>
+    
+    <div id="부동산">
+        <h2 style="color: rgb(0, 0, 0);">부동산</h2>
+        <img src="/imgseoul2040.png" alt="설명 텍스트">
+        <ol>
+            <li><b><a href="https://fin.land.naver.com/?content=recent">네이버 부동산</a></b></li>
+            <li><b><a href="https://hogangnono.com/">호갱노노</a></b></li>
+            <li><b><a href="https://asil.kr/asil/index.jsp">아실</a></b></li>
+            <br>
+            <li><b><a href="https://urban.seoul.go.kr/view/html/PMNU3030000001">2040서울도시기본계획</a></b></li>
+            <li><b><a href="http://frdb.wo.to/">미래철도DB</a></b></li>
+            <li><b><a href="https://www.reb.or.kr/r-one/portal/main/indexPage.do;jsessionid=F9950C3E93F258BDACA02C81249169F1">부동산통계정보 R-ONE</a></b></li>
+            <li><b><a href="https://data.kbland.kr/">부동산통계정보 KB</a></b></li>
+
+            <br>
+            <li><b><a href="https://land.seoul.go.kr/land/">서울부동산정보광장</a></b></li>
+            <li><b><a href="https://gris.gg.go.kr/index.do#">경기부동산포털</a></b></li>
+            <li><b><a href="https://imap.incheon.go.kr/">인천지도포털</a></b></li>
+            <br>
+            <li><b><a href="https://cleanup.seoul.go.kr/cleanup/mainPage.do#content">서울 클린업 시스템</a></b></li>
+            <li><b><a href="https://gres.gg.go.kr/">경기도 추정분담금 시스템</a></b></li>
+            <li><b><a href="https://renewal.incheon.go.kr/ires/index.do">인천 추정분담금 시스템</a></b></li>
+        </ol>
+    </div>
+
+    <br>
+    
+    <div id="블로그">
+        <h2>블로그</h2>
+        <ol>
+            <li><b><a href="https://blog.naver.com/gaajur">쥬라기의 세상을 보는 창</a></b></li>
+            <li><b><a href="https://blog.naver.com/a-cute-bear">아기곰의 부동산 산책</a></b></li>
+            <li><b><a href="https://blog.naver.com/rpartners01">오윤섭의 부자노트</a></b></li>
+            <li><b><a href="https://blog.naver.com/PostList.nhn?blogId=calmwaves&categoryNo=0&from=postList">시간으로부터의 자유</a></b></li>
+            <li><b><a href="https://blog.naver.com/sofoswh">밴쿠버선봉장</a></b></li>
+            <li><b><a href="https://blog.naver.com/shin0503988">신사람 부동산 투자분석</a></b></li>
+        </ol>    
+        <h2>유튜브</h2>
+        <ol>
+            <li><b><a href="https://www.youtube.com/@TV-wr8ex">글로벌모니터 안근모</a></b></li>
+            <li><b><a href="https://www.youtube.com/@RealpAsset">부자병법 박병찬</a></b></li>
+            <li><b><a href="https://www.youtube.com/@%EB%B6%81%EA%B7%B9%EC%84%B1%EC%A3%BC">북극성주TV</a></b></li>
+            <li><b><a href="https://www.youtube.com/@AllTax_GAGAM/videos">가감세무TV</a></b></li>
+        </ol>  
+    </div>
+    
+    <br>    
+    <footer>
+        <em>(조회수 <span id="counter">...</span>)</em><br><br>
+        블로그 <a href="https://blog.naver.com/rainchj">U와 함께하는 행복한 세상살이</a>, 유튜브 <a href="https://www.youtube.com/@rainchj">백점경제학</a><br>
+        <span>ⓒ 2025.1.30. 유행살이. All rights reserved.</span>
+    </footer>
+</body>
+</html>

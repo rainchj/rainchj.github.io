@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Download</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        fetch("https://script.google.com/macros/s/AKfycbzqseDk9zvMLOJ7F3nZ1pGeczko5eRFmyI2Ol2bd8nRkOROMxk35CJmsIs9jm8PuyhM/exec")
+            .then(response => response.text())
+            .then(count => {
+                document.getElementById("counter").innerText = count;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f900;
+            padding: 10px;
+        }
+        #공지사항 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px;
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        #아파트매물받기 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px;
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        #경제지표데이터받기 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px;
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        #조간신문기사보기 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px;
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        img {
+            margin-top: 10px;
+            /* border-radius: 8px; */
+            max-width: 100%; /* 이미지가 화면을 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+        }
+        .center-img {
+            display: block;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            width: 100%;
+            font-size: 14px;
+            color: #555;
+            margin-top: 0px;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px; /* 작은 화면에서는 폰트 크기 조정 */
+            }
+            footer {
+                font-size: 12px; /* 푸터 텍스트 크기 조정 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <img src="/imgtitle.png" alt="설명 텍스트" class="center-img">
+
+    <div id="공지사항">
+        <h2 style="color: rgb(0, 0, 0);">유행살이 공개자료</h2>
+        <ul>
+            <li> 아파트매물받기 프로그램</li>
+            <li> 경제지표받기 프로그램</li>
+            <li> 조간신문보기 프로그램</li>
+        </ul>
+        ☞ <a href="/index.html">자료더보기</a>
+    </div>
+
+    <br>
+
+    <div id="아파트매물받기">
+        <h2 style="color: rgb(0, 0, 0);">아파트매물받기 프로그램</h2>
+        <img src="/imgaptlist.png" alt="설명 텍스트">
+        <ul>
+            <li>Version_2.2  (<a href="https://rainchj.github.io/download/apt_sell_list_ver22.exe" download>다운로드</a>)</li>
+            <li>네이버부동산에 올라온 법정동 소재의 모든 아파트 매물정보(매매, 전세, 월세, 단기임대)를 실시간으로 수집하여 엑셀자료 'apt_sell_list.xlsx'로 저장합니다.</li>
+            <li>인터넷이 연결된 PC에서 다운받은 파일을 실행하면 됩니다.</li>
+        </ul>
+        <br>
+        
+        <h4 style="color: rgb(0, 0, 0);">Version_2.2 (25.5.2)</h4>
+        <ul>
+            <li>실행파일 하나로 단독 실행이 가능하도록 수정 (법정동코드전체.txt 파일 불필요)</li>
+            <li>이용자 주의사항 추가</li>
+            <li>일부 오류 수정</li>
+        </ul>
+
+        <h4 style="color: rgb(0, 0, 0);">Version_1.0 (25.5.1)</h4>
+        <ul>
+            <li>최초 배포일</li>
+        </ul>    
+    </div>
+    <br>
+
+    <div id="경제지표데이터받기">
+        <h2 style="color: rgb(0, 0, 0);">경제지표받기, 1분차트보기 프로그램</h2>
+        * 경제지표 DATA 받기
+        <img src="/imgdatadown.png" alt="설명 텍스트">
+        <img src="/imgdatadown2.png" alt="설명 텍스트">
+        <br>
+        * 경제지표 1분차트
+        <img src="/imgdatadown3.png" alt="설명 텍스트">
+        <ul>
+            <li>Version_2.0  (<a href="https://rainchj.github.io/download/economic_data_ver20.exe" download>다운로드1</a>, <a href="https://rainchj.github.io/download/eco_1min_chart_ver20.exe" download>다운로드2</a>)</li>
+            <li>주요경제지표의 20년간 일간 데이타를 실시간으로 수집하여 엑셀자료와 HTML자료로 저장합니다.</li>
+            <li>주요경제지표의 1분 차트를 실시간으로 인터넷 브라우저를 통해 볼 수 있습니다.</li>
+            <li>경제지표(15): 달러원, 엔원, 코스피, 코스닥, 삼성전자, 달러인덱스, VIX공포지수, S&P500, 나스닥, 애플, 미국채10년물금리, 미국채30년물금리, TLT, 원유, 금</li>
+            <li>economic_data_Ver20.exe (다운로드1), eco_1min_chart_Ver20.exe (다운로드2) 파일을 PC로 다운받아 실행합니다.</li>
+            <li>인터넷 사용이 가능한 PC에서 실행하여야 합니다.</li>
+        </ul>
+
+        <br>
+        <h4 style="color: rgb(0, 0, 0);">Version_2.0 (25.5.7)</h4>
+        <ul>
+            <li>'경제지표 1분 실시간 차트' 보기 프로그램 추가 공유</li>
+            <li>이용자 주의사항 추가</li>
+        </ul>    
+
+        <br>
+        <h4 style="color: rgb(0, 0, 0);">Version_1.0 (25.4.26)</h4>
+        <ul>
+            <li>최초 배포일</li>
+        </ul>    
+    </div>
+    <br>
+
+    <div id="조간신문기사보기">
+        <h2 style="color: rgb(0, 0, 0);">조간신문보기 프로그램</h2>
+        <img src="/imgnews.png" alt="설명 텍스트">
+        <img src="/imgnews2.png" alt="설명 텍스트">
+        <ul>
+            <li>Version_2.1  (<a href="https://rainchj.github.io/download/news_view_ver21.exe" download>다운로드</a>)</li>
+            <li>한국경제신문, 매일경제신문, 조선일보, 중앙일보, 동아일보 신문기사를 볼 수 있습니다.</li>
+            <li>news_view_Ver21.exe 파일을 PC로 다운받아 실행합니다.</li>
+            <li>인터넷 사용이 가능한 PC에서 실행하여야 합니다.</li>
+        </ul>
+        <br>
+
+        <h4 style="color: rgb(0, 0, 0);">Version_2.1 수정사항 (25.5.10)</h4>
+        <ul>
+            <li>프로그램 전면 개편</li>
+            <li>프로그램 실행 만으로 신문기사 보기 가능 (엑셀 불필요)</li>
+            <li>글자크기 조절 가능</li>
+        </ul> 
+
+        <h4 style="color: rgb(0, 0, 0);">Version_1.2 수정사항 (25.2.8)</h4>
+        <ul>
+            <li>일부 오류 수정</li>
+            <li>음성듣기 이용시 한경, 매경 불피요한 기사 추가 제거 등</li>
+        </ul>  
+
+        <h4 style="color: rgb(0, 0, 0);">Version_1.1 수정사항 (25.2.5)</h4>
+        <ul>
+            <li>음성듣기 이용시 브라우저에서 기사 바로가기 가능</li>
+            <li>음성듣기 이용시 인사, 부음 등 불필요한 기사는 제거</li>
+        </ul> 
+
+        <h4 style="color: rgb(0, 0, 0);">Version_1.0 (25.2.1)</h4>
+        <ul>
+            <li>최초 배포일</li>
+        </ul>    
+    </div>
+
+    <br>    
+    <footer>
+        <em>(조회수 <span id="counter">...</span>)</em><br><br>
+        블로그 <a href="https://blog.naver.com/rainchj">U와 함께하는 행복한 세상살이</a>, 유튜브 <a href="https://www.youtube.com/@rainchj">백점경제학</a><br>
+        <span>ⓒ 2025.1.30. 유행살이. All rights reserved.</span>
+    </footer>
+</html>

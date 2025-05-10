@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유행살이 Monthly Chart</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("https://script.google.com/macros/s/AKfycbzqseDk9zvMLOJ7F3nZ1pGeczko5eRFmyI2Ol2bd8nRkOROMxk35CJmsIs9jm8PuyhM/exec")
+                .then(response => response.text())
+                .then(count => {
+                    document.getElementById("counter").innerText = count;
+                })
+                .catch(error => console.error("Error:", error));
+
+            function displayImageDate(imageId, dateElementId, imageUrl) {
+                fetch(imageUrl)
+                    .then(response => {
+                        const lastModified = response.headers.get('Last-Modified');
+                        if (lastModified) {
+                            const date = new Date(lastModified);
+                            const formattedDate = `${date.getFullYear().toString().slice(2)}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
+                            document.getElementById(dateElementId).textContent = formattedDate;
+                        } else {
+                            document.getElementById(dateElementId).textContent = '날짜를 가져올 수 없습니다.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching image:', error);
+                        document.getElementById(dateElementId).textContent = '날짜를 가져올 수 없습니다.';
+                    });
+            }
+
+            displayImageDate('주민등록인구', '주민등록인구-date', 'https://rainchj.github.io/monthly/주민등록인구.jpg');
+        });
+    </script>
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f900;
+            padding: 10px;
+        }
+        #공지사항 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 100%; /* 화면 너비에 맞춤 */
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+        }
+        #주택시장현황지표별 {
+            background: #fff;
+            border: 1px solid #ddd;
+            /* border-radius: 10px; */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 100%; /* 화면 너비에 맞춤 */
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+        }
+        img {
+            margin-top: 0px;
+            /* border-radius: 8px; */
+            max-width: 100%; /* 이미지가 화면을 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+        }
+        .center-img {
+            display: block;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            width: 100%;
+            font-size: 14px;
+            color: #555;
+            margin-top: 0px;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px; /* 작은 화면에서는 폰트 크기 조정 */
+            }
+            footer {
+                font-size: 12px; /* 푸터 텍스트 크기 조정 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <img src="/imgtitle.png" alt="설명 텍스트" class="center-img">
+    
+    <div id="공지사항">
+        <h2 style="color: rgb(0, 0, 0);">유행살이 Monthly Chart</h2>
+        <ul>
+            <li>주택시장 현황 (지표별, 시도별)</li>
+        </ul>
+        ☞ <a href="/index.html">자료더보기</a>
+        <br>휴대폰은 두손가락으로 화면 터치후 벌리면 차트가 확대되고 기기를 가로로 돌리면 더욱 확대됩니다.
+    </div>
+
+    <br>
+    
+    <div id="주택시장현황지표별">
+        <h2>주택시장 현황 (지표별, 시도별)</h2>
+        <ul>
+            <li>주택시장현황을 지표별로 정리한 차트입니다. 제공 지표는 아래와 같습니다.</li>
+            <li>주민등록인구현황, 준공연도별규모현황, 주택멸실현황, 개업공인중개사수, 실거래가격지수, 실거래량, 인허가 준공실적, 입주물량, 미분양 준공후미분양, 매물추이, 주택가격전망CSI, KB전세가율, KB매수우위지수, KB매매거래활발지수, KB전세수급지수와 전세거래활발지수, KB상승하락전망지수, KB가격지수, KB증감지수 </li>
+            <li><b id="주민등록인구-date"></b> 수정 (매월 업데이트)</li>
+        </ul>
+        <br>
+        <h3>주민등록인구현황</h3>
+        <img id="주민등록인구" src="https://rainchj.github.io/monthly/주민등록인구.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/주민등록인구.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>준공 연도별 지역별 규모현황</h3>
+        <img src="https://rainchj.github.io/monthly/연별준공현황.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/연별준공현황.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>주택멸실현황</h3>
+        <img src="https://rainchj.github.io/monthly/주택멸실현황.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/주택멸실현황.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>개업 공인중개사 수</h3>
+        <img src="https://rainchj.github.io/monthly/공인중개사수.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/공인중개사수.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>아파트 매매실거래가격지수, 전세실거래가격지수</h3>
+        <img src="https://rainchj.github.io/monthly/실거래가격지수.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/실거래가격지수.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>아파트 매매실거래량, 전세실거래량</h3>
+        <img src="https://rainchj.github.io/monthly/아파트실거래량.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/아파트실거래량.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>택지지정·공급, 인허가·착공·준공실적</h3>
+        <h4>- 주택전체(아파트+비아파트)</h4>
+        <img src="https://rainchj.github.io/monthly/인허가준공실적.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/인허가준공실적.jpg" download>이미지</a>
+        <br>
+        <h4>- 아파트</h4>
+        <img src="https://rainchj.github.io/monthly/인허가아파트.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/인허가아파트.jpg" download>이미지</a>
+        <br>
+        <h4>- 비아파트</h4>
+        <img src="https://rainchj.github.io/monthly/인허가비아파트.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/인허가비아파트.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>아파트 입주물량</h3>
+        <img src="https://rainchj.github.io/monthly/입주물량.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/입주물량.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>미분양, 공사 완료후 미분양</h3>
+        <img src="https://rainchj.github.io/monthly/미분양.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/미분양.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>아파트 매물추이</h3>
+        <img src="https://rainchj.github.io/monthly/아파트매물추이.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/아파트매물추이.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>소비자동향조사_주택가격전망CSI</h3>
+        <img src="https://rainchj.github.io/monthly/주택가격전망.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/주택가격전망.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>KB 아파트 전세가율</h3>
+        <img src="https://rainchj.github.io/monthly/KB전세가율.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/KB전세가율.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>KB 매수우위지수, 매수자많음, 매도자많음</h3>
+        <img src="https://rainchj.github.io/monthly/KB매수우위지수.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/KB매수우위지수.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>KB 매매거래활발지수</h3>
+        <img src="https://rainchj.github.io/monthly/KB매매거래활발.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/KB매매거래활발.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>KB 전세수급지수, 전세거래활발지수</h3>
+        <img src="https://rainchj.github.io/monthly/KB전세수급거래.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/KB전세수급거래.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>KB 상승하락전망지수</h3>
+        <img src="https://rainchj.github.io/monthly/KB상승하락전망.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/KB상승하락전망.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>KB 아파트 매매가격지수, 전세가격지수, 갭</h3>
+        <img src="https://rainchj.github.io/monthly/KB아파트가격지수.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/KB아파트가격지수.jpg" download>이미지</a>
+        <br>
+        <br>
+        <h3>KB 아파트 매매증감지수, 전세증감지수</h3>
+        <img src="https://rainchj.github.io/monthly/KB아파트증감지수.jpg" alt="설명 텍스트">
+        ☞ <a href="https://rainchj.github.io/monthly/KB아파트증감지수.jpg" download>이미지</a>
+    </div>
+    
+    <br>    
+    <footer>
+        <em>(조회수 <span id="counter">...</span>)</em><br><br>
+        블로그 <a href="https://blog.naver.com/rainchj">U와 함께하는 행복한 세상살이</a>, 유튜브 <a href="https://www.youtube.com/@rainchj">백점경제학</a><br>
+        <span>ⓒ 2025.1.30. 유행살이. All rights reserved.</span>
+    </footer>
+</body>
+</html>

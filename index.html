@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유행살이 공유자료</title>
+
+    <script>
+        function sharePage(event) {
+            event.preventDefault(); // 기본 링크 이동 방지
+            if (navigator.share) {
+                navigator.share({
+                    title: '유행살이 공유자료',
+                    text:  '주요 경제지표 현황, 부동산지표 현황 등 제공',
+                    url: 'http://rainchj.github.io'
+                }).then(() => {
+                    console.log('공유 성공!');
+                }).catch((error) => {
+                    console.error('공유 실패:', error);
+                });
+            } else {
+                alert('바로가기 설치후 가능합니다.');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            function displayImageDate(imageId, dateElementId, imageUrl) {
+                fetch(imageUrl)
+                    .then(response => {
+                        const lastModified = response.headers.get('Last-Modified');
+                        if (lastModified) {
+                            const date = new Date(lastModified);
+                            const formattedDate = `${date.getFullYear().toString().slice(2)}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
+                            document.getElementById(dateElementId).textContent = formattedDate;
+                        } else {
+                            document.getElementById(dateElementId).textContent = '날짜를 가져올 수 없습니다.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching image:', error);
+                        document.getElementById(dateElementId).textContent = '날짜를 가져올 수 없습니다.';
+                    });
+            }
+
+            displayImageDate('주요경제지표일간', '주요경제지표일간-date', 'https://rainchj.github.io/weekly/주요경제지표일간.jpg');
+            displayImageDate('아파트가격동향조사', '아파트가격동향조사-date', 'https://rainchj.github.io/weekly/아파트가격동향조사.jpg');
+            displayImageDate('실거래가서울', '실거래가서울-date', 'https://rainchj.github.io/weekly/실거래가_서울.jpg');
+            displayImageDate('환율시장', '환율시장-date', 'https://rainchj.github.io/MoneyMarket/환율시장.jpg');
+            displayImageDate('economic_chart', 'economic_chart', 'https://rainchj.github.io/MoneyMarket/economic_chart.html');
+            displayImageDate('주요경제지표월간', '주요경제지표월간-date', 'https://rainchj.github.io/monthly/주요경제지표월간.jpg');
+            displayImageDate('총괄전국', '총괄전국-date', 'https://rainchj.github.io/monthly/총괄전국.jpg');
+            displayImageDate('주민등록인구', '주민등록인구-date', 'https://rainchj.github.io/monthly/주민등록인구.jpg');
+            displayImageDate('주민등록인구2', '주민등록인구2-date', 'https://rainchj.github.io/monthly/주민등록인구2.jpg');
+        });
+    </script>
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f900;
+            padding: 10px;
+        }
+        #공지사항 {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 900px;
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+        img {
+            margin-top: 0px;
+            max-width: 100%; /* 이미지가 화면을 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+        }
+        .center-img {
+            display: block;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            width: 100%;
+            font-size: 14px;
+            color: #555;
+            margin-top: 0px;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px; /* 작은 화면에서는 폰트 크기 조정 */
+            }
+            footer {
+                font-size: 12px; /* 푸터 텍스트 크기 조정 */
+            }
+        }
+
+        .blinking-red {
+      color: red;
+      animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <img src="/imgtitle.png" alt="설명 텍스트" class="center-img">
+    
+    <div id="공지사항">
+        <h2 style="color: rgb(0, 0, 0);">유행살이 공유자료</h2>
+        <ul>
+            <li><b><a href="https://blog.naver.com/rainchj">U와 함께하는 행복한 세상살이</a></b>에서 제공하는 주월간자료의 최근자료를 쉽게 볼 수 있습니다.</li>
+            <li>휴대폰은 두손가락으로 화면 터치후 벌리면 차트가 확대되고 기기를 가로로 돌리면 더욱 확대됩니다.</li>
+            <li>PC는 QHD(2560x1440) 이상 모니터를 권장하며 이하 모니터는 차트 화질이 떨어집니다.</li>
+        </ul>
+        <ol>
+            <li><b>주간차트</b> 
+                <ul>
+                    <li>(<a href="/index_w1.html"><span id="주요경제지표일간-date"></span></a>) 주요경제지표</li>
+                    <li>(<a href="/index_w2.html"><span id="아파트가격동향조사-date"></span></a>) KB아파트가격동향조사</li>
+                    <li>(<a href="/index_w3.html"><span id="실거래가서울-date"></span></a>) 국토부 아파트실거래가</li>
+                    <li>(<a href="/index_w4.html"><span id="환율시장-date"></span></a>) 자금시장현황<!--(<span class="blinking-red">New</span>)--></li>
+                    <li>(<a href="https://rainchj.github.io/MoneyMarket/economic_chart.html"><span id="economic_chart"></span></a>) 지표장기추이 (<a href="https://rainchj.github.io/MoneyMarket/economic_data.xlsx" download>DATA</a>)</li>
+                </ul>
+                <br>
+            <li><b>월간차트</b>
+                <ul>
+                    <li>(<a href="/index_m1.html"><span id="주요경제지표월간-date"></span></a>) 주요경제지표</li>
+                    <li>(<a href="/index_m2.html"><span id="총괄전국-date"></span></a>) 주택시장현황(시도별)</li>
+                    <li>(<a href="/index_m3.html"><span id="주민등록인구-date"></span></a>) 주택시장현황(지표별,시도별)</li>
+                    <li>(<a href="/index_m4.html"><span id="주민등록인구2-date"></span></a>) 주택시장현황(지표별,수도권)</li>
+                </ul>
+            <br>
+            <li><a href="/freedownload.html"><b>공개자료</b></a></li> 
+                <ul>
+                    <li>아파트매물받기 프로그램 공유 <span class="blinking-red">New</span></li>
+                    <li>경제지표받기 프로그램 공유 <span class="blinking-red">New</span></li>
+                    <li>조간신문보기 프로그램 공유 <span class="blinking-red">New</span></li>
+                </ul>
+            <br>
+            <li><a href="/site.html"><b>사이트등</b></a></li>
+            <ul>
+                <li>경제, 부동산, 블로그, 유튜브</li>
+            </ul>
+        </ol>
+        <!--
+        <br>☞  방문 길에 잠시 <a href="/memo.html"><b>머물다 가기</b></a>
+        -->
+        <br>☞  휴대폰 홈화면에 바로가기 <a href="/homeicon.html"><b> 아이콘 만들기</b></a>
+        <br>☞  카카오톡, 메일에 <a href="#" onclick="sharePage(event)"><b>주소 보내기</b></a> (바로가기 설치후 가능)
+    </div>
+
+    <br>    
+    <footer>
+        블로그 <a href="https://blog.naver.com/rainchj">U와 함께하는 행복한 세상살이</a>, 유튜브 <a href="https://www.youtube.com/@rainchj">백점경제학</a><br>
+        <span>ⓒ 2025.1.30. 유행살이. All rights reserved.</span>
+    </footer>
+</body>
+</html>
+
+
