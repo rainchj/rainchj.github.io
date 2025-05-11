@@ -7,12 +7,12 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-        fetch("https://script.google.com/macros/s/AKfycbzqseDk9zvMLOJ7F3nZ1pGeczko5eRFmyI2Ol2bd8nRkOROMxk35CJmsIs9jm8PuyhM/exec")
-            .then(response => response.text())
-            .then(count => {
-                document.getElementById("counter").innerText = count;
-            })
-            .catch(error => console.error("Error:", error));
+            fetch("https://script.google.com/macros/s/AKfycbzqseDk9zvMLOJ7F3nZ1pGeczko5eRFmyI2Ol2bd8nRkOROMxk35CJmsIs9jm8PuyhM/exec")
+                .then(response => response.text())
+                .then(count => {
+                    document.getElementById("counter").innerText = count;
+                })
+                .catch(error => console.error("Error:", error));
         });
     </script>
 

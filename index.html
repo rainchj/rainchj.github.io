@@ -24,6 +24,13 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
+            fetch("https://script.google.com/macros/s/AKfycbzqseDk9zvMLOJ7F3nZ1pGeczko5eRFmyI2Ol2bd8nRkOROMxk35CJmsIs9jm8PuyhM/exec")
+            .then(response => response.text())
+            .then(count => {
+                document.getElementById("counter").innerText = count;
+            })
+            .catch(error => console.error("Error:", error));
+            
             function displayImageDate(imageId, dateElementId, imageUrl) {
                 fetch(imageUrl)
                     .then(response => {
@@ -170,6 +177,7 @@
 
     <br>    
     <footer>
+        <em>(조회수 <span id="counter">...</span>)</em><br><br>
         블로그 <a href="https://blog.naver.com/rainchj">U와 함께하는 행복한 세상살이</a>, 유튜브 <a href="https://www.youtube.com/@rainchj">백점경제학</a><br>
         <span>ⓒ 2025.1.30. 유행살이. All rights reserved.</span>
     </footer>
