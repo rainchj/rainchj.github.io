@@ -36,6 +36,22 @@
             box-sizing: border-box; /* 패딩 포함한 너비 계산 */
             margin: 0 auto; /* 수평 중앙 정렬 */
         }
+        img {
+            margin-top: 0px;
+            max-width: 100%; /* 이미지가 화면을 넘지 않도록 제한 */
+            height: auto; /* 이미지 비율 유지 */
+        }
+        .center-img {
+            display: block;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
         footer {
             text-align: center;
             width: 100%;
@@ -43,15 +59,13 @@
             color: #555;
             margin-top: 0px;
         }
-        img {
-            margin-top: 10px;
-            /* border-radius: 8px; */
-            max-width: 100%; /* 이미지가 화면을 넘지 않도록 제한 */
-            height: auto; /* 이미지 비율 유지 */
-        }
-        .center-img {
-            display: block;
-            margin: 0 auto;
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px; /* 작은 화면에서는 폰트 크기 조정 */
+            }
+            footer {
+                font-size: 12px; /* 푸터 텍스트 크기 조정 */
+            }
         }
     </style>
 </head>
@@ -65,7 +79,6 @@
 
         <div id="totalCount" style="margin-top:10px;"></div>
         <div id="posts"></div>
-        <br>  
         <p>☞ <a href="/index.html">이전화면으로</a></p>
     </form>
     <br>    
