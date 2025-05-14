@@ -166,7 +166,7 @@
                 <li>경제, 부동산, 블로그, 유튜브</li>
             </ul>
             <br>
-            <li><a href="/freeboard.html"><b>자유게시판</b></a> 방문흔적 남기기</li>
+            <li><a href="/freeboard.html"><b>자유게시판</b></a> (아래는 최근 게시글)</li>
                 <p id="latestPost" class="post">최근 방문 흔적 가져오는 중...</p>
                 <script>
                     const GAS_URL = "https://script.google.com/macros/s/AKfycbw9tx7ZZr_-J33trw1mK1ObTbqCCCPBCcJDq2YnFRdyhtYyhUBb0KqFGwlmwI13rwErKQ/exec";
@@ -181,7 +181,7 @@
                         }
                         const latest = data[data.length - 1]; // 가장 마지막 항목 = 최신 게시글
                         const dateOnly = latest.date.split(" ")[0];
-                        document.getElementById("latestPost").innerHTML = `${latest.name} (${dateOnly}) : ${latest.content}`;
+                        document.getElementById("latestPost").innerHTML = `✍️ ${latest.name}, ${dateOnly}<br>${latest.content}`;
                         } catch (err) {
                         document.getElementById("latestPost").textContent = "게시글을 불러오는 데 실패했습니다.";
                         console.error(err);
