@@ -82,7 +82,7 @@
             box-sizing: border-box; /* 패딩 포함한 너비 계산 */
             margin: 0 auto; /* 수평 중앙 정렬 */
         }
-        .post { border: 0px solid #ccc; border-radius: 10px; padding: 20px; margin: 10px 0; }
+        .post { border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin: 10px 0; }
         img {
             margin-top: 0px;
             max-width: 100%; /* 이미지가 화면을 넘지 않도록 제한 */
@@ -180,12 +180,9 @@
                         document.getElementById("latestPost").innerHTML = "게시글이 없습니다.";
                         return;
                     }
-
                     const latest = data[data.length - 1]; // 가장 마지막 항목 = 최신 게시글
-                    document.getElementById("latestPost").innerHTML = `
-                        <div class="meta">${latest.date} | <strong>${latest.name}</strong></div>
-                        <div>${latest.content}</div>
-                    `;
+                    const dateOnly = latest.date.split(" ")[0];
+                    document.getElementById("latestPost").innerHTML = `${latest.name} (${dateOnly}) : ${latest.content}`;
                     } catch (err) {
                     document.getElementById("latestPost").textContent = "게시글을 불러오는 데 실패했습니다.";
                     console.error(err);
