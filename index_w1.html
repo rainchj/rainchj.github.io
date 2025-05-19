@@ -57,7 +57,17 @@
             width: 100%; /* 기본적으로 전체 너비 사용 */
             box-sizing: border-box; /* 패딩 포함한 너비 계산 */
         }
-        #주요경제지표일간 {
+        #지표바로가기 {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 100%; /* 화면 너비에 맞춤 */
+            width: 100%; /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+        }
+        #주요경제지표 {
             background: #fff;
             border: 1px solid #ddd;
             padding: 20px;
@@ -113,15 +123,68 @@
     <div id="공지사항">
         <h2 style="color: rgb(0, 0, 0);">유행살이 Weekly Chart</h2>
         <ul>
+            <li>시장지표가기</li>
             <li>주요경제지표</li>
         </ul>
+        ☞ <a href="https://ecochart-rainchj.streamlit.app/">경제지표실시간차트</a><br>
         ☞ <a href="/index.html">자료더보기</a>
         <br>휴대폰은 두손가락으로 화면 터치후 벌리면 차트가 확대되고 기기를 가로로 돌리면 더욱 확대됩니다.
     </div>
-
     <br>
+    <div id="지표바로가기">
+        <h2 style="color: rgb(0, 0, 0);">시장지표 바로가기</h2>
+        <ol>
+            <li><b>실시간환율</b><br>
+                <a href="https://kr.investing.com/indices/usdollar" target="_blank" rel="noopener noreferrer">달러지수</a>,
+                <a href="https://kr.investing.com/currencies/eur-usd" target="_blank" rel="noopener noreferrer">EUR/USD</a>,
+                <a href="https://kr.investing.com/currencies/usd-cny" target="_blank" rel="noopener noreferrer">USD/CNY</a>,
+                <a href="https://kr.investing.com/currencies/usd-jpy" target="_blank" rel="noopener noreferrer">USD/JPY</a>,
+                <a href="https://kr.investing.com/currencies/usd-krw" target="_blank" rel="noopener noreferrer">USD/KRW</a>,
+                <a href="https://kr.investing.com/currencies/jpy-krw" target="_blank" rel="noopener noreferrer">JPY/KRW</a>
+            </li> 
+            <li><b>국채수익율</b><br>
+                <a href="https://kr.investing.com/rates-bonds/u.s.-30-year-bond-yield" target="_blank" rel="noopener noreferrer">미국30년</a>,
+                <a href="https://kr.investing.com/rates-bonds/u.s.-10-year-bond-yield" target="_blank" rel="noopener noreferrer">미국10년</a>,
+                <a href="https://kr.investing.com/rates-bonds/china-10-year-bond-yield" target="_blank" rel="noopener noreferrer">중국10년</a>,
+                <a href="https://kr.investing.com/rates-bonds/japan-10-year-bond-yield" target="_blank" rel="noopener noreferrer">일본10년</a>,
+                <a href="https://kr.investing.com/rates-bonds/south-korea-10-year-bond-yield" target="_blank" rel="noopener noreferrer">한국10년</a>
+            </li> 
+            <li><b>시장지표</b><br>
+                <a href="https://kr.investing.com/indices/volatility-s-p-500" target="_blank" rel="noopener noreferrer">VIX지수</a>,
+                <a href="https://kr.investing.com/indices/us-spx-500" target="_blank" rel="noopener noreferrer">S&P500</a>,
+                <a href="https://kr.investing.com/indices/nasdaq-composite" target="_blank" rel="noopener noreferrer">나스닥</a>,
+                <a href="https://kr.investing.com/indices/shanghai-composite" target="_blank" rel="noopener noreferrer">상해종합</a>,
+                <a href="https://kr.investing.com/indices/japan-ni225" target="_blank" rel="noopener noreferrer">닛케이</a>,
+                <a href="https://kr.investing.com/indices/kospi" target="_blank" rel="noopener noreferrer">코스피</a>,
+                <a href="https://kr.investing.com/indices/kosdaq" target="_blank" rel="noopener noreferrer">코스닥</a>
+            </li> 
+            <li><b>원재료등</b><br>
+                <a href="https://kr.investing.com/commodities/crude-oil" target="_blank" rel="noopener noreferrer">WTI선물</a>,
+                <a href="https://kr.investing.com/commodities/gold" target="_blank" rel="noopener noreferrer">금선물</a>,
+                <a href="https://kr.investing.com/commodities/copper?cid=959211" target="_blank" rel="noopener noreferrer">구리선물</a>,
+                <a href="https://kr.investing.com/crypto/bitcoin" target="_blank" rel="noopener noreferrer">비트코인</a>
+            </li> 
+            <li><b>종목시세</b><br>
+                <a href="https://kr.investing.com/etfs/samsung-kodex-kospi-200-securities" target="_blank" rel="noopener noreferrer">KODEX200</a>,
+                <a href="https://kr.investing.com/equities/samsung-electronics-co-ltd" target="_blank" rel="noopener noreferrer">삼성전자</a>,
+                <a href="https://kr.investing.com/etfs/453850" target="_blank" rel="noopener noreferrer">ACE미국30년H</a>,
+                <a href="https://kr.investing.com/etfs/ishares-lehman-20-year-treas" target="_blank" rel="noopener noreferrer">TLT</a>,
 
-    <div id="주요경제지표일간">
+                <a href="https://kr.investing.com/etfs/spdr-s-p-500" target="_blank" rel="noopener noreferrer">S&P500ETF</a>,
+                <a href="https://kr.investing.com/etfs/powershares-qqqq" target="_blank" rel="noopener noreferrer">인베스코QQQ</a>,
+                <a href="https://kr.investing.com/equities/microsoft-corp" target="_blank" rel="noopener noreferrer">MSFT</a>,
+                <a href="https://kr.investing.com/equities/nvidia-corp" target="_blank" rel="noopener noreferrer">NVDA</a>,
+                <a href="https://kr.investing.com/equities/apple-computer-inc" target="_blank" rel="noopener noreferrer">AAPL</a>
+            </li> 
+                <li><b>기타</b><br>
+                <a href="https://kr.investing.com/stock-screener" target="_blank" rel="noopener noreferrer">시가총액순위</a>,
+                <a href="https://kr.investing.com/economic-calendar/" target="_blank" rel="noopener noreferrer">경제캘린더</a>
+            </li> 
+        </ol>
+        <br>
+    </div>
+    <br>
+    <div id="주요경제지표">
         <h2>주요경제지표</h2>
         <ul>
             <!--  <li>Version_1.0   (<a href="https://rainchj.github.io/download/주요경제지표일간.zip" download>다운로드</a>, 비번필요)</li> -->
@@ -132,7 +195,6 @@
         <img id="주요경제지표일간" src="https://rainchj.github.io/weekly/주요경제지표일간.jpg" alt="설명 텍스트">
         <br>☞ <a href="https://rainchj.github.io/weekly/주요경제지표일간.jpg" download>이미지</a>
     </div>
-
     <br>    
     <footer>
         블로그 <a href="https://blog.naver.com/rainchj">U와 함께하는 행복한 세상살이</a>, 유튜브 <a href="https://www.youtube.com/@rainchj">백점경제학</a>, <em><span id="counter">0000</span></em><br>
