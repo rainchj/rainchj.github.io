@@ -93,7 +93,7 @@ main {
 .section-title {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #aaaaaa;
+    color: #0099ff;
     margin-bottom: 15px;
     padding-left: 10px;
     border-left: 5px solid rgba(255, 255, 255, 0.5);
@@ -215,7 +215,7 @@ main {
 
 .card-date {
     font-size: 0.9rem;
-    color: #aaaaaa;
+    color: #00ffff;
     margin-top: auto;
     text-align: right;
 }
