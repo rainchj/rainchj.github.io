@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유행살이 게시판</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        #고정화면 {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            max-width: 800px;
+            width: 100%;
+            /* 기본적으로 전체 너비 사용 */
+            box-sizing: border-box;
+            /* 패딩 포함한 너비 계산 */
+            margin: 0 auto;
+            /* 수평 중앙 정렬 */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>유행살이 공유자료</h1>
+    </header>
+
+    <div id="고정화면" class="content-section">
+        <form id="postForm">
+            <h2>📋 공지사항 및 자유게시판</h2>
+            <ul>
+                <li>공유관련 공지사항 게시판입니다.</li>
+                <li>방문자가 자유롭게 글을 남겨도 됩니다.</li>
+            </ul>
+            <br>
+            <input type="text" id="name" placeholder="작성자" required />
+            <button type="submit" style="position: relative; top: -3px;">글등록</button><br />
+            <textarea id="content" placeholder="내용" required></textarea><br />
+
+            <div id="totalCount"></div>
+            <div id="posts"></div>
+            <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
+        </form>
+    </div>
+
+    <footer>
+        <p>블로그 <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a> | 유튜브 <a
+                href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a></p>
+        <p>Total Visits: <span id="counter">0000</span></p>
+        <p style="margin-top: 10px;">ⓒ 2025.1.30. 유행살이. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

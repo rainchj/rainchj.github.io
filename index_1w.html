@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유행살이 주간경제지표</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>유행살이 공유자료</h1>
+    </header>
+    <br>
+    <div class="content-section">
+        <h3>주간 경제지표, 바로가기</h3>
+        <ul>
+            <li>매일 변동되는 환율, 금리, 주식 등 주요 경제지표를 한 눈에 점검할 수 있는 차트입니다.</li>
+            <li>수정일 <b style="color: rgb(215, 251, 206);" id="경제지표일간-date"></b></li>
+            <li>이미지를 선택하면 새로운 창에서 확대 또는 축소할 수 있습니다.</li>
+        </ul>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
+    </div>
+    <br>
+    <div class="content-section">
+        <h3>주간 경제지표</h3>
+        <br>
+        <img id="경제지표일간" src="https://rainchj.github.io/weekly_money/주간_경제지표.jpg" alt="주간 경제지표 차트" data-zoomable>
+    </div>
+    <br>
+    <div class="content-section">
+        <h3>바로가기</h3>
+        <ul>
+            <li><b>실시간환율</b><br>
+                <a href="https://kr.investing.com/indices/usdollar" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">달러지수</a>,
+                <a href="https://kr.investing.com/currencies/eur-usd" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">EUR/USD</a>,
+                <a href="https://kr.investing.com/currencies/usd-cny" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">USD/CNY</a>,
+                <a href="https://kr.investing.com/currencies/usd-jpy" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">USD/JPY</a>,
+                <a href="https://kr.investing.com/currencies/usd-krw" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">USD/KRW</a>,
+                <a href="https://kr.investing.com/currencies/jpy-krw" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">JPY/KRW</a>
+            </li>
+            <li><b>국채수익율</b><br>
+                <a href="https://kr.investing.com/rates-bonds/u.s.-30-year-bond-yield" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">미국30년</a>,
+                <a href="https://kr.investing.com/rates-bonds/u.s.-10-year-bond-yield" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">미국10년</a>,
+                <a href="https://kr.investing.com/rates-bonds/china-10-year-bond-yield" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">중국10년</a>,
+                <a href="https://kr.investing.com/rates-bonds/japan-10-year-bond-yield" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">일본10년</a>,
+                <a href="https://kr.investing.com/rates-bonds/south-korea-10-year-bond-yield" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">한국10년</a>
+            </li>
+            <li><b>시장지표</b><br>
+                <a href="https://kr.investing.com/indices/volatility-s-p-500" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">VIX지수</a>,
+                <a href="https://kr.investing.com/indices/us-spx-500" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">S&P500</a>,
+                <a href="https://kr.investing.com/indices/nasdaq-composite" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">나스닥</a>,
+                <a href="https://kr.investing.com/indices/shanghai-composite" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">상해종합</a>,
+                <a href="https://kr.investing.com/indices/japan-ni225" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">닛케이</a>,
+                <a href="https://kr.investing.com/indices/kospi" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">코스피</a>,
+                <a href="https://kr.investing.com/indices/kosdaq" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">코스닥</a>
+            </li>
+            <li><b>원재료등</b><br>
+                <a href="https://kr.investing.com/commodities/crude-oil" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">WTI선물</a>,
+                <a href="https://kr.investing.com/commodities/gold" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">금선물</a>,
+                <a href="https://kr.investing.com/commodities/copper?cid=959211" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">구리선물</a>,
+                <a href="https://kr.investing.com/crypto/bitcoin" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">비트코인</a>
+            </li>
+            <li><b>종목시세</b><br>
+                <a href="https://kr.investing.com/etfs/samsung-kodex-kospi-200-securities" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">KODEX200</a>,
+                <a href="https://kr.investing.com/equities/samsung-electronics-co-ltd" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">삼성전자</a>,
+                <a href="https://kr.investing.com/etfs/453850" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">ACE미국30년H</a>,
+                <a href="https://kr.investing.com/etfs/ishares-lehman-20-year-treas" target="_blank"
+                    rel="noopener noreferrer" style="color: rgb(215, 251, 206);">TLT</a>,
+                <a href="https://kr.investing.com/etfs/spdr-s-p-500" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">S&P500ETF</a>,
+                <a href="https://kr.investing.com/etfs/powershares-qqqq" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">인베스코QQQ</a>,
+                <a href="https://kr.investing.com/equities/microsoft-corp" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">MSFT</a>,
+                <a href="https://kr.investing.com/equities/nvidia-corp" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">NVDA</a>,
+                <a href="https://kr.investing.com/equities/apple-computer-inc" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">AAPL</a>
+            </li>
+            <li><b>기타</b><br>
+                <a href="https://kr.investing.com/stock-screener" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">시가총액순위</a>,
+                <a href="https://kr.investing.com/economic-calendar/" target="_blank" rel="noopener noreferrer"
+                    style="color: rgb(215, 251, 206);">경제캘린더</a>,
+                <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
+                    target="_blank" rel="noopener noreferrer" style="color: rgb(215, 251, 206);">FedWatch</a>,
+                <a href="https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions"
+                    target="_blank" rel="noopener noreferrer" style="color: rgb(215, 251, 206);">UScycle</a>
+            </li>
+        </ul>
+        <br>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
+    </div>
+    <footer>
+        <p>블로그 <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a> | 유튜브 <a
+                href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a></p>
+        <p>Total Visits: <span id="counter">0000</span></p>
+        <p style="margin-top: 10px;">ⓒ 2025.1.30. 유행살이. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
