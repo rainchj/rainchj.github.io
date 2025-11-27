@@ -390,11 +390,6 @@ footer a {
 /* 이미지 클릭 가능하도록 커서 변경 */
 img[data-zoomable] {
     cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-img[data-zoomable]:hover {
-    opacity: 0.9;
 }
 
 /* 모달 스타일 */
