@@ -291,7 +291,9 @@ function initializeBoard() {
 
         // 1. Scale to fit window width with fixed margin (e.g. 20px total = 10px left + 10px right)
         const targetWidth = viewportWidth - 20;
+        const targetHeight = viewportHeight - 20;
         scale = targetWidth / imgWidth;
+        if (scale > targetHeight / imgHeight) scale = targetHeight / imgHeight;
 
         // Minimum scale safety
         if (scale < 0.01) scale = 0.01;
