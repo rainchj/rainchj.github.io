@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         '매물경기-date': 'https://rainchj.github.io/weekly_estate/매물경기총괄.jpg',
         '매물인천-date': 'https://rainchj.github.io/weekly_estate/매물인천총괄.jpg',
         '매물기타-date': 'https://rainchj.github.io/weekly_estate/매물기타총괄.jpg',
+        '경기순환진단-date': 'https://rainchj.github.io/monthly/경기순환진단.jpg',
         '경제지표월간-date': 'https://rainchj.github.io/monthly/주요경제지표월간.jpg',
         '총괄전국-date': 'https://rainchj.github.io/monthly/총괄전국.jpg',
         '주민등록인구-date': 'https://rainchj.github.io/monthly/주민등록인구.jpg',
