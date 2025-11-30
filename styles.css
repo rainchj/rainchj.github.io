@@ -169,6 +169,11 @@ main {
     margin: 8px 0;
 }
 
+.content-section img {
+    display: block;
+    margin: 0 auto;
+}
+
 /* .content-section a {
     font-weight: normal;
     text-decoration: none;
