@@ -108,25 +108,21 @@
                             버튼이 보이지 않는 경우, 브라우저 메뉴의 '앱 설치' 또는 '홈 화면에 추가'를 이용해주세요.
                         </p>
                     </div>
-                    <br>
-                    <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
                 </div>
-                <br>
-                
             </div>
+
 
             <!-- PC 설치 도움말 (버튼 클릭시 프롬프트 안뜰 때 표시) -->
             <div id="pcHelpMsg" class="pc-help">
-                <h3 style="margin-bottom: 15px; color: #00c6ff; text-align: center;">💡 설치/재설치 안내</h3>
+                <h3 style="margin-bottom: 15px; color: #00c6ff; text-align: center;">💡 아이콘을 다시 만들고 싶다면?</h3>
 
                 <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px;">
-                    <h4 style="color: #fff; margin-bottom: 10px;">아이콘을 다시 만들고 싶다면? (재설치)</h4>
                     <p style="font-size: 0.95em; color: #ddd;">이미 앱이 설치되어 있다면 먼저 <strong>삭제</strong>해야 다시 설치할 수 있습니다.
                     </p>
-                    <ul style="margin: 10px 0 10px 20px; font-size: 0.9em; color: #aaa;">
+                    <!-- <ul style="margin: 10px 0 10px 20px; font-size: 0.9em; color: #aaa;">
                         <li>브라우저 우측 상단 메뉴(⋮) &gt; '유행살이 공유자료 제거' 클릭</li>
                         <li>또는 주소창 우측의 앱 아이콘 클릭 &gt; '앱 제거'</li>
-                    </ul>
+                    </ul> -->
                     <p style="font-size: 0.95em; color: #ddd;">삭제 후 <strong>새로고침(F5)</strong> 하시면 다시 설치 버튼이 작동합니다.</p>
                 </div>
             </div>
@@ -138,13 +134,15 @@
                 <p>2. 메뉴에서 <strong>'홈 화면에 추가'</strong>를 선택하세요.</p>
                 <p>3. 우측 상단의 <strong>'추가'</strong>를 누르세요.</p>
             </div>
+
+            <br>
+            <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
         </section>
     </main>
 
     <footer>
         <p>블로그 <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a> | 유튜브 <a
                 href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a></p>
-        <p>Total Visits: <strong><span id="counter">0000</span></strong></p>
         <p style="margin-top: 10px;">ⓒ 2025.1.30. 유행살이. All rights reserved.</p>
     </footer>
 
@@ -214,7 +212,7 @@
             console.log('App was installed');
             installBtn.style.display = 'none';
             pcHelpMsg.style.display = 'none';
-            defaultGuide.innerHTML = '<p>앱이 성공적으로 설치되었습니다!</p>';
+            defaultGuide.innerHTML = '<p>앱이 성공적으로 설치되었습니다.</p>';
         });
     </script>
 </body>
