@@ -555,3 +555,89 @@ img[data-zoomable] {
     border-radius: 8px;
     font-size: 14px;
 }
+
+
+
+
+/* ==========================================================================
+   Sparkle New
+   ========================================================================== */
+.sparkle-new {
+    display: inline-block;
+    position: relative;
+    color: #ff0000;                /* 글자 색: 빨강 */
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 0.02em;
+    animation: pulseGlow 1.2s infinite ease-in-out;
+    will-change: transform, text-shadow;
+}
+
+/* 글자 주변의 반짝이는 그림자(글로우) 애니메이션 */
+@keyframes pulseGlow {
+    0% {
+      transform: scale(1);
+      text-shadow:
+        0 0 2px rgba(255, 80, 80, 0.9),
+        0 0 6px rgba(255, 80, 80, 0.6);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.06);
+      text-shadow:
+        0 0 8px rgba(255, 60, 60, 1),
+        0 0 20px rgba(255, 30, 30, 0.9);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      text-shadow:
+        0 0 2px rgba(255, 80, 80, 0.9),
+        0 0 6px rgba(255, 80, 80, 0.6);
+      opacity: 1;
+    }
+}
+
+/* 작은 별(스파클) 효과: before / after를 이용해 불규칙한 반짝임 추가 */
+.sparkle-new::before,
+.sparkle-new::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #ff6b6b 40%, transparent 60%);
+    opacity: 0;
+    transform: scale(0.6);
+    filter: blur(0.5px);
+    animation: twinkle 1.6s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.sparkle-new::after {
+    top: 10%;
+    right: -4%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 1.0s;
+    animation-delay: 0.3s;
+}
+
+@keyframes twinkle {
+    0%   { opacity: 0; transform: scale(0.6) translateY(0); }
+    30%  { opacity: 1; transform: scale(1.1) translateY(-4px); }
+    60%  { opacity: 0.6; transform: scale(0.9) translateY(0); }
+    100% { opacity: 0; transform: scale(0.6) translateY(0); }
+}
+
+/* 사용자가 동작 줄이기를 선호하면 애니 중단 */
+@media (prefers-reduced-motion: reduce) {
+    .sparkle-new,
+    .sparkle-new::before,
+    .sparkle-new::after {
+      animation: none !important;
+      transition: none !important;
+    }
+}
