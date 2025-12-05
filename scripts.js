@@ -35,9 +35,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 const lastModified = res.headers.get('Last-Modified');
                 const el = document.getElementById(dateElementId);
                 if (el) {
-                    el.textContent = lastModified
-                        ? new Date(lastModified).toLocaleDateString('ko-KR', { year: '2-digit', month: '2-digit', day: '2-digit' }).replace(/\. /g, '.').replace(/\.$/, '')
+                    const dateObj = lastModified ? new Date(lastModified) : null;
+                    el.textContent = dateObj
+                        ? dateObj.toLocaleDateString('ko-KR', { year: '2-digit', month: '2-digit', day: '2-digit' }).replace(/\. /g, '.').replace(/\.$/, '')
                         : '-';
+
+                    // Special logic: Show 'New' badge for 3 days (Update Day, Day+1, Day+2)
+                    if (dateObj) {
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+
+                        const checkDate = new Date(dateObj);
+                        checkDate.setHours(0, 0, 0, 0);
+
+                        const diffTime = today - checkDate;
+                        // Calculate difference in days
+                        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+                        // 0 = Today (Update Day)
+                        // 1 = Tomorrow (Day after Update)
+                        // 2 = Day after Tomorrow (2 Days after Update)
+                        if (diffDays >= 0 && diffDays <= 2) {
+                            const cardTitle = el.parentElement.querySelector('.card-title');
+                            // Check if badge already exists to avoid duplication
+                            if (cardTitle && !cardTitle.querySelector('.sparkle-new')) {
+                                cardTitle.innerHTML += ' <p style="font-size: 1em; display: inline-block; margin: 0;" class="sparkle-new">New</p>';
+                            }
+                        }
+                    }
                 }
             })
             .catch(err => {
