@@ -34,7 +34,6 @@
             transition: transform 0.2s, box-shadow 0.2s;
             margin: 20px auto;
             width: 80%;
-            /* 버튼 너비 통일 */
             max-width: 300px;
         }
 
@@ -52,7 +51,6 @@
 
         .ios-guide {
             display: none;
-            /* iOS인 경우에만 표시 */
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 15px;
@@ -126,7 +124,6 @@
             <!-- PC 설치 도움말 (버튼 클릭시 프롬프트 안뜰 때 표시) -->
             <div id="pcHelpMsg" class="pc-help">
                 <h3 style="margin-bottom: 15px; color: #00c6ff; text-align: center;">💡 아이콘을 재 설치하려면?</h3>
-
                 <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px;">
                     <p style="font-size: 0.95em; color: #ddd;">이미 앱이 설치되어 있다면 먼저 <strong>삭제</strong>해야 다시 설치할 수 있습니다. 삭제
                         후 <strong>새로고침(F5)</strong> 하시면 다시 설치 버튼이 작동합니다.</p>
@@ -136,7 +133,7 @@
                     </ul> -->
                 </div>
             </div>
-
+`
             <!-- iOS용 가이드 -->
             <div id="iosGuide" class="ios-guide">
                 <h3>아이폰/아이패드 사용자</h3>
@@ -144,8 +141,8 @@
                 <p>2. 메뉴에서 <strong>'홈 화면에 추가'</strong>를 선택하세요.</p>
                 <p>3. 우측 상단의 <strong>'추가'</strong>를 누르세요.</p>
             </div>
-
             <br>
+
             <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
         </section>
     </main>
@@ -238,14 +235,6 @@
                 iosGuide.style.display = 'none';
             }
         });
-
-        // (선택사항) iOS 기기인 경우 초기 상태에서 안드로이드 버튼을 굳이 숨길 필요가 있나?
-        // 사용자의 요청: "PC/안드로이드 버튼 밑에 애플 버튼을 새로 만들어서"
-        // 즉 둘 다 보여주는 것이 기본 요구사항. 다만 너무 불필요하면 숨길 수도 있으나,
-        // 명시적으로 분리해달라고 했으므로 둘 다 놔두는 것이 안전함.
-        // 다만 iOS 환경에서 'PC/안드로이드' 버튼을 누르면 반응이 없을 수 있으므로(deferredPrompt가 안뜨니까),
-        // 클릭 시 "이 버튼은 안드로이드/PC용입니다" 라고 알려주거나, 그냥 놔둬도 무방(PC 도움말이 뜸).
-        // 현재 로직상 deferredPrompt가 null이면 pcHelpMsg가 뜨므로 UX상 큰 문제는 없음.
     </script>
 </body>
 
