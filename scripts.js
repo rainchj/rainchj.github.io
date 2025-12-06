@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         ? dateObj.toLocaleDateString('ko-KR', { year: '2-digit', month: '2-digit', day: '2-digit' }).replace(/\. /g, '.').replace(/\.$/, '')
                         : '-';
 
-                    // Special logic: Show 'New' badge for 3 days (Update Day, Day+1, Day+2)
+                    // Special logic: Show 'New' badge for 2 days (Update Day, Day+1)
                     if (dateObj) {
                         const today = new Date();
                         today.setHours(0, 0, 0, 0);
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         // 0 = Today (Update Day)
                         // 1 = Tomorrow (Day after Update)
                         // 2 = Day after Tomorrow (2 Days after Update)
-                        if (diffDays >= 0 && diffDays <= 2) {
+                        if (diffDays >= 0 && diffDays <= 1) {
                             const cardTitle = el.parentElement.querySelector('.card-title');
                             // Check if badge already exists to avoid duplication
                             if (cardTitle && !cardTitle.querySelector('.sparkle-new')) {
