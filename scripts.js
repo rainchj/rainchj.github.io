@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
         '차트분석-date': 'https://rainchj.github.io/weekly_money/주간_차트1.jpg',
         '아파트가격조사-date': 'https://rainchj.github.io/weekly_estate/주간_가격조사.jpg',
         '실거래가서울-date': 'https://rainchj.github.io/weekly_estate/실거래_서울.jpg',
+        '실거래가경기-date': 'https://rainchj.github.io/weekly_estate/실거래_경기.jpg',
+        '실거래가인천-date': 'https://rainchj.github.io/weekly_estate/실거래_인천.jpg',
         '매물서울-date': 'https://rainchj.github.io/weekly_estate/매물서울총괄.jpg',
         '매물경기-date': 'https://rainchj.github.io/weekly_estate/매물경기총괄.jpg',
         '매물인천-date': 'https://rainchj.github.io/weekly_estate/매물인천총괄.jpg',
