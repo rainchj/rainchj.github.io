@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>바로가기 설치</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         .install-container {
             text-align: center;
@@ -19,7 +23,6 @@
 
         .install-btn {
             display: block;
-            /* PC에서는 기본 표시 */
             background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: white;
             border: none;
@@ -30,11 +33,15 @@
             box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
             transition: transform 0.2s, box-shadow 0.2s;
             margin: 20px auto;
+            width: 80%;
+            /* 버튼 너비 통일 */
+            max-width: 300px;
         }
 
         .install-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 114, 255, 0.4);
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.8), rgba(0, 30, 255, 0.8)) !important;
         }
 
         .guide-text {
@@ -88,12 +95,17 @@
             <img src="icon.png" alt="App Icon" class="icon-preview">
 
             <!-- 안드로이드/PC용 설치 버튼 -->
-            <button id="installBtn" class="install-btn">PC / 안드로이드</button>
+            <button id="androidBtn" class="install-btn">PC / 안드로이드</button>
+
+            <!-- iOS용 설치 버튼 (가이드 표시용) -->
+            <button id="iosBtn" class="install-btn">애플 (iOS)</button>
 
             <div id="defaultGuide" class="guide-text">
                 <div class="pc-help" style="display: block;">
                     <div>
-                        <p style="font-size: 0.95em; color: #ddd;">진행하려면 버튼을 누르세요. PC에서 설치 팝업창이 뜨는 경우에는 아래 항목을 <strong>체크</strong>하세요. (IOS를 사용하는 애플폰은 추후 제공)</p>
+                        <p style="font-size: 0.95em; color: #ddd;">진행하려면 버튼을 누르세요. PC에서 설치 팝업창이 뜨는 경우에는 아래 항목을
+                            <strong>체크</strong>하세요.
+                        </p>
                         <ul style="margin: 10px 0 0 20px; font-size: 0.9em; color: #00c6ff;">
                             <li>✅ 작업 표시줄에 고정</li>
                             <li>✅ 시작 화면에 고정</li>
@@ -116,7 +128,8 @@
                 <h3 style="margin-bottom: 15px; color: #00c6ff; text-align: center;">💡 아이콘을 재 설치하려면?</h3>
 
                 <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px;">
-                    <p style="font-size: 0.95em; color: #ddd;">이미 앱이 설치되어 있다면 먼저 <strong>삭제</strong>해야 다시 설치할 수 있습니다. 삭제 후 <strong>새로고침(F5)</strong> 하시면 다시 설치 버튼이 작동합니다.</p>
+                    <p style="font-size: 0.95em; color: #ddd;">이미 앱이 설치되어 있다면 먼저 <strong>삭제</strong>해야 다시 설치할 수 있습니다. 삭제
+                        후 <strong>새로고침(F5)</strong> 하시면 다시 설치 버튼이 작동합니다.</p>
                     <!-- <ul style="margin: 10px 0 10px 20px; font-size: 0.9em; color: #aaa;">
                         <li>브라우저 우측 상단 메뉴(⋮) &gt; '유행살이 공유자료 제거' 클릭</li>
                         <li>또는 주소창 우측의 앱 아이콘 클릭 &gt; '앱 제거'</li>
@@ -157,39 +170,37 @@
             });
         }
 
-        // 설치 프롬프트 처리
+        // --- 변수 선언 ---
         let deferredPrompt;
-        const installBtn = document.getElementById('installBtn');
+        const androidBtn = document.getElementById('androidBtn');
+        const iosBtn = document.getElementById('iosBtn');
         const iosGuide = document.getElementById('iosGuide');
-        const defaultGuide = document.getElementById('defaultGuide');
+        const defaultGuide = document.getElementById('defaultGuide'); // PC/Android 도움말 영역
         const pcHelpMsg = document.getElementById('pcHelpMsg');
 
-        // iOS 감지
-        const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-        if (isIos) {
-            iosGuide.style.display = 'block';
-            defaultGuide.style.display = 'none';
-            installBtn.style.display = 'none';
-        }
-
+        // --- 1. 안드로이드 / PC 로직 ---
         window.addEventListener('beforeinstallprompt', (e) => {
-            // Chrome 67 이전 버전에서는 자동으로 프롬프트가 뜨지 않도록 방지
+            // Chrome 67+ 자동으로 프롬프트 뜨지 않음
             e.preventDefault();
-            // 나중에 트리거할 수 있도록 이벤트 저장
             deferredPrompt = e;
             console.log("beforeinstallprompt fired");
+
+            // 프롬프트가 준비되면 Android 버튼이 확실히 보이게 처리 (기본이 block이라 생략 가능하지만 명시적)
+            androidBtn.style.display = 'block';
         });
 
-        installBtn.addEventListener('click', (e) => {
-            // 저장된 프롬프트가 있는 경우 (자동 설치 가능)
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
+        androidBtn.addEventListener('click', (e) => {
+            // PC/Android 도움말 영역 표시
+            defaultGuide.style.display = 'block';
+            iosGuide.style.display = 'none';
 
+            if (deferredPrompt) {
+                // 설치 프롬프트가 준비된 경우
+                deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('User accepted the A2HS prompt');
-                        installBtn.style.display = 'none';
+                        androidBtn.style.display = 'none'; // 설치 완료 후 버튼 숨김 (선택사항)
                         defaultGuide.innerHTML = '<p>설치가 시작되었습니다.</p>';
                     } else {
                         console.log('User dismissed the A2HS prompt');
@@ -197,20 +208,43 @@
                     deferredPrompt = null;
                 });
             } else {
-                // 프롬프트가 없는 경우 (이미 설치됨, 혹은 PC 브라우저 정책) 도움말 표시
+                // 프롬프트가 없을 때 (이미 설치됨 or PC 수동 설치 필요)
                 pcHelpMsg.style.display = 'block';
-                // 도움말 위치로 부드럽게 스크롤
                 pcHelpMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
 
-        // 이미 설치된 경우
         window.addEventListener('appinstalled', (evt) => {
             console.log('App was installed');
-            installBtn.style.display = 'none';
-            pcHelpMsg.style.display = 'none';
+            // 설치 완료 시 처리
             defaultGuide.innerHTML = '<p>앱이 성공적으로 설치되었습니다.</p>';
+            androidBtn.style.display = 'none';
+            iosBtn.style.display = 'none'; // 앱으로 실행 중일 땐 버튼들 숨기기
         });
+
+
+        // --- 2. iOS 로직 ---
+        // 애플은 프로그래매틱 설치 프롬프트가 없음 -> 수동 가이드만 표시
+        iosBtn.addEventListener('click', () => {
+            // 다른 가이드 숨기고 iOS 가이드 표시 토글
+            defaultGuide.style.display = 'none';
+            pcHelpMsg.style.display = 'none';
+
+            if (iosGuide.style.display === 'none' || iosGuide.style.display === '') {
+                iosGuide.style.display = 'block';
+                iosGuide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                iosGuide.style.display = 'none';
+            }
+        });
+
+        // (선택사항) iOS 기기인 경우 초기 상태에서 안드로이드 버튼을 굳이 숨길 필요가 있나?
+        // 사용자의 요청: "PC/안드로이드 버튼 밑에 애플 버튼을 새로 만들어서"
+        // 즉 둘 다 보여주는 것이 기본 요구사항. 다만 너무 불필요하면 숨길 수도 있으나,
+        // 명시적으로 분리해달라고 했으므로 둘 다 놔두는 것이 안전함.
+        // 다만 iOS 환경에서 'PC/안드로이드' 버튼을 누르면 반응이 없을 수 있으므로(deferredPrompt가 안뜨니까),
+        // 클릭 시 "이 버튼은 안드로이드/PC용입니다" 라고 알려주거나, 그냥 놔둬도 무방(PC 도움말이 뜸).
+        // 현재 로직상 deferredPrompt가 null이면 pcHelpMsg가 뜨므로 UX상 큰 문제는 없음.
     </script>
 </body>
 
