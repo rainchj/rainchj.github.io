@@ -28,6 +28,34 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(err => console.error("Error:", err));
     }
 
+    // Chart Download functionality
+    const downloadBtn = document.getElementById('download-chart-btn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const imageUrl = 'https://rainchj.github.io/monthly/경기순환진단.jpg';
+            const filename = '경기순환진단.jpg';
+
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                })
+                .catch(err => {
+                    console.error('Download failed:', err);
+                    alert('차트 다운로드 실패: ' + err.message);
+                });
+        });
+    }
+
     // Image Date Fetcher
     function displayImageDate(dateElementId, imageUrl) {
         fetch(imageUrl)
