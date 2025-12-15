@@ -36,14 +36,24 @@
             overflow: hidden;
         }
 
+        /* Enforce Mobile Layout Globally */
         .game-container {
             display: flex;
-            gap: 20px;
-            padding: 20px;
+            flex-direction: column;
+            /* Vertical stack */
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            max-width: 420px;
+            /* Fixed mobile width */
+            height: auto;
+            min-height: 90vh;
+
             border: 2px solid var(--panel-bg);
             border-radius: 10px;
             background: radial-gradient(circle at center, #1a1a3a 0%, #0d0d20 100%);
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
         }
 
         .game-board-container {
@@ -51,13 +61,168 @@
             border: 2px solid var(--neon-blue);
             box-shadow: 0 0 15px var(--neon-blue), inset 0 0 15px var(--neon-blue);
             border-radius: 4px;
+            order: 1;
+            /* Board first */
+            margin-bottom: 10px;
         }
 
         canvas#tetris {
             display: block;
             background-color: rgba(0, 0, 0, 0.8);
+            max-width: 100%;
+            height: auto;
+            max-height: 55vh;
         }
 
+        .sidebar {
+            order: 2;
+            /* Sidebar second */
+            display: flex;
+            flex-direction: row;
+            /* Horizontal alignment for multiple info boxes */
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            /* Stretch items to same height */
+            gap: 5px;
+            width: 100%;
+            min-width: 0;
+            margin-top: 5px;
+        }
+
+        .info-box {
+            background: var(--panel-bg);
+            padding: 5px;
+            border-radius: 5px;
+            border-left: 3px solid var(--neon-pink);
+            text-align: center;
+            width: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 5px;
+            /* Add margin for spacing since we removed gap usage or to assist centering */
+        }
+
+        .info-box h3 {
+            font-family: var(--font-display);
+            color: var(--neon-blue);
+            margin-bottom: 2px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box div {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        #next-piece {
+            margin: 0 auto;
+            display: block;
+            width: auto;
+            height: 50px;
+            /* Constrain height */
+        }
+
+        /* Make Next box specific size if needed, or let flex handle it */
+        .info-box:first-child {
+            /* Next piece box specific adjustment if needed */
+        }
+
+        .controls-info {
+            display: none;
+            /* Hide on mobile-like layout */
+        }
+
+        /* Mobile Controls - Always Visible */
+        .mobile-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin: 5px auto;
+            width: 100%;
+            max-width: 280px;
+            /* Match controls width */
+
+            /* Give controls their own line in the flex wrap sidebar */
+            flex-basis: 100%;
+        }
+
+        .mobile-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--neon-blue);
+            color: white;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            touch-action: manipulation;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+
+        .mobile-btn:active {
+            background: var(--neon-blue);
+            color: var(--bg-color);
+        }
+
+        /* Grid placement */
+        #btn-left {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        #btn-down {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        #btn-right {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        #btn-rotate {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        #btn-drop {
+            grid-column: 1 / span 3;
+            grid-row: 3;
+            background: rgba(255, 0, 255, 0.2);
+            border-color: var(--neon-pink);
+        }
+
+        #start-btn {
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 10px 0;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            border-radius: 5px;
+
+            width: 100%;
+            max-width: 280px;
+            margin-top: 10px;
+            flex-basis: 100%;
+            /* Own line */
+        }
+
+        #start-btn:hover {
+            background: var(--neon-blue);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* Game Over Overlay */
         #game-over {
             position: absolute;
             top: 0;
@@ -79,193 +244,12 @@
         #game-over h2 {
             font-family: var(--font-display);
             color: var(--neon-pink);
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
             text-shadow: 0 0 10px var(--neon-pink);
         }
 
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            min-width: 180px;
-        }
-
-        .info-box {
-            background: var(--panel-bg);
-            padding: 10px;
-            border-radius: 5px;
-            border-left: 3px solid var(--neon-pink);
-            text-align: center;
-        }
-
-        .info-box h3 {
-            font-family: var(--font-display);
-            color: var(--neon-blue);
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .info-box div {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        #next-piece {
-            margin: 0 auto;
-            display: block;
-        }
-
-        button {
-            background: transparent;
-            border: 2px solid var(--neon-blue);
-            color: var(--neon-blue);
-            padding: 10px 20px;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-transform: uppercase;
-            border-radius: 5px;
-            margin-top: auto;
-        }
-
-        button:hover {
-            background: var(--neon-blue);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px var(--neon-blue);
-        }
-
-        .controls-info {
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        .controls-info p {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .controls-info span {
-            color: var(--neon-pink);
-            font-weight: bold;
-        }
-
-        /* Mobile Controls */
-        .mobile-controls {
-            display: none;
-            /* Hidden by default on desktop */
-        }
-
-        @media (max-width: 768px) {
-            .game-container {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-                width: 100vw;
-                height: 100vh;
-                border: none;
-                box-shadow: none;
-            }
-
-            canvas#tetris {
-                /* adjust canvas for smaller screens if needed, 
-                   or rely on container scaling. 
-                   But fixed width canvas might overflow small screens slightly.
-                   Let's ensure it fits.
-                */
-                max-width: 100%;
-                height: auto;
-            }
-
-            .sidebar {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                width: 100%;
-                min-width: 0;
-                gap: 10px;
-            }
-
-            .info-box {
-                padding: 5px;
-                flex: 1;
-                min-width: 60px;
-            }
-
-            .info-box h3 {
-                font-size: 0.7rem;
-            }
-
-            .info-box div {
-                font-size: 1rem;
-            }
-
-            .controls-info {
-                display: none;
-                /* Hide keyboard info on mobile */
-            }
-
-            .mobile-controls {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-                margin-top: 10px;
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .mobile-btn {
-                background: rgba(255, 255, 255, 0.1);
-                border: 2px solid var(--neon-blue);
-                color: white;
-                padding: 15px 0;
-                border-radius: 10px;
-                font-size: 1.5rem;
-                touch-action: manipulation;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                user-select: none;
-            }
-
-            .mobile-btn:active {
-                background: var(--neon-blue);
-                color: var(--bg-color);
-            }
-
-            /* Grid placement */
-            #btn-left {
-                grid-column: 1;
-                grid-row: 1;
-            }
-
-            #btn-down {
-                grid-column: 2;
-                grid-row: 2;
-            }
-
-            #btn-right {
-                grid-column: 3;
-                grid-row: 1;
-            }
-
-            #btn-rotate {
-                grid-column: 2;
-                grid-row: 1;
-            }
-
-            #btn-drop {
-                grid-column: 1 / span 3;
-                grid-row: 3;
-                background: rgba(255, 0, 255, 0.2);
-                border-color: var(--neon-pink);
-            }
-        }
+        /* No Media Query needed - this IS the layout */
     </style>
 </head>
 
@@ -294,11 +278,6 @@
             <div class="info-box">
                 <h3>Level</h3>
                 <div id="level">1</div>
-            </div>
-
-            <div class="info-box">
-                <h3>Lines</h3>
-                <div id="lines">0</div>
             </div>
 
             <div class="controls-info">
@@ -620,7 +599,6 @@
             updateScore() {
                 document.getElementById('score').innerText = this.score;
                 document.getElementById('level').innerText = this.level;
-                document.getElementById('lines').innerText = this.lines;
             }
 
             update(time = 0) {
