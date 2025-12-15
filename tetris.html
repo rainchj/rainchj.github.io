@@ -175,9 +175,9 @@
             grid-row: 1;
         }
 
-        #btn-down {
+        #btn-rotate {
             grid-column: 2;
-            grid-row: 2;
+            grid-row: 1;
         }
 
         #btn-right {
@@ -185,41 +185,34 @@
             grid-row: 1;
         }
 
-        #btn-rotate {
+        #start-btn {
+            grid-column: 1;
+            grid-row: 2;
+            /* Reset specific Start styling to match mobile buttons */
+            margin: 0;
+            width: 100%;
+            border-radius: 8px;
+            padding: 0;
+            /* Let flex center it */
+            font-size: 0.9rem;
+            /* Slightly smaller font for text */
+            display: flex;
+            /* Ensure flex centering from mobile-btn class works if applied, or re-apply */
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #btn-down {
             grid-column: 2;
-            grid-row: 1;
+            grid-row: 2;
         }
 
         #btn-drop {
-            grid-column: 1 / span 3;
-            grid-row: 3;
+            grid-column: 3;
+            grid-row: 2;
             background: rgba(255, 0, 255, 0.2);
             border-color: var(--neon-pink);
-        }
-
-        #start-btn {
-            background: transparent;
-            border: 2px solid var(--neon-blue);
-            color: var(--neon-blue);
-            padding: 10px 0;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-transform: uppercase;
-            border-radius: 5px;
-
-            width: 100%;
-            max-width: 280px;
-            margin-top: 10px;
-            flex-basis: 100%;
-            /* Own line */
-        }
-
-        #start-btn:hover {
-            background: var(--neon-blue);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px var(--neon-blue);
         }
 
         /* Game Over Overlay */
@@ -292,11 +285,10 @@
                 <button class="mobile-btn" id="btn-left">←</button>
                 <button class="mobile-btn" id="btn-rotate">↻</button>
                 <button class="mobile-btn" id="btn-right">→</button>
+                <button class="mobile-btn" id="start-btn">Start</button>
                 <button class="mobile-btn" id="btn-down">↓</button>
                 <button class="mobile-btn" id="btn-drop">⤓</button>
             </div>
-
-            <button id="start-btn">Start Game</button>
         </div>
     </div>
     <script>
