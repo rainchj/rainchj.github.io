@@ -226,6 +226,68 @@ main {
 }
 
 /* ========================================
+   Game Card Backgrounds
+   ======================================== */
+/* Common styles for all game cards */
+.card[id^="game-"] {
+    min-height: 200px;
+    justify-content: flex-end;
+    /* Align text to bottom */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    /* Enhance text readability */
+}
+
+#game-bounce {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/games/bounce_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-pacman {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/pacman_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-puzzle {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/games/puzzle_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-snake {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/snake_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-tetris-1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/tetris_bg.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-flappybird {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/games/flappybird_bg.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+#game-tetris-2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/tetris_bg.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Ensure hover state maintains the image but lightens the overlay slightly or just uses the default hover effect */
+.card[id^="game-"]:hover {
+    background-blend-mode: hard-light;
+    /* The default .card:hover adds background: var(--hover-bg), which might conflict. 
+       Let's override it to keep the image visible. */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
    Post & Board Styles
    ======================================== */
 .post {
@@ -565,7 +627,8 @@ img[data-zoomable] {
 .sparkle-new {
     display: inline-block;
     position: relative;
-    color: #ff0000;                /* 글자 색: 빨강 */
+    color: #ff0000;
+    /* 글자 색: 빨강 */
     font-weight: 700;
     font-size: 1.2em;
     letter-spacing: 0.02em;
@@ -576,25 +639,27 @@ img[data-zoomable] {
 /* 글자 주변의 반짝이는 그림자(글로우) 애니메이션 */
 @keyframes pulseGlow {
     0% {
-      transform: scale(1);
-      text-shadow:
-        0 0 2px rgba(255, 80, 80, 0.9),
-        0 0 6px rgba(255, 80, 80, 0.6);
-      opacity: 1;
+        transform: scale(1);
+        text-shadow:
+            0 0 2px rgba(255, 80, 80, 0.9),
+            0 0 6px rgba(255, 80, 80, 0.6);
+        opacity: 1;
     }
+
     50% {
-      transform: scale(1.06);
-      text-shadow:
-        0 0 8px rgba(255, 60, 60, 1),
-        0 0 20px rgba(255, 30, 30, 0.9);
-      opacity: 1;
+        transform: scale(1.06);
+        text-shadow:
+            0 0 8px rgba(255, 60, 60, 1),
+            0 0 20px rgba(255, 30, 30, 0.9);
+        opacity: 1;
     }
+
     100% {
-      transform: scale(1);
-      text-shadow:
-        0 0 2px rgba(255, 80, 80, 0.9),
-        0 0 6px rgba(255, 80, 80, 0.6);
-      opacity: 1;
+        transform: scale(1);
+        text-shadow:
+            0 0 2px rgba(255, 80, 80, 0.9),
+            0 0 6px rgba(255, 80, 80, 0.6);
+        opacity: 1;
     }
 }
 
@@ -626,18 +691,34 @@ img[data-zoomable] {
 }
 
 @keyframes twinkle {
-    0%   { opacity: 0; transform: scale(0.6) translateY(0); }
-    30%  { opacity: 1; transform: scale(1.1) translateY(-4px); }
-    60%  { opacity: 0.6; transform: scale(0.9) translateY(0); }
-    100% { opacity: 0; transform: scale(0.6) translateY(0); }
+    0% {
+        opacity: 0;
+        transform: scale(0.6) translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1.1) translateY(-4px);
+    }
+
+    60% {
+        opacity: 0.6;
+        transform: scale(0.9) translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.6) translateY(0);
+    }
 }
 
 /* 사용자가 동작 줄이기를 선호하면 애니 중단 */
 @media (prefers-reduced-motion: reduce) {
+
     .sparkle-new,
     .sparkle-new::before,
     .sparkle-new::after {
-      animation: none !important;
-      transition: none !important;
+        animation: none !important;
+        transition: none !important;
     }
 }
