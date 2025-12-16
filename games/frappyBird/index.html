@@ -141,6 +141,7 @@
             android: null,
             ios: null,
             gradients: {},
+            speed: 1,
             init: function () {
                 var grad;
                 // the proportion of width to height
@@ -164,6 +165,10 @@
                 FB.ua = navigator.userAgent.toLowerCase();
                 FB.android = FB.ua.indexOf('android') > -1 ? true : false;
                 FB.ios = (FB.ua.indexOf('iphone') > -1 || FB.ua.indexOf('ipad') > -1) ? true : false;
+
+                if (FB.android || FB.ios) {
+                    FB.speed = 0.6;
+                }
 
                 // setup some gradients
                 grad = FB.ctx.createLinearGradient(0, 0, 0, FB.HEIGHT);
@@ -367,7 +372,7 @@
             this.type = 'cloud';
             // random values so particles do no
             // travel at the same speeds
-            this.vx = -0.10;
+            this.vx = -0.10 * FB.speed;
 
             this.remove = false;
 
@@ -407,7 +412,7 @@
             this.x = x;
             this.y = y
             this.r = r;
-            this.vx = -1;
+            this.vx = -1 * FB.speed;
             this.name = 'BottomBar';
 
             this.update = function () {
@@ -438,7 +443,7 @@
             this.r = 30;
             this.h = 50;
             this.w = this.r * 2;
-            this.vx = -1;
+            this.vx = -1 * FB.speed;
             this.type = 'Tree';
 
             this.update = function () {
@@ -470,14 +475,14 @@
             this.coin = true
             this.w = w;
             this.h = FB.HEIGHT - 150;
-            this.vx = -1;
+            this.vx = -1 * FB.speed;
             this.type = 'pipe';
 
 
             this.update = function () {
                 // update coordinates
                 this.centerX += this.vx;
-                if (this.centerX == (0 - this.w)) {
+                if (this.centerX <= (0 - this.w)) {
                     this.respawn();
                 }
             };
