@@ -167,7 +167,7 @@
                 FB.ios = (FB.ua.indexOf('iphone') > -1 || FB.ua.indexOf('ipad') > -1) ? true : false;
 
                 if (FB.android || FB.ios) {
-                    FB.speed = 0.5;
+                    FB.speed = 0.6;
                 }
 
                 // setup some gradients
@@ -514,7 +514,7 @@
             this.img = new Image();
             this.img.src = 'bird.png';
             if (FB.android || FB.ios) {
-                this.gravity = 0.07;
+                this.gravity = 0.05;
             } else {
                 this.gravity = 0.125;
             }
@@ -527,11 +527,7 @@
             this.vx = 70;
             this.velocity = 0;
             this.play = false;
-            if (FB.android || FB.ios) {
-                this.jump = -1.8;
-            } else {
-                this.jump = -2.6;
-            }
+            this.jump = -2.6;
             this.rotation = 0;
             this.type = 'bird';
             this.update = function () {
