@@ -192,6 +192,21 @@ main {
     gap: 20px;
 }
 
+/* Notice Section Specific Styles */
+.notice-container {
+    grid-template-columns: 1fr;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.notice-message {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #ffffff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 .card {
     padding: 10px;
     transition: all 0.3s ease;
