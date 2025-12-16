@@ -527,7 +527,11 @@
             this.vx = 70;
             this.velocity = 0;
             this.play = false;
-            this.jump = -2.6;
+            if (FB.android || FB.ios) {
+                this.jump = -1.8;
+            } else {
+                this.jump = -2.6;
+            }
             this.rotation = 0;
             this.type = 'bird';
             this.update = function () {
