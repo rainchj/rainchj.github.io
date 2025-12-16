@@ -256,13 +256,13 @@ main {
 }
 
 #game-snake {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/snake_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/snake_bg.svg');
     background-size: cover;
     background-position: center;
 }
 
 #game-tetris-1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/tetris_bg.svg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/tetris_bg_3d_1.svg');
     background-size: cover;
     background-position: center;
 }
@@ -274,7 +274,7 @@ main {
 }
 
 #game-tetris-2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/tetris_bg.svg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/games/tetris_bg_3d_2.svg');
     background-size: cover;
     background-position: center;
 }
