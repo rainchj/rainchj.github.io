@@ -513,7 +513,11 @@
 
             this.img = new Image();
             this.img.src = 'bird.png';
-            this.gravity = 0.125;
+            if (FB.android || FB.ios) {
+                this.gravity = 0.07;
+            } else {
+                this.gravity = 0.125;
+            }
             this.width = 34;
             this.height = 24;
             this.ix = 0;
