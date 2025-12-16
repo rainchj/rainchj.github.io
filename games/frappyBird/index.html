@@ -235,6 +235,11 @@
                 // to the new height
                 FB.currentWidth = FB.currentHeight * FB.RATIO;
 
+                // limit width to window width on mobile to prevent overflow
+                if (FB.android || FB.ios) {
+                    FB.currentWidth = Math.min(FB.currentWidth, window.innerWidth);
+                }
+
                 // this will create some extra space on the
                 // page, allowing us to scroll pass
                 // the address bar, and thus hide it.
