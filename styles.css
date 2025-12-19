@@ -253,43 +253,43 @@ main {
 }
 
 #game-bounce {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/games/images/bounce_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/bounce_bg.png');
     background-size: cover;
     background-position: center;
 }
 
 #game-pacman {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/games/images/pacman_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/pacman_bg.png');
     background-size: cover;
     background-position: center;
 }
 
 #game-puzzle {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/games/images/puzzle_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/puzzle_bg.png');
     background-size: cover;
     background-position: center;
 }
 
 #game-snake {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/games/images/snake_bg.svg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/snake_bg.png');
     background-size: cover;
     background-position: center;
 }
 
 #game-tetris-1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/games/images/tetris_bg_3d_1.svg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/tetris_bg_3d_1.png');
     background-size: cover;
     background-position: center;
 }
 
 #game-flappybird {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/games/images/flappybird_bg.svg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/flappybird_bg.png');
     background-size: cover;
     background-position: center;
 }
 
 #game-tetris-2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/games/images/tetris_bg_3d_2.svg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/tetris_bg_3d_2.png');
     background-size: cover;
     background-position: center;
 }
