@@ -121,7 +121,10 @@ document.addEventListener("DOMContentLoaded", function () {
         '전국매매시점-date': 'https://rainchj.github.io/timing/시점전국1.jpg',
         '서울매매시점-date': 'https://rainchj.github.io/timing/시점서울1.jpg',
         '경기매매시점-date': 'https://rainchj.github.io/timing/시점경기1.jpg',
-        '인천매매시점-date': 'https://rainchj.github.io/timing/시점인천1.jpg'
+        '인천매매시점-date': 'https://rainchj.github.io/timing/시점인천1.jpg',
+        '매물분석서울-date': 'https://rainchj.github.io/sale_list/매물분석서울.jpg',
+        '매물분석경기-date': 'https://rainchj.github.io/sale_list/매물분석경기.jpg',
+        '매물분석인천-date': 'https://rainchj.github.io/sale_list/매물분석인천.jpg'
     };
 
     // Display dates for all images that exist on the page
