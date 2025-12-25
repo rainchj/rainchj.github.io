@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         '실거래가서울-date': 'https://rainchj.github.io/weekly_estate/실거래_서울.jpg',
         '실거래가경기-date': 'https://rainchj.github.io/weekly_estate/실거래_경기.jpg',
         '실거래가인천-date': 'https://rainchj.github.io/weekly_estate/실거래_인천.jpg',
+        '실거래가기타-date': 'https://rainchj.github.io/weekly_estate/실거래_기타.jpg',
         '매물서울총괄-date': 'https://rainchj.github.io/weekly_sale/매물서울총괄.jpg',
         '매물경기총괄-date': 'https://rainchj.github.io/weekly_sale/매물경기총괄.jpg',
         '매물인천총괄-date': 'https://rainchj.github.io/weekly_sale/매물인천총괄.jpg',
@@ -124,7 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
         '인천매매시점-date': 'https://rainchj.github.io/timing/시점인천1.jpg',
         '매물분석서울-date': 'https://rainchj.github.io/sale_list/매물분석서울.jpg',
         '매물분석경기-date': 'https://rainchj.github.io/sale_list/매물분석경기.jpg',
-        '매물분석인천-date': 'https://rainchj.github.io/sale_list/매물분석인천.jpg'
+        '매물분석인천-date': 'https://rainchj.github.io/sale_list/매물분석인천.jpg',
+        '매물분석기타-date': 'https://rainchj.github.io/sale_list/매물분석기타.jpg'
     };
 
     // Display dates for all images that exist on the page
