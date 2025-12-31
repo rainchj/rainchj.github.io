@@ -29,12 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Chart Download functionality
-    const downloadBtn = document.getElementById('download-chart-btn');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', function(e) {
+    // Chart Download functionality
+    const downloadBtns = document.querySelectorAll('.download-btn-custom');
+    downloadBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
             e.preventDefault();
-            const imageUrl = 'https://rainchj.github.io/monthly/경기순환진단.jpg';
-            const filename = '경기순환진단.jpg';
+            const imageUrl = this.getAttribute('data-url');
+            const filename = this.getAttribute('data-filename');
+
+            if (!imageUrl || !filename) {
+                alert('다운로드 정보가 없습니다.');
+                return;
+            }
 
             fetch(imageUrl)
                 .then(response => response.blob())
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert('차트 다운로드 실패: ' + err.message);
                 });
         });
-    }
+    });
 
     // Image Date Fetcher
     function displayImageDate(dateElementId, imageUrl) {
