@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         '매물기타총괄-date': 'https://rainchj.github.io/weekly_sale/매물기타총괄.jpg',
         '경기순환진단-date': 'https://rainchj.github.io/monthly/경기순환진단.jpg',
         '경제지표월간-date': 'https://rainchj.github.io/monthly/주요경제지표월간.jpg',
+        '미국CPI-date': 'https://rainchj.github.io/monthly/미국CPI.jpg',
         '총괄전국-date': 'https://rainchj.github.io/monthly/총괄전국.jpg',
         '주민등록인구-date': 'https://rainchj.github.io/monthly/주민등록인구.jpg',
         '주민등록인구2-date': 'https://rainchj.github.io/monthly/주민등록인구2.jpg',
