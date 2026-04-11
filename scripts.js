@@ -111,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
         '경제지표일간-date': 'https://rainchj.github.io/weekly_money/주간_경제지표.jpg',
         '환율시장-date': 'https://rainchj.github.io/weekly_money/주간_환율.jpg',
         '차트분석-date': 'https://rainchj.github.io/weekly_money/주간_차트1.jpg',
+        '미국CPI-date': 'https://rainchj.github.io/weekly_money/주간_미국CPI.jpg',
+
         '아파트가격조사-date': 'https://rainchj.github.io/weekly_estate/주간_가격조사.jpg',
         '실거래가서울-date': 'https://rainchj.github.io/weekly_estate/실거래_서울.jpg',
         '실거래가경기-date': 'https://rainchj.github.io/weekly_estate/실거래_경기.jpg',
@@ -120,16 +122,18 @@ document.addEventListener("DOMContentLoaded", function () {
         '매물경기총괄-date': 'https://rainchj.github.io/weekly_sale/매물경기총괄.jpg',
         '매물인천총괄-date': 'https://rainchj.github.io/weekly_sale/매물인천총괄.jpg',
         '매물기타총괄-date': 'https://rainchj.github.io/weekly_sale/매물기타총괄.jpg',
+
         '경기순환진단-date': 'https://rainchj.github.io/monthly/경기순환진단.jpg',
         '경제지표월간-date': 'https://rainchj.github.io/monthly/주요경제지표월간.jpg',
-        '미국CPI-date': 'https://rainchj.github.io/monthly/미국CPI.jpg',
         '총괄전국-date': 'https://rainchj.github.io/monthly/총괄전국.jpg',
         '주민등록인구-date': 'https://rainchj.github.io/monthly/주민등록인구.jpg',
         '주민등록인구2-date': 'https://rainchj.github.io/monthly/주민등록인구2.jpg',
+
         '전국매매시점-date': 'https://rainchj.github.io/timing/시점전국1.jpg',
         '서울매매시점-date': 'https://rainchj.github.io/timing/시점서울1.jpg',
         '경기매매시점-date': 'https://rainchj.github.io/timing/시점경기1.jpg',
         '인천매매시점-date': 'https://rainchj.github.io/timing/시점인천1.jpg',
+        
         '매물분석서울-date': 'https://rainchj.github.io/sale_list/매물분석서울.jpg',
         '매물분석경기-date': 'https://rainchj.github.io/sale_list/매물분석경기.jpg',
         '매물분석인천-date': 'https://rainchj.github.io/sale_list/매물분석인천.jpg',
