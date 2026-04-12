@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         // 0 = Today (Update Day)
                         // 1 = Tomorrow (Day after Update)
                         // 2 = Day after Tomorrow (2 Days after Update)
-                        if (diffDays >= 0 && diffDays <= 1) {
+                        if (diffDays >= 0 && diffDays <= 2) {
                             const cardTitle = el.parentElement.querySelector('.card-title');
                             // Check if badge already exists to avoid duplication
                             if (cardTitle && !cardTitle.querySelector('.sparkle-new')) {
