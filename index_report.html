@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유행살이 AI 분석보고서</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .pdf-container {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>유행살이 공유자료</h1>
+    </header>
+    <br>
+    <div class="content-section">
+        <h3>AI 정밀 분석보고서</h3>
+        <ul>
+            <li>최신 지표값을 반영한 방대한 양의 시계열데이터를 AI로 정밀 분석한 보고서입니다.</li>
+            <li>수정일 <b style="color: rgb(215, 251, 206);" id="분석보고서-date"></b></li>
+            <li>PDF가 표시되지 않을 경우 아래 링크를 클릭하여 직접 다운로드 및 확인할 수 있습니다.</li>
+        </ul>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="https://rainchj.github.io/market_report/Apt_market_report1.pdf" target="_blank" style="color: rgb(215, 251, 206); text-decoration: underline;">Claude Report</a><br>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="https://rainchj.github.io/market_report/Apt_market_report2.pdf" target="_blank" style="color: rgb(215, 251, 206); text-decoration: underline;">Gemini Report</a><br>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
+    </div>
+    <br>
+    <div class="content-section" style="padding: 10px;">
+        <h3>Claude 분석보고서_서울 아파트시장</h3>
+        <br>
+        <div class="pdf-container">
+            <iframe src="https://rainchj.github.io/market_report/Apt_market_report1.pdf" title="Claude 통계 분석보고서 PDF"></iframe>
+        </div>
+        <br>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
+    </div>
+    <br>
+    <div class="content-section" style="padding: 10px;">
+        <h3>Gemini 분석보고서_서울 아파트시장</h3>
+        <br>
+        <div class="pdf-container">
+            <iframe src="https://rainchj.github.io/market_report/Apt_market_report2.pdf" title="Gemini 통계 분석보고서 PDF"></iframe>
+        </div>
+        <br>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="index.html">홈으로</a></span>
+    </div>
+    <footer>
+        <p>블로그 <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a> | 유튜브 <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a></p>
+        <p>Total Visits: <span id="counter">0000</span></p>
+        <p style="margin-top: 10px;">ⓒ 2025.1.30. 유행살이. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
