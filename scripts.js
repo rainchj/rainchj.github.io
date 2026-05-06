@@ -108,9 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Image URLs mapping
     const images = {
-        '경제지표일간-date': 'https://rainchj.github.io/weekly_money/주간_경제지표.jpg',
+        '경기점수-date': 'https://rainchj.github.io/weekly_money/주간_경기점수.jpg',
         '환율시장-date': 'https://rainchj.github.io/weekly_money/주간_환율.jpg',
-        '차트분석-date': 'https://rainchj.github.io/weekly_money/주간_차트1.jpg',
         '미국CPI-date': 'https://rainchj.github.io/weekly_money/주간_미국CPI.jpg',
 
         '분석보고서-date': 'https://rainchj.github.io/market_report/Apt_market_report1.pdf',
