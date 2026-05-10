@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market_Monitor 프로그램 사용설명서</title>
+<style>
+    body {
+        font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        margin: 0;
+        padding: 40px;
+        color: #e2e8f0;
+    }
+
+    .container {
+        max-width: 950px;
+        margin: auto;
+        background: rgba(15, 23, 42, 0.95);
+        border-radius: 22px;
+        padding: 45px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .title {
+        font-size: 42px;
+        font-weight: 800;
+        color: #38bdf8;
+        margin-bottom: 10px;
+    }
+
+    .version {
+        font-size: 18px;
+        color: #94a3b8;
+    }
+
+    .section {
+        margin-bottom: 32px;
+        padding: 25px;
+        border-radius: 18px;
+        background: rgba(30, 41, 59, 0.85);
+    }
+
+    .section h2 {
+        margin-top: 0;
+        color: #7dd3fc;
+        font-size: 26px;
+        margin-bottom: 18px;
+    }
+
+    .section ul {
+        padding-left: 24px;
+        line-height: 1.9;
+    }
+
+    .section li {
+        margin-bottom: 10px;
+    }
+
+    .highlight {
+        color: #fbbf24;
+        font-weight: bold;
+    }
+
+    .code-box {
+        background: #020617;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 18px;
+        margin-top: 15px;
+        font-family: Consolas, monospace;
+        color: #93c5fd;
+        overflow-x: auto;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 45px;
+        color: #94a3b8;
+        font-size: 15px;
+        border-top: 1px solid #334155;
+        padding-top: 22px;
+    }
+
+    .badge {
+        display: inline-block;
+        background: #0ea5e9;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    a {
+        color: #38bdf8;
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(56, 189, 248, 0.5);
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: #7dd3fc;
+        border-bottom-color: #7dd3fc;
+    }
+
+    /* 모바일 반응형 스타일 */
+    @media (max-width: 768px) {
+        body {
+            padding: 15px;
+        }
+        .container {
+            padding: 20px;
+            border-radius: 16px;
+        }
+        .title {
+            font-size: 28px;
+        }
+        .section {
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .section h2 {
+            font-size: 22px;
+        }
+        .code-box {
+            padding: 15px;
+            font-size: 14px;
+        }
+    }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="title">Market Monitor 프로그램</div>
+        <div class="badge">실시간 시장 모니터링 프로그램</div>
+    </div>
+
+    <div id="market_monitor"  class="section">
+        <h2>1. Market Monitor 프로그램의 기능 및 특징</h2>
+        <ul>
+            <li>현재버전 1.01 <a href="" download>프로그램 다운로드</a></li>
+            <li>
+                관심종목으로 등록한 주식을 <span class="highlight">1분 단위</span>로 실시간 체크하여 
+                이상징후를 점검하고 <span class="highlight">알림 체크</span>가 되어있는 종목에 한하여 
+                <span class="highlight">소리, 팝업창, 텔레그램</span>으로 알림 정보를 제공합니다. 
+            </li>
+            <li>
+                <span class="highlight">텔레그램</span>으로 알림이 자동 전달되어 <span class="highlight">모바일</span>에서도 실시간 확인할 수 있으며 
+                메세지의 종목명을 터치하면 <span class="highlight">네이버증권</span> 해당 종목의 상세페이지로 이동합니다.
+            </li>
+            <div class="code-box">
+                <b>[Market Monitor 알림 26.05.10 13:44]</b><br>
+                • <a href='https://finance.naver.com/sise/sise_index.naver?code=KOSPI'>KOSPI</a>: 5년 신고가<br>
+                • <a href='https://finance.naver.com/item/main.naver?code=005930'>삼성전자</a>: Z-score +2.13, -1.10% 하락<br>
+                • <a href='https://finance.naver.com/item/main.naver?code=069500'>KODEX 200</a>: 5년 신고가, Z-score +2.03<br>
+            </div>
+            <br>
+            <li>
+                국내에 상장된 개별종목과 지수(KOSPI, KOSDAQ 등)를 지원하며, 장이 열리는 <span class="highlight">09:00 ~ 15:30</span> 동안 작동하고
+                이외의 시간에는 점검 및 알림 전송이 자동 중지됩니다.
+            </li>
+            <li>
+                프로그램 시작 시 5년간의 데이터를 받아오므로 관심종목이 많으면 메인화면이 나오기 까지 시간이 다소 걸릴 수 있습니다. 이후에는 영향을 미치지 않습니다. 
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. 이상징후 점검 및 알림항목</h2>
+        <br>
+        <h3>2.1 전일비</h3>
+        <ul>
+            <li>
+                알림 기본 설정값 : <span class="highlight">3.0%</span> 이상 상승(+) 또는 하락(-)<br>
+                수정시에는 '설정'의 '전일비 알림기준'에 원하는 값을 입력합니다. 마이너스는 입력하지 않습니다.<br>
+                종목별 개별 설정시에는 '종목전일비' 입력박스에 2.0과 같이 입력합니다. 마이너스는 입력하지 않습니다.
+            </li>
+        </ul> 
+
+        <h3>2.2 신고가, 신저가</h3>
+        <ul>
+            <li>
+                알림 기본 설정값 : 종가 기준으로 <span class="highlight">5년간 최고가, 최저가</span> 초과<br>
+            </li>
+        </ul>
+
+        <h3>2.3 Z-score (Bolinger Band와 동일)</h3>
+        <ul>
+            <li>
+                알림 기본 설정값 : <span class="highlight">2.2</span> 이상 상승(+) 또는 하락(-)<br>
+                수정시에는 '설정'의 'Z-score 알림기준'에 원하는 값을 입력합니다. 마이너스는 입력하지 않습니다.<br>
+                Z-score(ma 20 기준): +1 강, +2 과열, +3 극단과열, -1 약, -2 과매도, -3 패닉  
+            </li>
+            <li>
+                이동평균 기간 기본 설정값 : <span class="highlight">20일</span><br>
+                10일: 단기, 20일 : 표준, 60일: 중기, 120일: 장기  
+            </li>
+        </ul>
+
+        <h3>2.4 1분 증가율</h3>
+        <ul>
+            <li>
+                알림 기본 설정값 : <span class="highlight">0.2%</span> 이상 상승(+) 또는 하락(-)<br>
+                수정시에는 '설정'의 '1분증가율 알림기준'에 원하는 값을 입력합니다. 마이너스는 입력하지 않습니다.<br>
+            </li>
+        </ul> 
+
+        <h3>2.5 추가예정</h3>       
+        <ul> 
+            <li>
+                거래량, MACD, 유가, 환율, 금리 등 다양한 자산 및 지표에 대한 점검기능이 추가될 예정입니다. 
+            </li>
+        </ul>           
+    </div>
+
+    <div class="section">
+        <h2>3. 관심종목 추가, 삭제</h2>
+        <ul>
+            <li>
+                Market Monitor를 처음 1회차 실행하면 프로그램이 설치된 폴더 내에 <span class="highlight">'settings.json'</span> 파일이 자동 생성됩니다.
+            </li>
+            <li>
+                해당 파일의 "indices" 항목에서 종목명과 종목코드를 추가하거나 삭제한 후에 Market_Monitor를 다시 실행하면 수정된 관심종목이 정상적으로 반영됩니다.
+            </li>
+            <li>
+                관심종목의 코드는 <a href="https://finance.naver.com/" target="_blank">네이버 금융</a>에서 검색하여 추가하시면 됩니다.
+            </li>
+        </ul>
+        <div class="code-box">
+                [settings.json]<br><br>
+                "indices": { <br>
+                    "KOSPI": "KOSPI",<br>
+                    "KOSDAQ": "KOSDAQ",<br>
+                    "삼성전자": "005930",<br> 
+                    "추가할 종목명": "종목코드"<br> }                
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. 텔레그램 알림 설정</h2>
+        <ul>
+            <li>
+                텔레그램에서 알림을 받기 위해서는 모바일에 텔레그램 앱을 설치하고 계정에 가입한 후에 <span class="highlight">텔레그램 봇</span>을 생성하고 
+                <span class="highlight">BOT TOKEN, CHAT ID</span>를 발급받아야 합니다. 
+            </li>
+            <li>
+                Market Monitor 프로그램의 상단 <span class="highlight">'설정'</span>메뉴에서 <span class="highlight">'텔레그램 알림'</span>을 체크하고 
+                발급받은 BOT TOKEN과 CHAT ID를 입력한 후 저장합니다. 'settings.json' 파일에서 직접 입력할 수도 있습니다.
+            </li>
+        </ul>
+        <div class="code-box">
+            [settings.json]<br><br>
+            "telegram_enabled": true,<br>
+            "telegram_token": "YOUR_TELEGRAM_BOT_TOKEN",<br>
+            "telegram_chat_id": "YOUR_TELEGRAM_CHAT_ID"<br>              
+        </div>
+         <ul>
+            <li>
+                윈도우가 절전모드로 진입하면 텔레그램 알림은 오지 않습니다. <span class="highlight">'제어판 > 전원옵션 > 전원관리 옵션설정 편집 > 컴퓨터를 절전모드로 설정 > 해당없음'</span>으로 설정하면
+                알림을 계속 받을 수 있습니다. 
+            </li>
+        </ul>       
+    </div>
+
+    <div class="section">
+        <h2>5. 문의사항</h2>
+        <ul>
+            <li>
+                기능개선 및 에러수정, 기타 제안은 언제든 <span class="highlight">카카오톡 (ID: rainchj)</span>으로 알려 주시면 감사하겠습니다. 
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>6. 프로그램 정보</h2>
+        <ul>
+            <li><strong>최초 제작일 :</strong> 2026.05.08</li>
+            <li><strong>최종 수정일 :</strong> 2026.05.10</li>
+            <li><strong>버전 :</strong> 1.0.1</li>
+            <li><strong>제작자 :</strong> 유행살이</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        © 2026 Market_Monitor | 유행살이
+    </div>
+
+</div>
+
+</body>
+</html>
