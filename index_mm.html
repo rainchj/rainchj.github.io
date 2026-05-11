@@ -1,133 +1,135 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>시장모니터링 프로그램</title>
-<style>
-    body {
-        font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
-        background: linear-gradient(135deg, #0f172a, #1e293b);
-        margin: 0;
-        padding: 40px;
-        color: #e2e8f0;
-    }
-
-    .container {
-        max-width: 950px;
-        margin: auto;
-        background: rgba(30, 41, 59, 0.85);
-        border-radius: 22px;
-        padding: 45px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-        border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .title {
-        font-size: 42px;
-        font-weight: 800;
-        color: #38bdf8;
-        margin-bottom: 10px;
-    }
-
-    .version {
-        font-size: 18px;
-        color: #94a3b8;
-    }
-
-    .container h2 {
-        margin-top: 0;
-        color: #7dd3fc;
-        font-size: 26px;
-        margin-bottom: 18px;
-    }
-
-    .container ul {
-        padding-left: 24px;
-        line-height: 1.9;
-    }
-
-    .container li {
-        margin-bottom: 10px;
-    }
-
-    .highlight {
-        color: #fbbf24;
-        font-weight: bold;
-    }
-
-    .code-box {
-        background: #020617;
-        border: 1px solid #334155;
-        border-radius: 12px;
-        padding: 18px;
-        margin-top: 15px;
-        font-family: Consolas, monospace;
-        color: #93c5fd;
-        overflow-x: auto;
-    }
-
-    .footer {
-        text-align: center;
-        margin-top: 45px;
-        color: #94a3b8;
-        font-size: 15px;
-        border-top: 1px solid #334155;
-        padding-top: 22px;
-    }
-
-    .badge {
-        display: inline-block;
-        background: #0ea5e9;
-        color: white;
-        padding: 6px 14px;
-        border-radius: 999px;
-        font-size: 14px;
-        margin-top: 10px;
-    }
-
-    a {
-        color: #38bdf8;
-        text-decoration: none;
-        border-bottom: 1px dashed rgba(56, 189, 248, 0.5);
-        transition: all 0.3s ease;
-    }
-
-    a:hover {
-        color: #7dd3fc;
-        border-bottom-color: #7dd3fc;
-    }
-
-    /* 모바일 반응형 스타일 */
-    @media (max-width: 768px) {
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="icon.png">
+    <title>시장모니터링 프로그램</title>
+    <style>
         body {
-            padding: 15px;
+            font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            margin: 0;
+            padding: 40px;
+            color: #e2e8f0;
         }
+
         .container {
-            padding: 20px;
-            border-radius: 16px;
+            max-width: 950px;
+            margin: auto;
+            background: rgba(30, 41, 59, 0.85);
+            border-radius: 22px;
+            padding: 45px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.08);
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
         .title {
-            font-size: 28px;
+            font-size: 42px;
+            font-weight: 800;
+            color: #38bdf8;
+            margin-bottom: 10px;
         }
+
+        .version {
+            font-size: 18px;
+            color: #94a3b8;
+        }
+
         .container h2 {
-            font-size: 22px;
+            margin-top: 0;
+            color: #7dd3fc;
+            font-size: 26px;
+            margin-bottom: 18px;
         }
+
+        .container ul {
+            padding-left: 24px;
+            line-height: 1.9;
+        }
+
+        .container li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
         .code-box {
-            padding: 15px;
-            font-size: 14px;
+            background: #020617;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 15px;
+            font-family: Consolas, monospace;
+            color: #93c5fd;
+            overflow-x: auto;
         }
-    }
 
-</style>
+        .footer {
+            text-align: center;
+            margin-top: 45px;
+            color: #94a3b8;
+            font-size: 15px;
+            border-top: 1px solid #334155;
+            padding-top: 22px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #0ea5e9;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(56, 189, 248, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #7dd3fc;
+            border-bottom-color: #7dd3fc;
+        }
+
+        /* 모바일 반응형 스타일 */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 16px;
+            }
+            .title {
+                font-size: 28px;
+            }
+            .container h2 {
+                font-size: 22px;
+            }
+            .code-box {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+
+    </style>
 </head>
-<body>
 
+<body>
 <div class="container">
     <div class="header">
         <div class="title">Market Monitor Pro</div>
@@ -277,12 +279,13 @@
         <h2>6. 다운로드</h2>
         <ul>
             <li>버전 1.04 <a href="https://drive.google.com/file/d/1utxyw5xuvgka3jcKlvjbSfX-gHH18cSl/view?usp=sharing" download>다운로드</a>, 최종 수정일 2026.05.11</li>
-            <li>기능개선 및 에러수정, 기타 제안은 <span class="highlight">유행살이 공유자료 게시판</span>에 남겨주시기 바랍니다.</li>
+            <li>기능개선 및 에러수정, 기타 제안은 <span class="highlight">유행살이 게시판</span>에 남겨주시기 바랍니다.</li>
         </ul>
         <br><br>
 
+        <span style="color: rgb(215, 251, 206);">☞ <a href="https://rainchj.github.io/index_board.html" target="_blank">유행살이 게시판</a><br>
         <span style="color: rgb(215, 251, 206);">☞ <a href="index.html" target="_blank">유행살이 공유자료</a></span><br>
-        <span style="color: rgb(215, 251, 206);">☞ <a href="https://rainchj.github.io/index_board.html" target="_blank">유행살이 공유자료 게시판</a><br>
+
         <span style="color: rgb(215, 251, 206);">☞ <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a><br>
         <span style="color: rgb(215, 251, 206);">☞ <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a>
 
