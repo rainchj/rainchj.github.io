@@ -16,7 +16,7 @@
     .container {
         max-width: 950px;
         margin: auto;
-        background: rgba(15, 23, 42, 0.95);
+        background: rgba(30, 41, 59, 0.85);
         border-radius: 22px;
         padding: 45px;
         box-shadow: 0 12px 40px rgba(0,0,0,0.45);
@@ -40,26 +40,19 @@
         color: #94a3b8;
     }
 
-    .section {
-        margin-bottom: 32px;
-        padding: 25px;
-        border-radius: 18px;
-        background: rgba(30, 41, 59, 0.85);
-    }
-
-    .section h2 {
+    .container h2 {
         margin-top: 0;
         color: #7dd3fc;
         font-size: 26px;
         margin-bottom: 18px;
     }
 
-    .section ul {
+    .container ul {
         padding-left: 24px;
         line-height: 1.9;
     }
 
-    .section li {
+    .container li {
         margin-bottom: 10px;
     }
 
@@ -122,11 +115,7 @@
         .title {
             font-size: 28px;
         }
-        .section {
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-        .section h2 {
+        .container h2 {
             font-size: 22px;
         }
         .code-box {
@@ -143,43 +132,42 @@
     <div class="header">
         <div class="title">Market Monitor Pro</div>
         <div class="badge">실시간 시장 모니터링 프로그램</div>
-    </div>
+        <br><br><br>
 
-    <div class="section">
+    </div>
         <h2>1. Market Monitor Pro 기능 및 특징</h2>
         <br><br>
         <img src="/imgmm.png" alt="market monitor" style="max-width: 100%; width: 700px; height: auto; display: block; margin: 0 auto 16px;">
         <br>
         <ul>
-            <li>
-                관심종목으로 등록한 주식을 <span class="highlight">1분 단위</span>로 실시간 체크하여 
-                이상징후를 점검하고 <span class="highlight">알림 체크</span>가 되어있는 종목에 한하여 
-                <span class="highlight">소리, 팝업창, 텔레그램</span>으로 알림 정보를 제공합니다. 
-            </li>
-            <li>
-                <span class="highlight">텔레그램</span>으로 알림이 자동 전달되어 <span class="highlight">모바일</span>에서도 실시간 확인할 수 있으며 
-                메세지의 종목명을 터치하면 <span class="highlight">네이버증권</span> 해당 종목의 상세페이지로 이동합니다.
-            </li>
-            <div class="code-box">
-                <b>[Market Monitor 알림 26.05.10 13:44]</b><br>
-                • <a href='https://finance.naver.com/sise/sise_index.naver?code=KOSPI'>KOSPI</a>: 5년 신고가<br>
-                • <a href='https://finance.naver.com/item/main.naver?code=005930'>삼성전자</a>: Z-score +2.13, -1.10% 하락<br>
-                • <a href='https://finance.naver.com/item/main.naver?code=069500'>KODEX 200</a>: 5년 신고가, Z-score +2.03<br>
-            </div>
-            <br>
-            <li>
-                국내에 상장된 개별종목과 지수(KOSPI, KOSDAQ 등)를 지원하며, 장이 열리는 <span class="highlight">09:00 ~ 15:30</span> 동안 작동하고
-                이외의 시간에는 점검 및 알림 전송이 자동 중지됩니다.
-            </li>
-            <li>
-                프로그램 시작 시 5년간의 데이터를 받아오므로 관심종목이 많으면 메인화면이 나오기 까지 시간이 다소 걸릴 수 있습니다. 이후에는 영향을 미치지 않습니다. 
-            </li>
+        <li>
+            관심종목으로 등록한 주식을 <span class="highlight">1분 단위</span>로 실시간 체크하여 
+            이상징후를 점검하고 <span class="highlight">알림 체크</span>가 되어있는 종목에 한하여 
+            <span class="highlight">소리, 팝업창, 텔레그램</span>으로 알림 정보를 제공합니다. 
+        </li>
+        <li>
+            <span class="highlight">텔레그램</span>으로 알림이 자동 전달되어 <span class="highlight">모바일</span>에서도 실시간 확인할 수 있으며 
+            메세지의 종목명을 터치하면 <span class="highlight">네이버증권</span> 해당 종목의 상세페이지로 이동합니다.
+        </li>
+        <div class="code-box">
+            <b>[Market Monitor 알림 26.05.10 13:44]</b><br>
+            • <a href='https://finance.naver.com/sise/sise_index.naver?code=KOSPI'>KOSPI</a>: 5년 신고가<br>
+            • <a href='https://finance.naver.com/item/main.naver?code=005930'>삼성전자</a>: Z-score +2.13, -1.10% 하락<br>
+            • <a href='https://finance.naver.com/item/main.naver?code=069500'>KODEX 200</a>: 5년 신고가, Z-score +2.03<br>
+        </div>
+        <br>
+        <li>
+            국내에 상장된 개별종목과 지수(KOSPI, KOSDAQ 등)를 지원하며, 장이 열리는 <span class="highlight">09:00 ~ 15:30</span> 동안 작동하고
+            이외의 시간에는 점검 및 알림 전송이 자동 중지됩니다.
+        </li>
+        <li>
+            프로그램 시작 시 5년간의 데이터를 받아오므로 관심종목이 많으면 메인화면이 나오기 까지 시간이 다소 걸릴 수 있습니다. 이후에는 영향을 미치지 않습니다. 
+        </li>
         </ul>
-    </div>
+        <br><br><br>
 
-    <div class="section">
         <h2>2. 이상징후 점검 및 알림항목</h2>
-            <br>
+        <br>
         <h3>2.1 전일비</h3>
         <ul>
             <li>
@@ -224,10 +212,9 @@
             <li>
                 거래량, MACD, 유가, 환율, 금리 등 다양한 자산 및 지표에 대한 점검기능이 추가될 예정입니다. 
             </li>
-        </ul>           
-    </div>
+        </ul>
+        <br><br><br>
 
-    <div class="section">
         <h2>3. 관심종목 추가, 삭제</h2>
         <br>
         <h3>3.1 '종목편집' 버튼을 통한 관심종목 추가, 삭제 (차기버전)</h3>
@@ -263,9 +250,8 @@
                     .<br>
                 }                
         </div>
-    </div>
+        <br><br><br>
 
-    <div class="section">
         <h2>4. 텔레그램 알림 설정</h2>
         <br>
         <ul>
@@ -284,35 +270,42 @@
             "telegram_token": "YOUR_TELEGRAM_BOT_TOKEN",<br>
             "telegram_chat_id": "YOUR_TELEGRAM_CHAT_ID"<br>              
         </div>
-         <ul>
+            <ul>
             <li>
                 윈도우가 절전모드로 진입하면 텔레그램 알림은 오지 않습니다. <span class="highlight">'제어판 > 전원옵션 > 전원관리 옵션설정 편집 > 컴퓨터를 절전모드로 설정 > 해당없음'</span>으로 설정하면
                 알림을 계속 받을 수 있습니다. 
             </li>
-        </ul>       
-    </div>
+        </ul>
+        <br><br><br>
 
-    <div id="market_monitor" class="section">
-        <h2>5. 현재버전 및 다운로드</h2>
+        <h2>5. 버전별 주요내용</h2>
+        <br>
+        <h3>5-1 Market Monitor Pro 1.04 (차기버전)</h3>
+        <ul>
+            <li>관심종목을 제공된 목록에서 선택 및 해제할 수 있도록 개선<br>
+                코스피 시총상위 100개, ETF 시총상위 5,000억원 이상 목록 제공</li>
+            <li>고가/저가 기간 설정 추가<br>
+                관심종목에 대해서 설정 기간에 대한 최고가, 최저가 점검 기능 추가</li>
+            <li>동일 사유로 발생한 알림은 1회로 제한하여 팝업/텔레그램 알림 횟수 최소화</li>
+        </ul>
+        <br><br><br>
+
+        <h2>6. 다운로드</h2>
         <ul>
             <li>버전 1.03 <a href="https://drive.google.com/file/d/1Opem0OvyeExgq6JoI_sPd4UMQnF7Y3hm/view?usp=sharing" download>다운로드</a>, 최종 수정일 2026.05.10</li>
-
             <li>기능개선 및 에러수정, 기타 제안은 <span class="highlight">유행살이 공유자료 게시판</span>에 남겨주시기 바랍니다.</li>
-
         </ul>
- 
-        <br>
+        <br><br>
+
         <span style="color: rgb(215, 251, 206);">☞ <a href="index.html" target="_blank">유행살이 공유자료</a></span><br>
         <span style="color: rgb(215, 251, 206);">☞ <a href="https://rainchj.github.io/index_board.html" target="_blank">유행살이 공유자료 게시판</a><br>
         <span style="color: rgb(215, 251, 206);">☞ <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a><br>
-        <span style="color: rgb(215, 251, 206);">☞ <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a> 
-    </div>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a>
 
-    <div class="footer">
-        © 2026 Market Monitor Pro | 유행살이
+        <div class="footer">
+            © 2026 Market Monitor Pro | 유행살이
+        </div>
     </div>
-
-</div>
 
 </body>
 </html>
