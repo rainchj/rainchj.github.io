@@ -146,27 +146,24 @@
             <span class="highlight">소리, 팝업창, 텔레그램</span>으로 알림 정보를 제공합니다. 
         </li>
         <li>
-            <span class="highlight">텔레그램</span>으로 알림이 자동 전달되어 <span class="highlight">모바일</span>에서도 실시간 확인할 수 있으며 
-            메세지의 종목명을 터치하면 <span class="highlight">네이버증권</span> 해당 종목의 상세페이지로 이동합니다.
+            <span class="highlight">텔레그램</span>으로 알림이 전달되어 <span class="highlight">모바일</span>에서도 실시간 확인할 수 있으며 
+            메세지의 종목을 터치하면 <span class="highlight">네이버증권</span> 해당 종목의 상세페이지로 바로 이동합니다.
         </li>
         <div class="code-box">
-            <b>[Market Monitor 알림 26.05.10 13:44]</b><br>
-            • <a href='https://finance.naver.com/sise/sise_index.naver?code=KOSPI'>KOSPI</a>: 5년 신고가<br>
-            • <a href='https://finance.naver.com/item/main.naver?code=005930'>삼성전자</a>: Z-score +2.13, -1.10% 하락<br>
-            • <a href='https://finance.naver.com/item/main.naver?code=069500'>KODEX 200</a>: 5년 신고가, Z-score +2.03<br>
+            <b>[Market Monitor 26.05.10 13:44]</b><br>
+            • <a href='https://finance.naver.com/sise/sise_index.naver?code=KOSPI'>KOSPI</a>: 36월 고가<br>
+            • <a href='https://finance.naver.com/item/main.naver?code=005930'>삼성전자</a>: 전일 +3.1%<br>
+            • <a href='https://finance.naver.com/item/main.naver?code=069500'>KODEX 200</a>: Zscore +2.0<br>
         </div>
         <br>
         <li>
-            국내에 상장된 개별종목과 지수(KOSPI, KOSDAQ 등)를 지원하며, 장이 열리는 <span class="highlight">09:00 ~ 15:30</span> 동안 작동하고
-            이외의 시간에는 점검 및 알림 전송이 자동 중지됩니다.
-        </li>
-        <li>
-            프로그램 시작 시 5년간의 데이터를 받아오므로 관심종목이 많으면 메인화면이 나오기 까지 시간이 다소 걸릴 수 있습니다. 이후에는 영향을 미치지 않습니다. 
+            국내에 상장된 모든 개별종목과 지수(KOSPI, KOSDAQ 등)를 지원하며, 장이 열리는 <span class="highlight">09:00 ~ 15:30</span> 동안 작동하고
+            이외의 시간에는 점검, 알림이 중지됩니다.
         </li>
         </ul>
         <br><br><br>
 
-        <h2>2. 이상징후 점검 및 알림항목</h2>
+        <h2>2. 이상징후 점검항목 및 알림 기준</h2>
         <br>
         <h3>2.1 전일비</h3>
         <ul>
@@ -181,7 +178,7 @@
         <ul>
             <li>
                 알림 기본 설정값 : <span class="highlight">36개월</span> 동안 최고가 또는 최저가<br>
-                수정하려면 '설정'의 '고가/저가 기간(월)'에 원하는 기간을 개월 단위로 입력합니다.<br>
+                수정하려면 '설정'의 '고가/저가 기간'에 원하는 기간을 개월 단위로 입력합니다.<br>
                 개월수가 늘어나면 프로그램 시작시 데이터를 불러오는 시간이 길어집니다.
             </li>
         </ul>
@@ -191,7 +188,7 @@
             <li>
                 알림 기본 설정값 : <span class="highlight">2.2</span> 이상 상승(+) 또는 하락(-)<br>
                 수정하려면 '설정'의 'Z-score 알림기준'에 원하는 값을 +, -는 제거하고 입력합니다.<br>
-                Z-score(ma 20 기준): +1 강, +2 과열, +3 극단과열, -1 약, -2 과매도, -3 패닉  
+                * Z-score(ma 20 기준): +1 강, +2 과열, +3 극단과열, -1 약, -2 과매도, -3 패닉  
             </li>
             <li>
                 이동평균 기간 기본 설정값 : <span class="highlight">20일</span><br>
@@ -203,7 +200,7 @@
         <ul>
             <li>
                 알림 기본 설정값 : <span class="highlight">0.2%</span> 이상 상승(+) 또는 하락(-)<br>
-                수정하려면 '설정'의 '1분증가율 알림기준'에 원하는 %값을 +, -는 제거하고 입력합니다.<br>
+                수정하려면 '설정'의 '분증가율 알림기준'에 원하는 %값을 +, -는 제거하고 입력합니다.<br>
             </li>
         </ul> 
         <br>
@@ -215,28 +212,23 @@
         </ul>
         <br><br><br>
 
-        <h2>3. 관심종목 추가, 삭제</h2>
+        <h2>3. 관심종목 추가 및 삭제</h2>
         <br>
-        <h3>3.1 '종목편집' 버튼을 통한 관심종목 추가, 삭제</h3>
+        <h3>3.1 '종목편집' 버튼을 통한 관심종목 추가 및 삭제</h3>
         <ul>
             <li>
-                종목명, 종목코드를 자동으로 제공되는 목록에서 선택하여 추가 및 삭제할 수 있습니다.
-            </li>
-            <li>
-                자동 제공목록은 코스피 시총상위 100개, ETF 시총상위 5,000억원 이상 종목입니다.
+                종목명, 종목코드를 제공되는 목록에서 선택하여 추가 및 삭제할 수 있습니다.<br>
+                제공되는 목록은 코스피 시총상위 100개, ETF 시총상위 5,000억원 이상 종목입니다.
             </li>
         </ul>       
         <br>
-        <h3>3.2 수기로 관심종목 추가, 삭제</h3>
+        <h3>3.2 수기로 관심종목 추가 및 삭제</h3>
         <ul>
             <li>
-                Market Monitor Pro를 처음 1회차 실행하면 프로그램이 설치된 폴더 내에 <span class="highlight">'settings.json'</span> 파일이 자동 생성됩니다.
-            </li>
-            <li>
-                해당 파일의 "indices" 항목에서 종목명과 종목코드를 추가하거나 삭제한 후에 Market_Monitor Pro를 다시 실행하면 수정된 관심종목이 정상적으로 반영됩니다.
-            </li>
-            <li>
-                관심종목의 코드는 <a href="https://finance.naver.com/" target="_blank">네이버 금융</a>에서 검색하여 추가하시면 됩니다.
+                제공 목록에 없는 종목은 수기로 추가, 삭제할 수 있습니다.<br>
+                프로그램 설치 후 처음 실행하면 프로그램이 설치된 폴더 내에 <span class="highlight">'settings.json'</span> 파일이 자동 생성됩니다.<br>
+                이 파일의 "indices" 항목에 종목명과 종목코드를 추가, 삭제한 후 프로그램을 실행하면 정상적으로 반영됩니다.<br>
+                관심종목의 코드는 <a href="https://finance.naver.com/" target="_blank">네이버 금융</a>에서 검색하여 추가하면 됩니다.
             </li>
         </ul>
         <div class="code-box">
@@ -250,18 +242,17 @@
                     .<br>
                 }                
         </div>
-        <br><br><br>
+        <br><br><br><br>
 
         <h2>4. 텔레그램 알림 설정</h2>
         <br>
         <ul>
-            <li>
-                텔레그램에서 알림을 받기 위해서는 모바일에 텔레그램 앱을 설치하고 계정에 가입한 후에 <span class="highlight">텔레그램 봇</span>을 생성하고 
-                <span class="highlight">BOT TOKEN, CHAT ID</span>를 발급받아야 합니다. 
-            </li>
-            <li>
-                Market Monitor Pro의 상단 <span class="highlight">'설정'</span>메뉴에서 <span class="highlight">'텔레그램 알림'</span>을 체크하고 
-                발급받은 BOT TOKEN과 CHAT ID를 입력한 후 저장합니다. 'settings.json' 파일에서 직접 입력할 수도 있습니다.
+            <li> 
+                Market Monitor Pro가 주식 이상징후를 감지하면 텔레그램을 통해 모바일에서도 실시간으로 확인할 수 있습니다. <br>
+                우선 모바일에서 텔레그램 앱을 설치하고 계정에 가입한 후에 <span class="highlight">텔레그램 봇 생성, BOT TOKEN, CHAT ID 발급</span>이 필요합니다. <br>
+                Market Monitor Pro 상단 <span class="highlight">'설정'</span>메뉴에서 <span class="highlight">'텔레그램 알림'</span>을 체크하고 
+                발급받은 BOT TOKEN과 CHAT ID 입력 후 저장합니다.<br>
+                'settings.json' 파일에서 직접 입력할 수도 있습니다.
             </li>
         </ul>
         <div class="code-box">
@@ -272,8 +263,8 @@
         </div>
             <ul>
             <li>
-                윈도우가 절전모드로 진입하면 텔레그램 알림은 오지 않습니다. <span class="highlight">'제어판 > 전원옵션 > 전원관리 옵션설정 편집 > 컴퓨터를 절전모드로 설정 > 해당없음'</span>으로 설정하면
-                알림을 계속 받을 수 있습니다. 
+                윈도우가 절전모드로 진입하면 프로그램이 동작하지 않습니다.<br>
+                <span class="highlight">'제어판 > 전원옵션 > 전원관리 옵션설정 편집 > 컴퓨터를 절전모드로 설정 > 해당없음'</span>으로 설정하면 절전모드 진입이 차단되어 알림을 계속 받을 수 있습니다. 
             </li>
         </ul>
         <br><br><br>
