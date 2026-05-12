@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="icon.png">
     <title>시장모니터링 프로그램</title>
@@ -21,8 +23,8 @@
             background: rgba(30, 41, 59, 0.85);
             border-radius: 22px;
             padding: 45px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .header {
@@ -110,58 +112,62 @@
             body {
                 padding: 15px;
             }
+
             .container {
                 padding: 20px;
                 border-radius: 16px;
             }
+
             .title {
                 font-size: 28px;
             }
+
             .container h2 {
                 font-size: 22px;
             }
+
             .code-box {
                 padding: 15px;
                 font-size: 14px;
             }
         }
-
     </style>
 </head>
 
 <body>
-<div class="container">
-    <div class="header">
-        <div class="title">Market Monitor Pro</div>
-        <div class="badge">실시간 시장 모니터링 프로그램</div>
-        <br><br><br>
+    <div class="container">
+        <div class="header">
+            <div class="title">Market Monitor Pro</div>
+            <div class="badge">실시간 시장 모니터링 프로그램</div>
+            <br><br><br>
 
-    </div>
+        </div>
         <h2>1. Market Monitor Pro 기능 및 특징</h2>
         <br><br>
-        <img src="/imgmm.png" alt="market monitor" style="max-width: 100%; width: 900px; height: auto; display: block; margin: 0 auto 16px;">
+        <img src="/imgmm.png" alt="market monitor"
+            style="max-width: 100%; width: 900px; height: auto; display: block; margin: 0 auto 16px;">
         <br>
         <ul>
-        <li>
-            관심종목으로 등록한 주식을 <span class="highlight">1분 단위</span>로 실시간 체크하여 
-            이상징후를 점검하고 <span class="highlight">알림 체크</span>가 되어있는 종목에 한하여 
-            <span class="highlight">소리, 팝업창, 텔레그램</span>으로 알림 정보를 제공합니다. 
-        </li>
-        <li>
-            <span class="highlight">텔레그램</span>으로 알림이 전달되어 <span class="highlight">모바일</span>에서도 실시간 확인할 수 있으며 
-            메세지의 종목을 터치하면 <span class="highlight">네이버증권</span> 해당 종목의 상세페이지로 바로 이동합니다.
-        </li>
-        <div class="code-box">
-            <b>[Market Monitor 26.05.10 13:44]</b><br>
-            • <a href='https://finance.naver.com/sise/sise_index.naver?code=KOSPI'>KOSPI</a>: 36월 고가<br>
-            • <a href='https://finance.naver.com/item/main.naver?code=005930'>삼성전자</a>: 전일 +3.1%<br>
-            • <a href='https://finance.naver.com/item/main.naver?code=069500'>KODEX 200</a>: Zscore +2.0<br>
-        </div>
-        <br>
-        <li>
-            국내에 상장된 모든 개별종목과 지수(KOSPI, KOSDAQ 등)를 지원하며, 장이 열리는 <span class="highlight">09:00 ~ 15:30</span> 동안 작동하고
-            이외의 시간에는 점검, 알림이 중지됩니다.
-        </li>
+            <li>
+                관심종목으로 등록한 주식을 <span class="highlight">1분 단위</span>로 실시간 체크하여
+                이상징후를 점검하고 <span class="highlight">알림 체크</span>가 되어있는 종목에 한하여
+                <span class="highlight">소리, 팝업창, 텔레그램</span>으로 알림 정보를 제공합니다.
+            </li>
+            <li>
+                <span class="highlight">텔레그램</span>으로 알림이 전달되어 <span class="highlight">모바일</span>에서도 실시간 확인할 수 있으며
+                메세지의 종목을 터치하면 <span class="highlight">네이버증권</span> 해당 종목의 상세페이지로 바로 이동합니다.
+            </li>
+            <div class="code-box">
+                <b>[Market Monitor 26.05.10 13:44]</b><br>
+                • <a href='https://finance.naver.com/sise/sise_index.naver?code=KOSPI'>KOSPI</a>: 36월 고가<br>
+                • <a href='https://finance.naver.com/item/main.naver?code=005930'>삼성전자</a>: 전일 +3.1%<br>
+                • <a href='https://finance.naver.com/item/main.naver?code=069500'>KODEX 200</a>: Zscore +2.0<br>
+            </div>
+            <br>
+            <li>
+                국내에 상장된 모든 개별종목과 지수(KOSPI, KOSDAQ 등)를 지원하며, 장이 열리는 <span class="highlight">09:00 ~ 15:35</span> 동안 작동하고
+                이외의 시간에는 점검, 알림이 중지됩니다.
+            </li>
         </ul>
         <br><br><br>
 
@@ -174,8 +180,8 @@
                 수정하려면 '설정'의 '전일비 알림기준'에 원하는 %값을 +, -는 제거하고 입력합니다.<br>
                 종목별 개별 설정시에는 메인화면의 '종목전일비' 입력박스에 입력합니다.
             </li>
-        </ul> 
-        <br>    
+        </ul>
+        <br>
         <h3>2.2 기간중 최고가, 최저가</h3>
         <ul>
             <li>
@@ -190,21 +196,21 @@
             <li>
                 알림 기본 설정값 : <span class="highlight">2.2</span> 이상 상승(+) 또는 하락(-)<br>
                 수정하려면 '설정'의 'Z-score 알림기준'에 원하는 값을 +, -는 제거하고 입력합니다.<br>
-                * Z-score(ma 20 기준): +1 강, +2 과열, +3 극단과열, -1 약, -2 과매도, -3 패닉  
+                * Z-score(ma 20 기준): +1 강, +2 과열, +3 극단과열, -1 약, -2 과매도, -3 패닉
             </li>
             <li>
                 이동평균 기간 기본 설정값 : <span class="highlight">20일</span><br>
-                10일: 단기, 20일 : 표준, 60일: 중기, 120일: 장기  
+                10일: 단기, 20일 : 표준, 60일: 중기, 120일: 장기
             </li>
         </ul>
         <br>
         <h3>2.4 분당 증감율</h3>
         <ul>
             <li>
-                알림 기본 설정값 : <span class="highlight">0.2%</span> 이상 상승(+) 또는 하락(-)<br>
+                알림 기본 설정값 : <span class="highlight">0.5%</span> 이상 상승(+) 또는 하락(-)<br>
                 수정하려면 '설정'의 '분증가율 알림기준'에 원하는 %값을 +, -는 제거하고 입력합니다.<br>
             </li>
-        </ul> 
+        </ul>
         <br><br><br>
 
         <h2>3. 관심종목 추가 및 삭제</h2>
@@ -213,9 +219,9 @@
         <ul>
             <li>
                 종목명, 종목코드를 제공되는 목록에서 선택하여 추가 및 삭제할 수 있습니다.<br>
-                제공되는 목록은 코스피 시총상위 100개, ETF 시총상위 5,000억원 이상 종목입니다.
+                제공되는 목록은 코스피는 시총 상위 300개 종목, ETF는 시총 상위 4,000억원 이상 종목입니다.
             </li>
-        </ul>       
+        </ul>
         <br>
         <h3>3.2 수기로 관심종목 추가 및 삭제</h3>
         <ul>
@@ -227,47 +233,74 @@
             </li>
         </ul>
         <div class="code-box">
-                [settings.json]<br><br>
-                "indices": { <br>
-                    "KOSPI":"KOSPI",<br>
-                    "KOSDAQ":"KOSDAQ",<br>
-                    "삼성전자":"005930",<br> 
-                    "추가할 종목명":"종목코드",<br>
-                    .<br>
-                    .<br>
-                }                
+            [settings.json]<br><br>
+            "indices": { <br>
+            "KOSPI":"KOSPI",<br>
+            "KOSDAQ":"KOSDAQ",<br>
+            "삼성전자":"005930",<br>
+            "추가할 종목명":"종목코드",<br>
+            .<br>
+            .<br>
+            }
         </div>
         <br><br><br><br>
 
         <h2>4. 텔레그램 알림 설정</h2>
         <br>
         <ul>
-            <li> 
+            <li>
                 Market Monitor Pro가 주식 이상징후를 감지하면 텔레그램을 통해 모바일에서도 실시간으로 확인할 수 있습니다. <br>
                 모바일에서 텔레그램 앱을 설치하고 계정가입 후에 <span class="highlight">텔레그램 봇 생성, BOT TOKEN, CHAT ID</span>를 발급받습니다. <br>
-                Market Monitor Pro <span class="highlight">'설정'</span>에서 <span class="highlight">'텔레그램 알림'</span>을 체크하고 
+                Market Monitor Pro <span class="highlight">'설정'</span>에서 <span class="highlight">'텔레그램 알림'</span>을 체크하고
                 발급받은 BOT TOKEN과 CHAT ID 입력 후 저장합니다.<br>
                 'settings.json' 파일에서 직접 입력할 수도 있습니다.
             </li>
         </ul>
         <div class="code-box">
-            [settings.json]<br><br>
+            [ 텔레그램 봇 생성, BOT TOKEN 및 CHAT ID 발급 방법 ]<br><br>
+
+            1. 모바일에서 텔레그램 설치 및 로그인<br><br>
+
+            2. 텔레그램 검색창에서 "BotFather" 검색 후 공식계정 선택<br><br>
+
+            3. BotFather 채팅창에서 아래 명령 입력<br>
+            - /newbot<br><br>
+
+            4. 순서대로 입력<br>
+            - BOT 이름 입력<br>
+            - BOT 아이디 입력 (반드시 bot 으로 끝나야 함)<br>
+            - 예시: stock_alarm_bot<br><br>
+
+            5. 생성 완료 후 발급되는 BOT TOKEN 복사<br>
+            - 예시: 123456789:AAxxxxxxxxxxxxxxxx<br><br>
+
+            6. 생성된 BOT 채팅방에 들어가 아래 명령 입력<br>
+            - /start<br><br>
+
+            7. 브라우저 주소창에 아래 입력하여 CHAT ID 확인<br>
+            - https://api.telegram.org/bot여기에토큰/getUpdates<br><br>
+
+            8. 결과 JSON 의 "id" 숫자가 CHAT ID<br>
+            - 예시: "id": 123456789
+        </div>
+        <div class="code-box">
+            [ settings.json 수기 수정 방법]<br><br>
             "telegram_enabled": true,<br>
             "telegram_token": "YOUR_TELEGRAM_BOT_TOKEN",<br>
-            "telegram_chat_id": "YOUR_TELEGRAM_CHAT_ID"<br>              
+            "telegram_chat_id": "YOUR_TELEGRAM_CHAT_ID"
         </div>
-            <ul>
+        <ul>
             <li>
                 윈도우가 절전모드로 진입하면 프로그램이 동작하지 않습니다.<br>
-                <span class="highlight">'제어판 > 전원옵션 > 전원관리 옵션설정 편집 > 컴퓨터를 절전모드로 설정 > 해당없음'</span>으로 
-                설정하면 절전모드 진입이 차단되어 알림을 계속 받을 수 있습니다. 
+                <span class="highlight">'제어판 > 전원옵션 > 전원관리 옵션설정 편집 > 컴퓨터를 절전모드로 설정 > 해당없음'</span>으로
+                설정하면 절전모드 진입이 차단되어 알림을 계속 받을 수 있습니다.
             </li>
         </ul>
         <br><br><br>
 
         <h2>5. 버전별 주요내용</h2>
         <br>
-        
+
         <h3>5-1 Market Monitor Pro 1.04</h3>
         <ul>
             <li>관심종목을 제공된 목록에서 선택 및 해제할 수 있도록 개선<br>
@@ -278,37 +311,44 @@
         </ul>
         <br>
 
-        
-        <h3>5-2 Market Monitor Pro 1.05 (예정)</h3>
+
+        <h3>5-2 Market Monitor Pro 1.05</h3>
         <ul>
-            <li>종목 추가시 코스피는 시총 상위 300개, ETF는 시총 4,000억원 이상인 종목들 목록 제공</li>
-            <li>오류 수정<br>
-                관심종목 추가/삭제/위치이동, 고가/저가 기간 변경 후 저장시 프로그램 DATA 갱신을 위해 re_Start<br>
-                알림기준 기본값 변경<br>
-                컬럼길이 등 소소한 불편사항 개선
+            <li>치명적인 오류 수정<br>
+                종목편집 버튼을 통한 관심종목의 추가/삭제/위치이동 시, 설정 버튼을 통한 고가/저가 기간 변경 시 DATA 혼선 발생: 해상 작업후 프로그램을 리셋하여 DATA 혼선 방지<br>
+            </li>
+            <li>불편사항 개선 및 소소한 오류 수정<br>
+                종목 추가시 코스피는 시총 상위 300개, ETF는 시총 4,000억원 이상인 종목들 목록 제공<br>
+                15:30분 장마감후 최종 가격 미반영 방지를 위해 15:35분까지 점검, 알림 시간 연장<br>
+                알림기준 기본값 변경, 컬럼길이 확대 등
             </li>
         </ul>
         <br><br><br>
 
         <h2>6. 다운로드</h2>
         <ul>
-            <li>버전 1.04 <a href="https://drive.google.com/file/d/1utxyw5xuvgka3jcKlvjbSfX-gHH18cSl/view?usp=sharing" download>다운로드</a>, 최종 수정일 2026.05.11</li>
+            <li>버전 1.05 <a href="https://drive.google.com/file/d/1kD8YZzjtKS3tv9eb_Sipf502-UKfuWN3/view?usp=sharing"
+                    download>다운로드</a>, 최종 수정일 2026.05.12</li>
             <li>기능개선 및 에러수정, 기타 제안은 <span class="highlight">유행살이 게시판</span>에 남겨주시기 바랍니다.</li>
         </ul>
         <br><br>
 
-        <span style="color: rgb(215, 251, 206);">☞ <a href="https://rainchj.github.io/index_board.html" target="_blank">유행살이 게시판</a><br>
-        <span style="color: rgb(215, 251, 206);">☞ <a href="index.html" target="_blank">유행살이 공유자료</a></span><br>
+        <span style="color: rgb(215, 251, 206);">☞ <a href="https://rainchj.github.io/index_board.html"
+                target="_blank">유행살이 게시판</a><br>
+            <span style="color: rgb(215, 251, 206);">☞ <a href="index.html" target="_blank">유행살이 공유자료</a></span><br>
 
-        <span style="color: rgb(215, 251, 206);">☞ <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a><br>
-        <span style="color: rgb(215, 251, 206);">☞ <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a>
+            <span style="color: rgb(215, 251, 206);">☞ <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는
+                    행복한 세상살이</a><br>
+                <span style="color: rgb(215, 251, 206);">☞ <a href="https://www.youtube.com/@rainchj"
+                        target="_blank">백점경제학</a>
 
-        <div class="footer">
-            © 2026 Market Monitor Pro | 유행살이<br>
-            Total Visits: <strong><span id="counter">0000</span></strong>
-        </div>
-        <script src="scripts.js"></script>                    
+                    <div class="footer">
+                        © 2026 Market Monitor Pro | 유행살이<br>
+                        Total Visits: <strong><span id="counter">0000</span></strong>
+                    </div>
+                    <script src="scripts.js"></script>
     </div>
 
 </body>
+
 </html>
