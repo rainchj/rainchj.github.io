@@ -170,6 +170,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (postForm) {
         initializeBoard();
     }
+
+    // 과거 버전 접기/펴기 로직 (index_mm.html)
+    const pastVersionsBtn = document.getElementById('pastVersionsBtn');
+    const pastVersionsContent = document.getElementById('pastVersionsContent');
+
+    if (pastVersionsBtn && pastVersionsContent) {
+        pastVersionsBtn.addEventListener('click', function () {
+            const isActive = pastVersionsContent.classList.toggle('active');
+            this.innerText = isActive ? '▲ 닫기' : '▼ 보기';
+        });
+    }
 });
 
 // ========================================
