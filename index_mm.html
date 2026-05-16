@@ -259,13 +259,13 @@
         <ul>
             <li>
                 제공 목록에 없는 종목은 수기로 추가할 수 있습니다.<br>
-                프로그램이 설치된 폴더에 <span class="highlight">'settings.json'</span> 파일을 에디터로 불러옵니다.<br>
+                프로그램이 설치된 폴더에 <span class="highlight">'mmp_settings.json'</span> 파일을 에디터로 불러옵니다.<br>
                 이 파일의 "indices" 항목에 종목명과 종목코드를 추가, 삭제 후 저장합니다.<br>
                 관심종목의 코드는 <a href="https://finance.naver.com/" target="_blank">네이버 금융</a>에서 찾을 수 있습니다.
             </li>
         </ul>
         <div class="code-box">
-            [settings.json]<br><br>
+            [ mmp_settings.json ]<br><br>
             "indices": { <br>
             "KOSPI":"KOSPI",<br>
             "KOSDAQ":"KOSDAQ",<br>
@@ -284,11 +284,11 @@
                 모바일에서 텔레그램 앱을 설치하고 계정가입 후에 아래를 참조하여 <span class="highlight">텔레그램 봇 생성, BOT TOKEN, CHAT ID</span>를 발급받습니다.
             </li>
             <li>
-                프로그램의 <span class="highlight">'설정'</span>에서 <span class="highlight">'텔레그램 알림'</span>을 체크하고
+                프로그램의 <span class="highlight">'설정'</span>에서 <span class="highlight">'텔레그램 전송'</span>을 체크하고
                 발급받은 <span class="highlight">BOT TOKEN, CHAT ID</span>를 입력한 후 저장합니다.
             </li>
             <li>
-                'settings.json' 파일에서 수기로 입력할 수도 있습니다.
+                'mmp_settings.json' 파일에서 수기로 입력할 수도 있습니다.
             </li>
         </ul>
         <div class="code-box">
@@ -319,7 +319,7 @@
             - 예시: "id": 123456789
         </div>
         <div class="code-box">
-            [ settings.json 수기 수정 방법]<br><br>
+            [ mmp_settings.json ]<br><br>
             "telegram_enabled": true,<br>
             "telegram_token": "YOUR_TELEGRAM_BOT_TOKEN",<br>
             "telegram_chat_id": "YOUR_TELEGRAM_CHAT_ID"
@@ -398,13 +398,27 @@
                 일부 UI 개선 등
             </li>
         </ul>
+        <br>
+
+        <h3>5-6 Market Monitor Pro 1.09</h3>
+        <ul>
+            <li>알림정보 기록(mmp_alerts.log) 및 조회 기능 추가</li>
+            <li>프로그램 시작시 DATA 로딩 화면 표시<br>
+                데이터 로딩이 완료될 때까지 'DATA 로딩중' 메시지를 보여주는 화면 추가
+            </li>
+            <li>
+                일부 UI 개선<br>
+                FHD 화면 감안하여 알림창 위치 조정 및 60초후 자동닫기<br>
+                달러원 등 시장지표 가독성 개선 등
+            </li>
+        </ul>
 
         <br><br><br>
 
         <h2>6. 다운로드</h2>
         <ul>
-            <li><a href="https://drive.google.com/file/d/1y9nA2C-DnTD6OEr6J-Cu93roz0HbSa45/view?usp=sharing"
-                    download>버전 1.08 다운로드</a>, 최종 수정일 2026.05.15</li>
+            <li><a href="https://drive.google.com/file/d/1LInB6g0uGR7m3y4Mw34hnJRQ6XKTJMcd/view?usp=sharing"
+                    download>버전 1.09 다운로드</a>, 최종 수정일 2026.05.16</li>
             <li>이 프로그램은 누구나 자유롭게 사용할 수 있는 프리웨어(Freeware)입니다.<br>
                 기능개선 및 에러수정, 기타 제안은 유행살이 게시판에 남겨주시기 바랍니다.</li>
         </ul>
