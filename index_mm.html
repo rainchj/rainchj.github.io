@@ -208,14 +208,14 @@
         <h3>2.1.1 환율 증감율</h3>
         <ul>
             <li>알림 발생기준 : <span class="highlight">1.0%</span> 이상 상승(또는 하락)<br>
-                팝업, 텔레그램 전송 : <span class="highlight">0.5%</span> 단위로 최초 도래시 (예시: 1.0%, 1.5%, 2.0% 등)<br>
+                팝업, 텔레그램 전송 : <span class="highlight">0.2%</span> 단위로 변경시미다 (예시: 1.0%, 1.2%, 1.4% 등)<br>
             </li>
         </ul>
         <br>
         <h3>2.1.2 국채금리 증감율</h3>
         <ul>
             <li>알림 발생기준 : <span class="highlight">1.0%</span> 이상 상승(또는 하락)<br>
-                팝업, 텔레그램 전송 : <span class="highlight">0.5%</span> 단위로 최초 도래시 (예시: 1.0%, 1.5%, 2.0% 등)<br>
+                팝업, 텔레그램 전송 : <span class="highlight">0.2%</span> 단위로 변경시마다 (예시: 1.0%, 1.2%, 1.4% 등)<br>
             </li>
         </ul>
         <br><br>
@@ -226,7 +226,7 @@
         <h3>2.2.1 전일비</h3>
         <ul>
             <li>알림 발생기준 : <span class="highlight">2.0%</span> 이상 상승(또는 하락)<br>
-                팝업, 텔레그램 전송 : <span class="highlight">0.5%</span> 단위로 최초 도래시 (예시: 2.0%, 2.5%, 3.0% 등)<br>
+                팝업, 텔레그램 전송 : <span class="highlight">0.2%</span> 단위로 변경시마다 (예시: 2.0%, 2.2%, 2.4% 등)<br>
             </li>
         </ul>
         <br>
@@ -240,7 +240,7 @@
         <h3>2.2.3 Z-score (Bolinger Band와 동일)</h3>
         <ul>
             <li>알림 발생기준 : <span class="highlight">2.0</span> 이상 상승(또는 하락)<br>
-                팝업, 텔레그램 전송 : <span class="highlight">0.2</span> 단위로 최초 도래시 (예시: 2.0, 2.2, 2.4 등)<br>
+                팝업, 텔레그램 전송 : <span class="highlight">0.2</span> 단위로 변경시마다 (예시: 2.0, 2.2, 2.4 등)<br>
             </li>
             <li>
                 이동평균기간 설정값 : <span class="highlight">20일</span><br>
@@ -251,14 +251,14 @@
         <h3>2.2.4 분당 증감율</h3>
         <ul>
             <li>알림 발생기준 : <span class="highlight">0.4%</span> 이상 상승(또는 하락)<br>
-                팝업, 텔레그램 전송 : <span class="highlight">0.2%</span> 단위로 최초 도래시 (예시: 0.4%, 0.6%, 0.8% 등)<br>
+                팝업, 텔레그램 전송 : <span class="highlight">0.2%</span> 단위로 변경시마다 (예시: 0.4%, 0.6%, 0.8% 등)<br>
             </li>
         </ul>
         <br>
         <h3>2.2.5 거래량 증가</h3>
         <ul>
             <li>알림 발생기준 : <span class="highlight">2.0배</span> 이상 상승<br>
-                팝업, 텔레그램 전송 : <span class="highlight">0.5배</span> 단위로 최초 도래시 (예시: 2.0배, 2.5배, 3.0배 등)<br>
+                팝업, 텔레그램 전송 : <span class="highlight">0.2배</span> 단위로 변경시마다 (예시: 2.0배, 2.2배, 2.4배 등)<br>
             </li>
         </ul>
         
@@ -361,36 +361,25 @@
 
         <h2>5. 현재 버전과 수정된 내용</h2>
         <br>
-        <h3>5.1 Market Monitor Pro 1.09</h3>
-        <br>
-        <ul>
-            <li>알림정보 기록(mmp_alerts.log) 및 조회 기능 추가</li>
-            <li>프로그램 시작시 DATA 로딩 화면 표시<br>
-                데이터 로딩이 완료될 때까지 'DATA 로딩중' 메시지를 보여주는 화면 추가
-            </li>
-            <li>
-                일부 UI 개선<br>
-                FHD 화면 감안하여 알림창 위치 조정 및 60초후 자동닫기<br>
-                달러원 등 시장지표 가독성 개선 등
-            </li>
-        </ul>
-        <br>
-        <h3>5.2 Market Monitor Pro 1.10 (차기버전)</h3>
+        <h3>5.1 Market Monitor Pro 1.10</h3>
         <br>
         <ul>
             <li>'일국채10년' 점검 및 알림항목에 신규 추가</li>
             <li>
-                설정에 신규 메뉴 추가<br>
-                알림소리 on/off, 윈도우 시작시 자동실행, 프로그램 시작시 최소화, 알림로그 초기화
+                항목별 알림기준 세분화 (상기 정검항목 및 알림기준 참조)<br>
             </li>
             <li>
-                종목별 팝업 체크, 종목전일비 변경시 프로그램 재시작 후에도 반영되도록 수정<br>
+                설정 메뉴 추가<br>
+                종료시 화면위치 저장, 알림소리, 윈도우 시작시 자동실행, 프로그램 시작시 최소화, 알림로그 초기화
+            </li>
+            <li>
+                종목별 팝업 체크여부 프로그램 재시작 후에도 반영되도록 수정 등<br>
             </li>
         </ul>
-        <br>
+        <br><br>
 
 
-        <h3>5.3 이전 버전에서 수정된 내용</h3>
+        <h3>5.2 이전 버전에서 수정된 내용</h3>
         <div class="toggle-btn-past" id="pastVersionsBtn">▼ 보기</div>
         <div class="collapsible-content" id="pastVersionsContent">
             <h3>5.2.1 Market Monitor Pro 1.04</h3>
@@ -454,17 +443,31 @@
                     일부 UI 개선 등
                 </li>
             </ul>
+            <br>
+
+            <h3>5.2.6 Market Monitor Pro 1.09</h3>
+            <br>
+            <ul>
+                <li>알림정보 기록(mmp_alerts.log) 및 조회 기능 추가</li>
+                <li>프로그램 시작시 DATA 로딩 화면 표시<br>
+                    데이터 로딩이 완료될 때까지 'DATA 로딩중' 메시지를 보여주는 화면 추가
+                </li>
+                <li>
+                    일부 UI 개선<br>
+                    FHD 화면 감안하여 알림창 위치 조정 및 60초후 자동닫기<br>
+                    달러원 등 시장지표 가독성 개선 등
+                </li>
+            </ul>
+            <br>
+
         </div>
-        <br>
-
-
 
         <br><br><br>
 
         <h2>6. 다운로드</h2>
         <ul>
-            <li><a href="https://drive.google.com/file/d/1LInB6g0uGR7m3y4Mw34hnJRQ6XKTJMcd/view?usp=sharing"
-                    download>버전 1.09 다운로드</a>, 최종 수정일 2026.05.16</li>
+            <li><a href="https://drive.google.com/file/d/1bhoftghgiyey-zsZxs2_1mqynComc-V8/view?usp=sharing"
+                    download>버전 1.10 다운로드</a>, 최종 수정일 2026.05.16</li>
             <li>이 프로그램은 누구나 자유롭게 사용할 수 있는 프리웨어(Freeware)입니다.<br>
                 기능개선 및 에러수정, 기타 제안은 유행살이 게시판에 남겨주시기 바랍니다.</li>
         </ul>
