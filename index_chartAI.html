@@ -1,79 +1,107 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 증권차트분석</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="icon.png">
-    <title>AI 증권차트분석</title>
+
     <style>
+        /* ==========================================
+           심플 모바일/PC 최적화 스타일
+           ========================================== */
         body {
-            font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
+            font-family: 'Noto Sans KR', 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b) !important;
             margin: 0;
-            padding: 40px;
-            color: #e2e8f0;
+            padding: 40px 20px;
+            color: #e2e8f0 !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
             max-width: 950px;
+            width: 100%;
             margin: auto;
             background: rgba(30, 41, 59, 0.85);
             border-radius: 22px;
             padding: 45px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .title {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             color: #38bdf8;
-            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
 
-        .version {
-            font-size: 18px;
-            color: #94a3b8;
+        .chart-wrapper {
+            margin: 20px auto;
+            text-align: center;
         }
 
-        .container h2 {
-            margin-top: 0;
-            color: #7dd3fc;
-            font-size: 26px;
-            margin-bottom: 18px;
+        .chart-wrapper img {
+            max-width: 100%;
+            width: 900px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
         }
 
-        .container ul {
+        .chart-wrapper img:hover {
+            transform: scale(1.005);
+        }
+
+        .zoom-hint {
+            font-size: 14px;
+            color: #38bdf8;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        ul {
             padding-left: 24px;
             line-height: 1.9;
+            margin: 20px 0;
         }
 
-        .container li {
+        li {
             margin-bottom: 10px;
+            font-size: 16px;
         }
 
-        .highlight {
-            color: #fbbf24;
-            font-weight: bold;
+        a {
+            color: #38bdf8 !important;
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
 
-        .code-box {
-            background: #020617;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 18px;
-            margin-top: 15px;
-            font-family: Consolas, monospace;
-            color: #93c5fd;
-            overflow-x: auto;
+        a:hover {
+            color: #7dd3fc !important;
+            text-decoration: underline;
+        }
+
+        .links-section {
+            margin: 30px 0;
+            line-height: 2.0;
+            font-size: 16px;
         }
 
         .footer {
@@ -85,106 +113,72 @@
             padding-top: 22px;
         }
 
-        .badge {
-            display: inline-block;
-            background: #0ea5e9;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        a {
-            color: #38bdf8;
-            text-decoration: none;
-            border-bottom: 1px dashed rgba(56, 189, 248, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            color: #7dd3fc;
-            border-bottom-color: #7dd3fc;
-        }
-
-        /* 과거 버전 접기 스타일 (최소화) */
-        .toggle-btn-past {
-            color: #38bdf8;
-            cursor: pointer;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-size: 14px;
-            padding: 5px 0;
-        }
-        
-        .toggle-btn-past:hover {
-            text-decoration: underline;
-        }
-
-        .collapsible-content {
-            display: none;
-        }
-
-        .collapsible-content.active {
-            display: block;
-        }
-
-        /* 모바일 반응형 스타일 */
+        /* 모바일 반응형 대응 */
         @media (max-width: 768px) {
             body {
                 padding: 15px;
             }
 
             .container {
-                padding: 20px;
+                padding: 25px 20px;
                 border-radius: 16px;
             }
 
             .title {
-                font-size: 28px;
+                font-size: 26px;
             }
 
-            .container h2 {
-                font-size: 22px;
+            li, .links-section {
+                font-size: 15px;
             }
-
-            .code-box {
-                padding: 15px;
-                font-size: 14px;
+            
+            .zoom-hint {
+                font-size: 12px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="title">AI 증권차트분석 프로그램</div>
-            <br><br>
 
-        </div>
-        <img src="/imgchartAI.png" alt=""
-            style="max-width: 100%; width: 900px; height: auto; display: block; margin: 0 auto 16px;">
-        <br>
-        <ul>
-            <li><a href="https://drive.google.com/file/d/1DkqLu5V9N2BtamIzbtI6p8gDiIL3LtbI/view?usp=sharing"
-                    download>다운로드 (수정일 2026.06.14)</a></li>
-            <li>본 소프트웨어는 시계열 및 기술적 지표분석 DATA를 Claude, Gemini, ChatGPT 등 AI에서 활용할수 있도록 학습용으로 개발한 프로그램으로 지인 등 일부에게만 공개합니다.</li>
-        </ul>
-        <br><br><br>
+<div class="container">
 
-        <span style="color: rgb(215, 251, 206);">☞ <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a></span><br>
-        <span style="color: rgb(215, 251, 206);">☞ <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a></span><br>
-        <span style="color: rgb(215, 251, 206);">☞ <a href="index.html" target="_blank">공유자료, 게시판</a></span><br>
-            
-        <div class="footer">
-            © 2026 Market Monitor Pro | 유행살이<br>
-            Total Visits: <strong><span id="counter">0000</span></strong>
-        </div>
-        <script src="scripts.js"></script>
+    <div class="header">
+        <div class="title">AI 증권차트분석 프로그램</div>
     </div>
 
+    <br>
+    <div class="chart-wrapper">
+        <img src="/imgchartAI.png"
+             alt="AI 증권차트분석"
+             data-zoomable>
+        <div class="zoom-hint">🔍 차트를 클릭하면 확대/축소(마우스 휠, 핀치줌)가 가능합니다.</div>
+    </div>
+
+    <ul>
+        <li>
+            <a href="https://drive.google.com/file/d/1DkqLu5V9N2BtamIzbtI6p8gDiIL3LtbI/view?usp=sharing" target="_blank" style="font-weight: bold;">
+                📥 다운로드 (수정일 2026.06.14)
+            </a>
+        </li>
+        <li>
+            본 소프트웨어는 시계열 및 기술적 지표분석 데이터를 Claude, Gemini, ChatGPT 등 AI에서 활용할 수 있도록 학습용으로 개발한 프로그램으로 일부에게만 공개합니다.
+        </li>
+    </ul>
+
+    <br><br>
+    <div class="links-section">
+        ☞ <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a><br>
+        ☞ <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a><br>
+        ☞ <a href="index.html">공유자료, 게시판</a>
+    </div>
+
+    <div class="footer">
+        © 2026 AI 증권차트분석 | 유행살이<br>
+        Total Visits: <strong><span id="counter">0000</span></strong>
+    </div>
+    <script src="scripts.js"></script>
+</div>
+
 </body>
-
 </html>
-
