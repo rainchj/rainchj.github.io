@@ -1,187 +1,989 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 증권차트분석</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 증권차트분석</title>
+<style>
+:root {
+  --navy: #0f1e35;
+  --navy-mid: #1a3352;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --accent: #f59e0b;
+  --accent-light: #fef3c7;
+  --green: #059669;
+  --green-light: #d1fae5;
+  --red: #dc2626;
+  --text: #111827;
+  --text-sub: #4b5563;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --bg: #f9fafb;
+  --white: #ffffff;
+  --radius: 10px;
+  --radius-lg: 16px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+}
 
-    <style>
-        /* ==========================================
-           심플 모바일/PC 최적화 스타일
-           ========================================== */
-        body {
-            font-family: 'Noto Sans KR', 'Segoe UI', 'Malgun Gothic', sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e293b) !important;
-            margin: 0;
-            padding: 40px 20px;
-            color: #e2e8f0 !important;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+/* ── 헤더 ── */
+header {
+  background: var(--navy);
+  padding: 56px 24px 48px;
+  text-align: center;
+}
+.header-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+header h1 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+header p {
+  font-size: 15px;
+  color: #94a3b8;
+  max-width: 560px;
+  margin: 0 auto 30px;
+  line-height: 1.8;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  transition: background .2s;
+}
+.btn-primary:hover { background: #1d4ed8; }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  transition: background .2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,.14); }
+.header-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.header-notice {
+  margin-top: 22px;
+  font-size: 12px;
+  color: #64748b;
+}
 
-        .container {
-            max-width: 950px;
-            width: 100%;
-            margin: auto;
-            background: rgba(30, 41, 59, 0.85);
-            border-radius: 22px;
-            padding: 45px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-            border: 1px solid rgba(255,255,255,0.08);
-        }
+/* ── 레이아웃 ── */
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+section { padding: 52px 0; }
+section + section { border-top: 1px solid var(--border); }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+.sec-label {
+  font-size: 16px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.sec-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.sec-desc {
+  font-size: 15px;
+  color: var(--text-sub);
+  max-width: 900px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
 
-        .title {
-            font-size: 38px;
-            font-weight: 800;
-            color: #38bdf8;
-            letter-spacing: -1px;
-        }
+/* ── 스크린샷 ── */
+.screenshot-wrap {
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.screenshot-wrap img {
+  max-width: 100%;
+  border-radius: 8px;
+  cursor: zoom-in;
+  transition: transform .3s;
+}
+.screenshot-wrap img:hover { transform: scale(1.01); }
+.screenshot-caption {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 8px;
+}
 
-        .chart-wrapper {
-            margin: 20px auto;
-            text-align: center;
-        }
+/* ── 기능 카드 ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+.feat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 22px 20px;
+}
+.feat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+.feat-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.feat-card p {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.75;
+}
 
-        .chart-wrapper img {
-            max-width: 100%;
-            width: 900px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            cursor: pointer;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            transition: transform 0.2s ease;
-        }
+/* ── 지표 배지 ── */
+.indicator-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+.badge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
 
-        .chart-wrapper img:hover {
-            transform: scale(1.005);
-        }
+/* ── AI 모델 테이블 ── */
+.ai-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 24px;
+}
+.ai-table th {
+  background: var(--navy);
+  color: #e2e8f0;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .5px;
+  padding: 11px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.ai-table th:first-child { border-radius: 8px 0 0 0; }
+.ai-table th:last-child { border-radius: 0 8px 0 0; }
+.ai-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-sub);
+  vertical-align: top;
+}
+.ai-table tr:last-child td { border-bottom: none; }
+.ai-table tr:hover td { background: #f8faff; }
+.model-name { font-weight: 500; color: var(--text); font-size: 13.5px; }
+.model-tag {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+.model-tag.free { background: var(--accent-light); color: #92400e; }
 
-        .zoom-hint {
-            font-size: 14px;
-            color: #38bdf8;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
+/* ── API 발급 단계 ── */
+.api-steps { display: flex; flex-direction: column; gap: 0; margin-top: 28px; }
+.step {
+  display: flex;
+  gap: 18px;
+  position: relative;
+  padding-bottom: 28px;
+}
+.step:last-child { padding-bottom: 0; }
+.step-left { display: flex; flex-direction: column; align-items: center; }
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.step-line {
+  width: 1px;
+  flex: 1;
+  background: var(--border);
+  margin: 6px 0;
+  min-height: 24px;
+}
+.step:last-child .step-line { display: none; }
+.step-body { padding-top: 4px; flex: 1; }
+.step-body h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.step-body p {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+.step-body a {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+.step-body a:hover { text-decoration: underline; }
+.step-tip {
+  background: var(--blue-light);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1e40af;
+  margin-top: 8px;
+}
+.step-tip.warn {
+  background: var(--accent-light);
+  color: #92400e;
+}
 
-        ul {
-            padding-left: 24px;
-            line-height: 1.9;
-            margin: 20px 0;
-        }
+/* ── API 탭 ── */
+.api-tabs { display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; margin-top: 32px; }
+.api-tab {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  background: var(--bg);
+  border: none;
+  border-right: 1px solid var(--border);
+  color: var(--text-sub);
+  transition: background .15s, color .15s;
+}
+.api-tab:last-child { border-right: none; }
+.api-tab.active { background: var(--white); color: var(--blue); }
+.api-panel {
+  display: none;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 24px;
+}
+.api-panel.active { display: block; }
 
-        li {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+/* ── 샘플 카드 ── */
+.sample-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 4px;
+}
+.sample-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow .2s, transform .2s;
+}
+.sample-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
+.sample-header {
+  background: var(--navy-mid);
+  padding: 18px 18px 14px;
+}
+.sample-market {
+  font-size: 11px;
+  color: #94a3b8;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.sample-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+.sample-body { padding: 14px 18px; }
+.sample-desc { font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-bottom: 10px; }
+.sample-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
 
-        a {
-            color: #38bdf8 !important;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+/* ── FAQ ── */
+.faq-list { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  cursor: pointer;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text);
+  user-select: none;
+}
+.faq-q:hover { background: #fafafa; }
+.faq-toggle {
+  font-size: 18px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform .2s;
+  line-height: 1;
+}
+.faq-a {
+  display: none;
+  padding: 0 18px 16px;
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.8;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
 
-        a:hover {
-            color: #7dd3fc !important;
-            text-decoration: underline;
-        }
+/* ── 외부 링크 ── */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+.ext-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  text-decoration: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.ext-link:hover { border-color: #bfdbfe; box-shadow: 0 2px 10px rgba(37,99,235,.08); }
+.ext-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.ext-title { font-size: 14px; font-weight: 500; color: var(--text); }
+.ext-sub { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
 
-        .links-section {
-            margin: 30px 0;
-            line-height: 2.0;
-            font-size: 16px;
-        }
+/* ── 푸터 ── */
+footer {
+  background: var(--navy);
+  padding: 32px 24px;
+  text-align: center;
+}
+footer p {
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.9;
+}
+footer a { color: #60a5fa; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-divider { border: none; border-top: 1px solid #1e3a5f; margin: 18px auto; max-width: 300px; }
 
-        .footer {
-            text-align: center;
-            margin-top: 45px;
-            color: #94a3b8;
-            font-size: 15px;
-            border-top: 1px solid #334155;
-            padding-top: 22px;
-        }
-
-        /* 모바일 반응형 대응 */
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-
-            .container {
-                padding: 25px 20px;
-                border-radius: 16px;
-            }
-
-            .title {
-                font-size: 26px;
-            }
-
-            li, .links-section {
-                font-size: 15px;
-            }
-            
-            .zoom-hint {
-                font-size: 12px;
-            }
-        }
-    </style>
+/* ── 반응형 ── */
+@media (max-width: 600px) {
+  header h1 { font-size: 22px; }
+  .sec-title { font-size: 19px; }
+  .ai-table th, .ai-table td { padding: 10px 12px; font-size: 12.5px; }
+}
+</style>
 </head>
-
 <body>
 
-<div class="container">
+<!-- ════════════════ 헤더 ════════════════ -->
+<header>
+  <div class="header-eyebrow">Excel VBA와 AI API를 활용한</div>
+  <h1>AI 증권차트분석 프로그램</h1>
+  <p>엑셀에서 주가 데이터를 수집하고 기술적 지표를 산출한 뒤,<br>
+  Claude · Gemini · ChatGPT에게 분석을 맡겨 리포트를 자동 생성합니다.</p>
+  <div class="header-btns">
+    <a class="btn-primary" href="https://drive.google.com/file/d/1w6cqGY32BwtBX_9GK6XdwdpPSV31G2iM/view?usp=sharing" target="_blank">
+      📥 프로그램 다운로드
+    </a>
+    <a class="btn-secondary" href="#samples">📊 분석 샘플 보기</a>
+  </div>
+  <p class="header-notice">최종 수정 : 2026.06.17 &nbsp;|&nbsp; 압축 해제 비밀번호 필요 &nbsp;|&nbsp; 지인 한정 배포</p>
+</header>
 
-    <div class="header">
-        <div class="title">AI 증권차트분석 프로그램</div>
+<!-- ════════════════ 프로그램 소개 ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ 프로그램 소개 ]</div>
+    <div class="sec-title">차트 분석의 번거로움을 AI에게</div>
+    <div class="sec-desc">
+      기술적 분석에는 다양한 지표를 동시에 해석하는 경험이 필요합니다. 이 프로그램은 엑셀 VBA로 주가 시계열·기술적 지표 CSV를 자동 생성하고,
+      AI API에 전송해 <strong>[시장 상황] · [지표 분석] · [매수 전략]</strong> 구조의 리포트를 즉시 만들어 줍니다.
     </div>
 
-    <br>
-    <div class="chart-wrapper">
-        <img src="/imgchartAI.png"
-             alt="AI 증권차트분석"
-             data-zoomable>
-        <div class="zoom-hint">🔍 차트를 클릭하면 확대/축소(마우스 휠, 핀치줌) 가능</div>
+    <div class="screenshot-wrap">
+      <img src="https://rainchj.github.io/imgchartAI.png"
+           alt="AI 증권차트분석 프로그램 화면"
+           title="마우스 휠 또는 핀치줌으로 확대/축소 가능">
     </div>
-    <br>
-    <ul>
-        <li>
-            <a href="https://drive.google.com/file/d/1w6cqGY32BwtBX_9GK6XdwdpPSV31G2iM/view?usp=sharing" target="_blank" style="font-weight: bold;">
-                📥 다운로드 (수정일 26.06.17)
-            </a> * 압축풀기 비밀번호 필요
-        </li>
-        <li>차트분석 샘플 ☞ <a href="https://rainchj.github.io/sample_kospi.html" target="_blank">코스피 차트분석</a><br></li>
-        <li>차트분석 샘플 ☞ <a href="https://rainchj.github.io/sample_코스닥150.html" target="_blank">KODEX 코스피150 차트분석</a><br></li>
-        <li>차트분석 샘플 ☞ <a href="https://rainchj.github.io/sample_nasdaq.html" target="_blank">NASDAQ 차트분석</a><br></li>
-        <li>
-            본 소프트웨어는 시계열 및 기술적 지표분석 데이터를 Claude, Gemini, ChatGPT 등 AI에서 활용할 수 있도록 학습용으로 개발한 프로그램으로 지인 등 일부에게만 공개합니다.
-        </li>
-    </ul>
+    <p class="screenshot-caption">▲ 메인 화면 — 종목 선택 · 기간 설정 · AI 모델 선택 후 버튼 한 번으로 분석 완료</p>
 
-    <br><br>
-    <div class="links-section">
-        ☞ <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a><br>
-        ☞ <a href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a><br>
-        ☞ <a href="index.html">공유자료, 게시판</a>
+    <div class="features-grid" style="margin-top:32px">
+      <div class="feat-card">
+        <div class="feat-icon">📈</div>
+        <h3>자동 데이터 수집</h3>
+        <p>주가 시계열 데이터를 자동으로 가져와 엑셀 시트에 정리합니다. 기간은 1개월·3개월·6개월·1년·3년·5년·10년·20년 중 선택 가능합니다.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔢</div>
+        <h3>기술적 지표 자동 산출</h3>
+        <p>SMA · 볼린저밴드 · MACD · RSI · Slow STC 등 주요 지표를 엑셀이 자동 계산합니다. 별도 플러그인 없이 엑셀 VBA 언어로 구현합니다.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤖</div>
+        <h3>AI 멀티 모델 지원</h3>
+        <p>Gemini의 AI 모델 중 원하는 모델을 선택해 분석을 요청할 수 있습니다. 모델별 결과를 비교하는 것도 가능합니다. (추후 확장예정)</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📄</div>
+        <h3>HTML 리포트 자동 저장</h3>
+        <p>분석 결과를 HTML 파일로 저장하고 브라우저로 보여 줍니다. 날짜·종목명·AI 모델 정보가 헤더에 기재됩니다.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🌐</div>
+        <h3>국내·해외 종목 모두 지원</h3>
+        <p>코스피·코스닥·ETF 부터 나스닥·S&amp;P500·개별종목까지 종목 코드를 입력하면 동일하게 분석합니다.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <h3>로컬 실행 · 데이터 외부 미전송</h3>
+        <p>모든 연산은 사용자 PC의 엑셀에서 처리됩니다. API 키와 주가 데이터는 AI 서버 외부로 전송되지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ 분석 지표 ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ 분석 지표 ]</div>
+    <div class="sec-title">종합적인 기술적 지표를 한 번에</div>
+    <div class="sec-desc">
+      단일 지표에 의존하면 오신호가 많습니다. 이 프로그램은 추세·모멘텀·변동성 지표를 동시에
+      AI에 제공하여 입체적인 분석 결과를 도출합니다. 아울러, 지표에 사용되는 기간, 표준편차 등을 사용자가 자유롭게 수정할 수 있습니다.
     </div>
 
-    <div class="footer">
-        © 2026 AI 증권차트분석 | 유행살이<br>
-        Total Visits: <strong><span id="counter">0000</span></strong>
+    <div class="indicator-list">
+      <span class="badge"><span class="badge-dot"></span>SMA 20 · 60 · 120일 이동평균</span>
+      <span class="badge"><span class="badge-dot" style="background:#7c3aed"></span>볼린저밴드 (20일 · ±2σ)</span>
+      <span class="badge"><span class="badge-dot" style="background:#059669"></span>MACD · Signal · Histogram</span>
+      <span class="badge"><span class="badge-dot" style="background:#dc2626"></span>RSI (14일)</span>
+      <span class="badge"><span class="badge-dot" style="background:#d97706"></span>Slow Stochastic (STC)</span>
+      <span class="badge"><span class="badge-dot" style="background:#0891b2"></span>거래량 이동평균</span>
     </div>
-    <script src="scripts.js"></script>
-</div>
 
+    <div style="margin-top:28px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;">
+      <p style="font-size:14px;color:var(--text-sub);line-height:1.85;">
+        <strong style="color:var(--text)">AI 프롬프트 구조</strong><br>
+        프로그램은 CSV 데이터와 함께 아래 구조의 프롬프트를 자동으로 생성하여 AI에 전달합니다.
+      </p>
+      <div style="margin-top:14px;background:#f1f5f9;border-radius:8px;padding:16px 18px;font-size:13px;color:#334155;line-height:1.85;border-left:3px solid var(--blue);">
+        첨부된 시계열 CSV 자료는 <em>[종목명]</em> 지수와 주요 기술적 지표 데이터입니다.<br>
+        데이터에 포함된 이평선(SMA), 볼린저밴드, MACD, RSI, Slow STC 지표들을 종합적으로 분석해서,<br>
+        1) 현재 시장 상황(과매수, 과매도 여부 등)과<br>
+        2) 기술적 지표 관점에서의 유력한 매수 시점 및 전략을<br>
+        <strong>[시장 상황], [지표 분석], [추천 매수 전략 및 시점]</strong> 구조로 직관적으로 설명해주세요.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ 지원 AI 모델 ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ 지원 AI 모델 ]</div>
+    <div class="sec-title">원하는 AI를 골라 분석</div>
+    <div class="sec-desc">
+      프로그램 내 모델 목록에서 선택하면 해당 API로 자동 전환됩니다.
+      현재 무료 플랜이 가능한 gemini의 4개 모델을 지원합니다.
+    </div>
+
+    <table class="ai-table">
+      <thead>
+        <tr>
+          <th>제공사</th>
+          <th>모델명</th>
+          <th>무료 여부</th>
+          <th>특징</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--text)">Google</strong></td>
+          <td>
+            <span class="model-name">gemini-3.5-flash</span>
+            <span class="model-tag">추천</span>
+          </td>
+          <td><span class="model-tag free">무료 플랜</span></td>
+          <td>최신 모델로 속도와 품질 균형 우수. 차트분석에 최적. </td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--text)">Google</strong></td>
+          <td>
+            <span class="model-name">gemini-2.5-flash</span>
+            <span class="model-tag">추천</span>
+          </td>
+          <td><span class="model-tag free">무료 플랜</span></td>
+          <td>속도와 품질 균형 우수. 차트분석에 최적. 현재 기본 모델.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--text)">Google</strong></td>
+          <td><span class="model-name">gemini-3.1-flash-lite</span></td>
+          <td><span class="model-tag free">무료 플랜</span></td>
+          <td>경량 모델. 빠른 응답이 필요할 때 사용.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--text)">Google</strong></td>
+          <td><span class="model-name">gemini-2.5-flash-lite</span></td>
+          <td><span class="model-tag free">무료 플랜</span></td>
+          <td>경량 모델. 빠른 응답이 필요할 때 사용.</td>
+        </tr>
+       </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ════════════════ 무료 API 발급 ════════════════ -->
+<section id="api">
+  <div class="container">
+    <div class="sec-label">[ 무료 API 발급 ]</div>
+    <div class="sec-title">API 키, 5분이면 충분합니다</div>
+    <div class="sec-desc">
+      처음 사용하신다면 무료 플랜이 있는 <strong>Google Gemini API</strong>를 추천합니다.
+      신용카드 없이 구글 계정만으로 발급받을 수 있습니다.
+    </div>
+
+    <div class="api-tabs">
+      <button class="api-tab active" onclick="switchTab(this,'tab-gemini')">🟢 Gemini (추천·무료)</button>
+      <button class="api-tab" onclick="switchTab(this,'tab-openai')">⚫ OpenAI</button>
+      <button class="api-tab" onclick="switchTab(this,'tab-claude')">🟠 Claude</button>
+    </div>
+
+    <!-- Gemini -->
+    <div class="api-panel active" id="tab-gemini">
+      <div class="api-steps">
+        <div class="step">
+          <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>Google AI Studio 접속</h4>
+            <p>구글 계정으로 로그인 후 아래 링크로 이동합니다. 별도 가입 없이 구글 계정 그대로 사용합니다.</p>
+            <a href="https://aistudio.google.com" target="_blank">→ https://aistudio.google.com</a>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>API 키 생성</h4>
+            <p>왼쪽 메뉴에서 <strong>「Get API key」</strong> 클릭 → <strong>「Create API key」</strong> 버튼을 누르면 키가 즉시 생성됩니다.</p>
+            <div class="step-tip">🔑 생성된 키는 <code>AQ</code>로 시작하는 긴 문자열입니다. 복사해 두세요.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>프로그램에 API 키 입력</h4>
+            <p>엑셀 시트의 <strong>C43 셀</strong>에 발급받은 API 키를 붙여넣습니다.</p>
+            <div class="step-tip">💡 모델은 I4 셀 번호로 선택합니다. 기본값은 gemini-2.5-flash입니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>무료 사용 한도</h4>
+            <p>Gemini 무료 플랜의 현재 기준 사용 한도입니다. 개인 학습·테스트 용도로는 충분합니다. 
+              한도 초과시에는 새 프로젝트를 추가하고 해당 프로젝트의 API 키를 새로 생성하여 사용합니다.</p>
+            <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px">
+              <tr style="background:#f1f5f9">
+                <th style="padding:8px 12px;text-align:left;font-weight:500;color:var(--text)">모델</th>
+                <th style="padding:8px 12px;text-align:left;font-weight:500;color:var(--text)">분당 요청</th>
+                <th style="padding:8px 12px;text-align:left;font-weight:500;color:var(--text)">일일 요청</th>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:8px 12px;color:var(--text-sub)">gemini-3.5-flash</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">5회</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">20회</td>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:8px 12px;color:var(--text-sub)">gemini-2.5-flash</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">5회</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">20회</td>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:8px 12px;color:var(--text-sub)">gemini-3.1-flash-lite</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">15회</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">500회</td>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:8px 12px;color:var(--text-sub)">gemini-2.5-flash-lite</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">10회</td>
+                <td style="padding:8px 12px;color:var(--text-sub)">20회</td>
+              </tr>
+            </table>
+            <div class="step-tip warn" style="margin-top:10px">⚠️ 무료 플랜 데이터는 Google AI 모델 개선에 활용될 수 있습니다. 민감한 실거래 데이터 사용 시 유료 플랜을 이용하세요.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OpenAI -->
+    <div class="api-panel" id="tab-openai">
+      <div class="api-steps">
+        <div class="step">
+          <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>OpenAI Platform 가입</h4>
+            <p>아래 링크에서 이메일 또는 구글 계정으로 가입합니다.</p>
+            <a href="https://platform.openai.com" target="_blank">→ https://platform.openai.com</a>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>크레딧 충전</h4>
+            <p>OpenAI API는 완전 무료 플랜이 없습니다. <strong>Billing → Add payment method</strong>에서 결제 수단을 등록하고 최소 $5(약 7,000원)를 충전하면 됩니다.</p>
+            <div class="step-tip">💡 gpt-4o-mini 기준 분석 1회당 약 $0.002 수준으로 매우 저렴합니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>API 키 발급</h4>
+            <p>상단 메뉴 <strong>API keys → Create new secret key</strong>를 클릭합니다. 키는 생성 시 한 번만 표시되므로 반드시 복사해 보관하세요.</p>
+            <div class="step-tip">🔑 발급 키는 <code>sk-</code>로 시작합니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>프로그램에 API 키 입력</h4>
+            <p>엑셀 시트의 <strong>C43 셀</strong>에 붙여넣고, 모델 목록에서 gpt-4o 또는 gpt-4o-mini를 선택합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Claude -->
+    <div class="api-panel" id="tab-claude">
+      <div class="api-steps">
+        <div class="step">
+          <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>Anthropic Console 가입</h4>
+            <p>아래 링크에서 이메일로 계정을 만듭니다. 휴대폰 인증이 필요합니다.</p>
+            <a href="https://console.anthropic.com" target="_blank">→ https://console.anthropic.com</a>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>크레딧 충전</h4>
+            <p>Claude API는 무료 플랜이 없습니다. <strong>Billing → Add credits</strong>에서 최소 $5를 충전합니다.</p>
+            <div class="step-tip">💡 claude-haiku 기준 분석 1회당 약 $0.001 수준으로 매우 저렴합니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>API 키 발급</h4>
+            <p><strong>API Keys → Create Key</strong>를 클릭합니다. 키 이름을 입력하면 즉시 생성됩니다.</p>
+            <div class="step-tip">🔑 발급 키는 <code>sk-ant-</code>로 시작합니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <h4>프로그램에 API 키 입력</h4>
+            <p>엑셀 시트의 <strong>C43 셀</strong>에 붙여넣고, 모델 목록에서 claude 계열 모델을 선택합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ 분석 샘플 ════════════════ -->
+<section id="samples">
+  <div class="container">
+    <div class="sec-label">[ AI 차트분석 샘플 ]</div>
+    <div class="sec-title">실제 AI 분석 리포트를 확인하세요</div>
+    <div class="sec-desc">
+      아래는 이 프로그램으로 생성한 실제 분석 결과입니다. AI 모델 gemini-2.5-flash 기준, 분석 기간 1년 설정 결과입니다.
+    </div>
+    <div class="sample-grid">
+      <a class="sample-card" href="https://rainchj.github.io/sample_kospi.html" target="_blank">
+        <div class="sample-header">
+          <div class="sample-market">KOREA · INDEX</div>
+          <div class="sample-name">KOSPI</div>
+        </div>
+        <div class="sample-body">
+          <p class="sample-desc">정배열 강세장 속 단기 과매수 판단. Slow STC 과매수 해소 후 20일선 부근 분할 매수 전략 제시.</p>
+          <span class="sample-link">리포트 보기 →</span>
+        </div>
+      </a>
+      <a class="sample-card" href="https://rainchj.github.io/sample_코스닥150.html" target="_blank">
+        <div class="sample-header">
+          <div class="sample-market">KOREA · ETF</div>
+          <div class="sample-name">KODEX 코스피150</div>
+        </div>
+        <div class="sample-body">
+          <p class="sample-desc">ETF 기반 지수 분석. 볼린저밴드·RSI·MACD 복합 신호를 통한 단기 매수 시점 포착.</p>
+          <span class="sample-link">리포트 보기 →</span>
+        </div>
+      </a>
+      <a class="sample-card" href="https://rainchj.github.io/sample_nasdaq.html" target="_blank">
+        <div class="sample-header">
+          <div class="sample-market">USA · INDEX</div>
+          <div class="sample-name">NASDAQ</div>
+        </div>
+        <div class="sample-body">
+          <p class="sample-desc">장기 상승 추세 확인, 단기 모멘텀 둔화. MACD 데드크로스 여부와 RSI 흐름 중심 분석.</p>
+          <span class="sample-link">리포트 보기 →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ 사용법 요약 ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ 사용 방법 ]</div>
+    <div class="sec-title">4단계로 분석 완료</div>
+    <div class="sec-desc">엑셀을 열고 버튼 몇 번이면 AI 분석 리포트가 자동 생성됩니다.</div>
+    <div class="api-steps" style="margin-top:28px">
+      <div class="step">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>프로그램 다운로드 및 설치</h4>
+          <p>위 다운로드 링크에서 압축 파일을 내려받고, 비밀번호로 압축을 해제합니다. 엑셀 파일을 열 때 <strong>매크로 실행 허용</strong>을 선택해야 합니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>API 키 입력</h4>
+          <p>엑셀 시트의 <strong>C43 셀</strong>에 발급받은 API 키를 입력합니다. Gemini 무료 키 발급 방법은 위 <a href="#api">무료 API 발급</a> 섹션을 참고하세요.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>분석지표 데이터 생성</h4>
+          <p>분석 종목, 분석 기간, 분석 지표의 설정값 입력후 차트분석을 실행하여 차트와 분석지표를 생성합니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>AI 분석 실행</h4>
+          <p>AI 분석버튼을 클릭하면 CSV 저장 → API 전송 → 리포트 생성 순으로 자동 진행됩니다. 완료 후 HTML 파일이 브라우저로 자동 열립니다. 소요 시간은 약 10~60초입니다.</p>
+          <div class="step-tip">⏱ J4 셀에 실행 경과 시간이 자동 기록됩니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FAQ ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ 자주 묻는 질문 ]</div>
+    <div class="sec-title">궁금한 점을 확인하세요</div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          엑셀 버전 제한이 있나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Windows Excel 2016 이상을 권장합니다. VBA 매크로와 WinHttp, ADODB.Stream, MSXML2 등 Windows COM 객체를 사용하므로 Mac 환경에서는 정상 동작하지 않습니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          압축 해제 비밀번호는 어디서 얻나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">본 프로그램은 지인 대상 제한 배포입니다. 네이버 블로그(U와 함께하는 행복한 세상살이) 또는 유튜브 채널(백점경제학) 댓글로 문의하시면 안내해 드립니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          API 호출 비용이 많이 드나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Gemini 무료 플랜 사용 시 비용이 없습니다(하루 500회 한도). 유료 모델은 분석 1회당 약 $0.001~$0.005 수준으로, 하루 10회 분석 기준 월 $1~2 내외입니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          분석 결과를 투자에 바로 활용해도 되나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">AI 분석은 기술적 지표를 해석한 참고 자료입니다. 투자 결정은 반드시 본인의 판단 하에 이루어져야 하며, 분석 결과에 따른 투자 손익의 책임은 투자자 본인에게 있습니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          해외 종목도 분석할 수 있나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">네. NASDAQ, S&P500, 개별 미국 주식 등 야후파이낸스에서 시세를 제공하는 종목이라면 대부분 분석 가능합니다. 종목 코드(티커)를 목록에 추가하면 됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          API 키가 외부에 노출될 위험은 없나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">API 키는 엑셀 시트 셀에만 저장되며, AI 서버로의 HTTPS 통신에만 사용됩니다. 단, 엑셀 파일을 타인과 공유할 때는 C43 셀의 키를 삭제한 후 공유하세요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ 외부 링크 ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ 관련 채널 ]</div>
+    <div class="sec-title">더 많은 자료를 확인하세요</div>
+    <div class="links-grid" style="margin-top:8px">
+      <a class="ext-link" href="https://blog.naver.com/rainchj" target="_blank">
+        <div class="ext-icon">📝</div>
+        <div>
+          <div class="ext-title">U와 함께하는 행복한 세상살이</div>
+          <div class="ext-sub">네이버 블로그 · 부동산 등 투자정보</div>
+        </div>
+      </a>
+      <a class="ext-link" href="https://www.youtube.com/@rainchj" target="_blank">
+        <div class="ext-icon">▶️</div>
+        <div>
+          <div class="ext-title">백점경제학</div>
+          <div class="ext-sub">유튜브 채널 · 경제 &amp; 투자 강의</div>
+        </div>
+      </a>
+      <a class="ext-link" href="https://rainchj.github.io/index.html" target="_blank">
+        <div class="ext-icon">📁</div>
+        <div>
+          <div class="ext-title">공유 자료 게시판</div>
+          <div class="ext-sub">부동산 등 주월간 자료 공유</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ 푸터 ════════════════ -->
+<footer>
+  <p style="margin-top:6px;font-size:11px;color:#a6a7a6">© 2026 AI 증권차트분석 · 유행살이</p>
+  <p style="margin-top:6px;font-size:11px;color:#a6a7a6">
+    본 소프트웨어는 시계열 및 기술적 지표분석 데이터를 AI에서 활용할 수 있도록 학습용으로 개발한 프로그램으로 지인 등 일부에게만 공개합니다.<br>
+    분석 결과는 투자 참고 자료이며, 투자 손익의 책임은 투자자 본인에게 있습니다.
+  </p>
+</footer>
+
+<script>
+function switchTab(btn, targetId) {
+  document.querySelectorAll('.api-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.api-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(targetId).classList.add('active');
+}
+function toggleFaq(el) {
+  el.closest('.faq-item').classList.toggle('open');
+}
+</script>
 </body>
 </html>
