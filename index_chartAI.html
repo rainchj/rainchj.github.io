@@ -126,16 +126,15 @@ section + section { border-top: 1px solid var(--border); }
 
 /* ── 스크린샷 ── */
 .screenshot-wrap {
-  background: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 20px;
-  text-align: center;
-  margin-bottom: 14px;
-  overflow: hidden;
+  padding: 16px;
 }
 .screenshot-wrap img {
   max-width: 100%;
   border-radius: 8px;
+  margin-top: 5px;
   cursor: zoom-in;
   transition: transform .3s;
 }
@@ -478,6 +477,182 @@ footer a:hover { text-decoration: underline; }
   .sec-title { font-size: 19px; }
   .ai-table th, .ai-table td { padding: 10px 12px; font-size: 12.5px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   줌 버튼 상호작용 스타일 (마우스 vs 터치 분리)
+   ═════════════════════════════════════════════════════════════════════ */
+
+/* 1. 마우스 기기 (데스크톱/노트북) */
+@media (hover: hover) and (pointer: fine) {
+    .zoom-btn:hover,
+    .close-modal:hover {
+        background: #ffffff;
+        border-color: #ffffff;
+        transform: scale(1.05);
+        color: #333333;
+    }
+
+    .zoom-btn:active,
+    .close-modal:active {
+        transform: scale(0.95);
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* 2. 터치 기기 (모바일/태블릿) */
+@media (hover: none), (pointer: coarse) {
+    /* 터치 기기에서 점착 호버 효과 방지 */
+    .zoom-btn:hover,
+    .close-modal:hover {
+        background: rgba(0, 0, 0, 0.5) !important;
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        color: white !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    /* 명시적 터치 피드백 (활성 상태) */
+    .zoom-btn:active,
+    .close-modal:active {
+        background: #ffffff !important;
+        color: #333333 !important;
+        border-color: #ffffff !important;
+        transform: scale(0.95) !important;
+        transition: none !important;
+    }
+}
+
+.zoom-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ── 모달 스타일 ── */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  overflow: hidden;
+}
+.image-modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.modal-image-container {
+  position: relative;
+  touch-action: none;
+  cursor: grab;
+}
+.modal-image-container.dragging {
+  cursor: grabbing;
+}
+.modal-image {
+  max-width: none;
+  max-height: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s;
+}
+.close-modal:hover,
+.close-modal:focus {
+  text-decoration: none;
+}
+.zoom-controls {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10000;
+}
+.zoom-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .zoom-btn:hover,
+  .close-modal:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: scale(1.05);
+    color: #333333;
+  }
+  .zoom-btn:active,
+  .close-modal:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .zoom-btn:hover,
+  .close-modal:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .zoom-btn:active,
+  .close-modal:active {
+    background: #ffffff !important;
+    color: #333333 !important;
+    border-color: #ffffff !important;
+    transform: scale(0.95) !important;
+    transition: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -486,15 +661,15 @@ footer a:hover { text-decoration: underline; }
 <header>
   <div class="header-eyebrow">Excel VBA와 AI API를 활용한</div>
   <h1>AI 증권차트분석 프로그램</h1>
-  <p>엑셀에서 주가 데이터를 수집하고 기술적 지표를 산출한 뒤,<br>
+  <p>엑셀에서 주가 데이터를 수집하고 기술적 지표를 산출한 뒤,
   Claude · Gemini · ChatGPT에게 분석을 맡겨 리포트를 자동 생성합니다.</p>
   <div class="header-btns">
     <a class="btn-primary" href="https://drive.google.com/file/d/1z8U22TC-lZV-huua-Ww7_sNU2iSye5MD/view?usp=sharing" target="_blank">
       📥 프로그램 다운로드
     </a>
-    <a class="btn-secondary" href="#samples">📊 분석 샘플 보기</a>
+    <a class="btn-secondary" href="#samples">📊 AI 분석 샘플보기</a>
   </div>
-  <p class="header-notice">최종 수정 : 2026.06.17 &nbsp;|&nbsp; 압축 해제 비밀번호 필요 &nbsp;|&nbsp; 지인 한정 배포</p>
+  <p class="header-notice">최종수정: 26.06.17 | 압축해제 비번필요</p>
 </header>
 
 <!-- ════════════════ 프로그램 소개 ════════════════ -->
@@ -510,9 +685,10 @@ footer a:hover { text-decoration: underline; }
     <div class="screenshot-wrap">
       <img src="https://rainchj.github.io/imgchartAI.png"
            alt="AI 증권차트분석 프로그램 화면"
-           title="마우스 휠 또는 핀치줌으로 확대/축소 가능">
+           title="클릭하면 확대/축소 모달로 볼 수 있습니다"
+           data-zoomable>
     </div>
-    <p class="screenshot-caption">▲ 메인 화면 — 종목 선택 · 기간 설정 · AI 모델 선택 후 버튼 한 번으로 분석 완료</p>
+    <p class="screenshot-caption">▲ 메인화면 — 종목선택 · 기간설정 · AI모델 선택 후 버튼 한 번으로 분석 완료</p>
 
     <div class="features-grid" style="margin-top:32px">
       <div class="feat-card">
@@ -575,11 +751,10 @@ footer a:hover { text-decoration: underline; }
         프로그램은 CSV 데이터와 함께 아래 구조의 프롬프트를 자동으로 생성하여 AI에 전달합니다.
       </p>
       <div style="margin-top:14px;background:#f1f5f9;border-radius:8px;padding:16px 18px;font-size:13px;color:#334155;line-height:1.85;border-left:3px solid var(--blue);">
-        첨부된 시계열 CSV 자료는 <em>[종목명]</em> 지수와 주요 기술적 지표 데이터입니다.<br>
-        데이터에 포함된 주가, 거래량, 이평선(SMA), 볼린저밴드, MACD, RSI, Slow STC, Z-score 지표들을 종합적으로 분석해서,<br>
-        1) 현재 시장 상황(과매수, 과매도 여부 등)과<br>
-        2) 기술적 지표 관점에서의 유력한 매수 시점 및 전략을<br>
-        [시장 상황], [지표 분석], [추천 매수 전략 및 시점] 구조로 직관적으로 설명해주세요.
+        첨부된 시계열 CSV 자료는 <em>[종목명]</em> 지수와 주요 기술적 지표 데이터입니다.
+        데이터에 포함된 주가, 거래량, 이평선(SMA), 볼린저밴드, MACD, RSI, Slow STC, Z-score 지표들을 종합적으로 분석해서,<br><br>
+        1) 현재 시장 상황(과매수, 과매도 여부 등)과 2) 기술적 지표 관점에서의 유력한 매수 시점 및 전략을 
+        [시장 상황], [지표 분석], [추천 매수 전략 및 시점] 구조로 직관적으로 설명해주십시요.
       </div>
     </div>
   </div>
@@ -600,7 +775,7 @@ footer a:hover { text-decoration: underline; }
         <tr>
           <th>제공사</th>
           <th>모델명</th>
-          <th>무료 여부</th>
+          <th>무료</th>
           <th>특징</th>
         </tr>
       </thead>
@@ -611,8 +786,8 @@ footer a:hover { text-decoration: underline; }
             <span class="model-name">gemini-3.5-flash</span>
             <span class="model-tag">추천</span>
           </td>
-          <td><span class="model-tag free">무료 플랜</span></td>
-          <td>최신 모델로 속도와 품질 균형 우수. 차트분석에 최적. </td>
+          <td><span class="model-tag free">무료</span></td>
+          <td>최신 모델로 속도와 품질 우수. 차트분석에 최적</td>
         </tr>
         <tr>
           <td><strong style="color:var(--text)">Google</strong></td>
@@ -620,19 +795,19 @@ footer a:hover { text-decoration: underline; }
             <span class="model-name">gemini-2.5-flash</span>
             <span class="model-tag">추천</span>
           </td>
-          <td><span class="model-tag free">무료 플랜</span></td>
-          <td>속도와 품질 균형 우수. 차트분석에 최적. 현재 기본 모델.</td>
+          <td><span class="model-tag free">무료</span></td>
+          <td>속도와 품질 우수. 차트분석에 최적</td>
         </tr>
         <tr>
           <td><strong style="color:var(--text)">Google</strong></td>
           <td><span class="model-name">gemini-3.1-flash-lite</span></td>
-          <td><span class="model-tag free">무료 플랜</span></td>
+          <td><span class="model-tag free">무료</span></td>
           <td>경량 모델. 빠른 응답이 필요할 때 사용.</td>
         </tr>
         <tr>
           <td><strong style="color:var(--text)">Google</strong></td>
           <td><span class="model-name">gemini-2.5-flash-lite</span></td>
-          <td><span class="model-tag free">무료 플랜</span></td>
+          <td><span class="model-tag free">무료</span></td>
           <td>경량 모델. 빠른 응답이 필요할 때 사용.</td>
         </tr>
        </tbody>
@@ -808,34 +983,22 @@ footer a:hover { text-decoration: underline; }
       아래는 이 프로그램으로 생성한 실제 분석 결과입니다. AI 모델 gemini-2.5-flash 기준, 분석 기간 1년 설정 결과입니다.
     </div>
     <div class="sample-grid">
-      <a class="sample-card" href="https://rainchj.github.io/sample_kospi.html" target="_blank">
+      <a class="sample-card" href="https://rainchj.github.io/sample_KOSPI.html" target="_blank">
         <div class="sample-header">
           <div class="sample-market">KOREA · INDEX</div>
-          <div class="sample-name">KOSPI</div>
-        </div>
-        <div class="sample-body">
-          <p class="sample-desc">정배열 강세장 속 단기 과매수 판단. Slow STC 과매수 해소 후 20일선 부근 분할 매수 전략 제시.</p>
-          <span class="sample-link">리포트 보기 →</span>
+          <div class="sample-name">KOSPI 기술적분석</div>
         </div>
       </a>
-      <a class="sample-card" href="https://rainchj.github.io/sample_코스닥150.html" target="_blank">
-        <div class="sample-header">
-          <div class="sample-market">KOREA · ETF</div>
-          <div class="sample-name">KODEX 코스피150</div>
-        </div>
-        <div class="sample-body">
-          <p class="sample-desc">ETF 기반 지수 분석. 볼린저밴드·RSI·MACD 복합 신호를 통한 단기 매수 시점 포착.</p>
-          <span class="sample-link">리포트 보기 →</span>
-        </div>
-      </a>
-      <a class="sample-card" href="https://rainchj.github.io/sample_nasdaq.html" target="_blank">
+      <a class="sample-card" href="https://rainchj.github.io/sample_NASDAQ.html" target="_blank">
         <div class="sample-header">
           <div class="sample-market">USA · INDEX</div>
-          <div class="sample-name">NASDAQ</div>
+          <div class="sample-name">NASDAQ 기술적분석</div>
         </div>
-        <div class="sample-body">
-          <p class="sample-desc">장기 상승 추세 확인, 단기 모멘텀 둔화. MACD 데드크로스 여부와 RSI 흐름 중심 분석.</p>
-          <span class="sample-link">리포트 보기 →</span>
+      </a>
+      <a class="sample-card" href="https://rainchj.github.io/sample_ACE10y.html" target="_blank">
+        <div class="sample-header">
+          <div class="sample-market">KOREA · ETF</div>
+          <div class="sample-name">ACE국고채10년 기술적분석</div>
         </div>
       </a>
     </div>
@@ -861,8 +1024,7 @@ footer a:hover { text-decoration: underline; }
                <li><strong>파일 → 옵션 → 보안 센터 → 보안 센터 설정</strong></li>
                <li><strong>신뢰할 수 있는 위치</strong></li>
                <li><strong>새 위치 추가</strong></li>
-               <li>예: <code>"C:\Users\Username\Documents"</code></li>
-               <li>해당 폴더에 <code>.xlsm</code> 파일 저장 후 실행. 이 위치의 매크로는 경고 없이 실행됩니다.</li>
+               <li>위치 추가한 폴더에 <code>.xlsm</code> 파일 저장 후 실행. 이 위치의 매크로는 경고 없이 실행됩니다.</li>
              </ol>
            </div>
         </div>
@@ -980,23 +1142,47 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ════════════════ 푸터 ════════════════ -->
 <footer>
-  <p style="margin-top:6px;font-size:11px;color:#64748b">© 2026 AI 증권차트분석 · 유행살이</p>
-  <p style="margin-top:6px;font-size:11px;color:#64748b">
-    본 소프트웨어는 시계열 및 기술적 지표분석 데이터를 AI에서 활용할 수 있도록 학습용으로 개발한 프로그램으로 지인 등 일부에게만 공개합니다.<br>
-    분석 결과는 투자 참고 자료이며, 투자 손익의 책임은 투자자 본인에게 있습니다.
+  <p style="margin-top:6px;font-size:11px;color:#64748b">© 2026 AI증권차트분석 | 유행살이<br>
+    Total Visits: <strong><span id="counter">0000</span></strong>
   </p>
 </footer>
 
+<script src="scripts.js"></script>
 <script>
+// 모달 초기화 - 이미 DOM이 로드된 상태에서 실행됨
+if (document.readyState !== 'loading') {
+  const zoomableImages = document.querySelectorAll('img[data-zoomable]');
+  zoomableImages.forEach(img => {
+    img.addEventListener('click', function () {
+      if (window.openImageModal) {
+        window.openImageModal(this.src);
+      }
+    });
+  });
+} else {
+  document.addEventListener('DOMContentLoaded', function () {
+    const zoomableImages = document.querySelectorAll('img[data-zoomable]');
+    zoomableImages.forEach(img => {
+      img.addEventListener('click', function () {
+        if (window.openImageModal) {
+          window.openImageModal(this.src);
+        }
+      });
+    });
+  });
+}
+
 function switchTab(btn, targetId) {
   document.querySelectorAll('.api-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.api-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById(targetId).classList.add('active');
 }
+
 function toggleFaq(el) {
   el.closest('.faq-item').classList.toggle('open');
 }
 </script>
+
 </body>
 </html>
