@@ -661,15 +661,15 @@ footer a:hover { text-decoration: underline; }
 <header>
   <div class="header-eyebrow">Excel VBA와 AI API를 활용한</div>
   <h1>AI 증권차트분석 프로그램</h1>
-  <p>엑셀에서 주가 데이터를 수집하고 기술적 지표를 산출한 뒤,
-  Claude · Gemini · ChatGPT에게 분석을 맡겨 리포트를 자동 생성합니다.</p>
+  <p>엑셀에서 주가 데이터를 수집하여 주요 기술적 지표, 과매도(과매수)시 historical 반전횟수와 확률를 산출한 뒤,
+     Gemini에게 분석을 맡겨 기술적지표 분석, 반전확률 분석 리포트를 자동 생성합니다.</p>
   <div class="header-btns">
     <a class="btn-primary" href="https://drive.google.com/file/d/1cWJ4Fwf048zYk9363fA_x64j59SnjzvC/view?usp=sharing" target="_blank">
       📥 프로그램 다운로드
     </a>
     <a class="btn-secondary" href="#samples">📊 AI 분석 샘플보기</a>
   </div>
-  <p class="header-notice">최종 수정일: 26.06.19 | 압축해제 비번 필요</p>
+  <p class="header-notice">최종 수정일: 26.06.26 | 압축해제 비번 필요</p>
 </header>
 
 <!-- ════════════════ 프로그램 소개 ════════════════ -->
@@ -678,8 +678,9 @@ footer a:hover { text-decoration: underline; }
     <div class="sec-label">[ 프로그램 소개 ]</div>
     <div class="sec-title">차트 분석의 번거로움을 AI에게</div>
     <div class="sec-desc">
-      기술적 분석에는 다양한 지표를 동시에 해석하는 경험이 필요합니다. 이 프로그램은 엑셀 VBA로 주가 시계열·기술적 지표 CSV를 자동 생성하고,
-      AI API에 전송해 <strong>[시장 상황] · [지표 분석] · [매수 전략]</strong> 구조의 리포트를 즉시 만들어 줍니다.
+      기술적 분석에는 다양한 지표를 동시에 해석하는 경험이 필요합니다. 이 프로그램은 엑셀 VBA로 주가 시계열·기술적 지표를 자동 생성하고,
+      AI(Gemini) API에 전송해 <strong>[시장 상황] · [지표 분석] · [매수 전략]</strong> 구조의 리포트를 즉시 만들어 줍니다.
+      또한 과매도·과매수 신호가 발생할 때 <strong>기간별 상승·하락 전환 확률</strong>을 자동으로 통계 분석하고 AI 해석 리포트까지 함께 생성합니다.
     </div>
 
     <div class="screenshot-wrap">
@@ -702,6 +703,16 @@ footer a:hover { text-decoration: underline; }
         <p>SMA · 볼린저밴드 · MACD · RSI · Slow STC 등 주요 지표를 엑셀이 자동 계산합니다. 별도 플러그인 없이 엑셀 VBA 언어로 구현합니다.</p>
       </div>
       <div class="feat-card">
+        <div class="feat-icon">🚨</div>
+        <h3>과매도·과매수 자동 감지</h3>
+        <p>BB·MACD·RSI·STC·Z-score 지표가 임계값을 넘으면 자동으로 신호를 표시합니다. 신호 발생 빈도와 기간별 상승·하락 전환 확률도 함께 출력합니다.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3>시그널 전환 확률 분석</h3>
+        <p>과매도·과매수 신호 발생일 기준으로 1·5·10·20·30 거래일 후 주가 전환 빈도와 확률을 자동 집계합니다. 개별 지표 및 복합 지표 단위로 제공합니다.</p>
+      </div>
+      <div class="feat-card">
         <div class="feat-icon">🤖</div>
         <h3>AI 멀티 모델 지원</h3>
         <p>Gemini의 AI 모델 중 원하는 모델을 선택해 분석을 요청할 수 있습니다. 모델별 결과를 비교하는 것도 가능합니다.</p>
@@ -720,6 +731,11 @@ footer a:hover { text-decoration: underline; }
         <div class="feat-icon">🔒</div>
         <h3>로컬 실행 · 데이터 외부 미전송</h3>
         <p>모든 연산은 사용자 PC의 엑셀에서 처리됩니다. API 키와 주가 데이터는 AI 서버 외부로 전송되지 않습니다.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚙️</div>
+        <h3>지표 파라미터 자유 설정</h3>
+        <p>이동평균 기간, 볼린저밴드 표준편차 배수, RSI 임계값 등 각 지표의 계산 기준을 사용자가 직접 변경할 수 있습니다. 시장 특성에 맞게 세밀하게 최적화가 가능합니다.</p>
       </div>
     </div>
   </div>
@@ -746,15 +762,219 @@ footer a:hover { text-decoration: underline; }
     </div>
 
     <div style="margin-top:28px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;">
-      <p style="font-size:14px;color:var(--text-sub);line-height:1.85;">
-        <strong style="color:var(--text)">AI 프롬프트 구조</strong><br>
-        프로그램은 CSV 데이터와 함께 아래 구조의 프롬프트를 자동으로 생성하여 AI에 전달합니다.
+      <p style="font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:8px">
+        <strong style="color:var(--text)">지표별 과매도 · 과매수 자동 감지</strong><br>
+        아래 임계값을 넘으면 차트에 자동으로 신호를 표시하고, 신호 발생 횟수와 기간별 전환 확률을 함께 출력합니다.
       </p>
-      <div style="margin-top:14px;background:#f1f5f9;border-radius:8px;padding:16px 18px;font-size:13px;color:#334155;line-height:1.85;border-left:3px solid var(--blue);">
-        첨부된 시계열 CSV 자료는 <em>[종목명]</em> 지수와 주요 기술적 지표 데이터입니다.
-        데이터에 포함된 주가, 거래량, 이평선(SMA), 볼린저밴드, MACD, RSI, Slow STC, Z-score 지표들을 종합적으로 분석해서,<br><br>
-        1) 현재 시장 상황(과매수, 과매도 여부 등)과 2) 기술적 지표 관점에서의 유력한 매수 시점 및 전략을 
-        [시장 상황], [지표 분석], [추천 매수 전략 및 시점] 구조로 직관적으로 설명해주십시요.
+      <div style="overflow-x:auto;margin-top:14px;margin-bottom:16px">
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <tr style="background:#f8fafc">
+            <th style="padding:9px 14px;text-align:left;font-weight:600;color:var(--text);border-bottom:1px solid var(--border)">지표</th>
+            <th style="padding:9px 14px;text-align:center;font-weight:600;color:#dc2626;border-bottom:1px solid var(--border)">과매도 임계값</th>
+            <th style="padding:9px 14px;text-align:center;font-weight:600;color:#f59e0b;border-bottom:1px solid var(--border)">과매수 임계값</th>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:9px 14px;color:var(--text)"><strong>볼린저밴드</strong></td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">종가 ≤ BB Lower</td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">종가 ≥ BB Upper</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:9px 14px;color:var(--text)"><strong>MACD</strong></td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">MACD &lt; 0 &amp; 하향</td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">MACD &gt; 0 &amp; 상향</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:9px 14px;color:var(--text)"><strong>RSI</strong></td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">RSI ≤ 30</td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">RSI ≥ 70</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:9px 14px;color:var(--text)"><strong>Slow STC</strong></td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">STC K ≤ 20</td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">STC K ≥ 80</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px;color:var(--text)"><strong>Z-score</strong></td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">Z-score ≤ −2.0</td>
+            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">Z-score ≥ +2.0</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ 과매도·과매수 시그널 분석 ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ 과매도 · 과매수 시그널 분석 ]</div>
+    <div class="sec-title">신호 발생 후 주가 전환 확률을 자동 계산</div>
+    <div class="sec-desc">
+      과매도·과매수 신호가 발생한 날을 기준으로, <strong>1·5·10·20·30 거래일</strong> 후 주가가 실제로 반전했는지 통계적으로 분석합니다.
+      단순 지표 해석을 넘어 "이 신호가 과거에 얼마나 맞았는가"를 수치로 확인할 수 있습니다.
+    </div>
+
+    <!-- 판별 기준표 -->
+    <div style="overflow-x:auto;margin-bottom:28px">
+      <table class="ai-table">
+        <thead>
+          <tr>
+            <th>지표</th>
+            <th style="color:#ef4444">과매도 기준</th>
+            <th style="color:#f59e0b">과매수 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--text)">볼린저밴드 (BB)</strong></td>
+            <td>종가 ≤ BB Lower</td>
+            <td>종가 ≥ BB Upper</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">MACD</strong></td>
+            <td>MACD &lt; 0 AND 하향 교차</td>
+            <td>MACD &gt; 0 AND 상향 교차</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">RSI</strong></td>
+            <td>RSI ≤ 30</td>
+            <td>RSI ≥ 70</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">Slow STC</strong></td>
+            <td>STC K ≤ 20</td>
+            <td>STC K ≥ 80</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">Z-score</strong></td>
+            <td>Z-score ≤ −2.0</td>
+            <td>Z-score ≥ +2.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 데이터 처리 방식 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px">
+        <div style="font-size:20px;margin-bottom:10px">🔁</div>
+        <h4 style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">중복 신호 처리 — 두 가지 방식 동시 적용</h4>
+        <p style="font-size:13.5px;color:var(--text-sub);line-height:1.8">
+          <strong>제거 방식</strong>: 연속으로 신호가 발생한 경우 첫 신호 발생일만 분석 대상에 포함.<br>
+          <strong>포함 방식</strong>: 연속 신호를 포함한 모든 신호 발생일을 분석 대상에 포함.<br>
+          두 방식을 비교하면 신호의 독립성·신뢰도를 함께 평가할 수 있습니다.
+        </p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px">
+        <div style="font-size:20px;margin-bottom:10px">📐</div>
+        <h4 style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">전환 판별 기준</h4>
+        <p style="font-size:13.5px;color:var(--text-sub);line-height:1.8">
+          <strong>상승 전환(과매도)</strong>: 분석 기간 내 종가가 신호 발생일 종가보다 높은 날이 단 하루라도 존재하면 상승으로 판정.<br>
+          <strong>하락 전환(과매수)</strong>: 분석 기간 내 종가가 신호 발생일 종가보다 낮은 날이 단 하루라도 존재하면 하락으로 판정.
+        </p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px">
+        <div style="font-size:20px;margin-bottom:10px">🧮</div>
+        <h4 style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">개별 + 복합 지표 분석</h4>
+        <p style="font-size:13.5px;color:var(--text-sub);line-height:1.8">
+          BB·MACD·RSI·STC·Z-score 각각의 단독 신호뿐 아니라, 여러 지표가 동시에 과매도·과매수를 가리키는 <strong>복합 신호</strong>도 별도로 분류해 확률을 산출합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ AI 분석 프롬프트 구조 ════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">[ AI 분석 구조 ]</div>
+    <div class="sec-title">3가지 분석을 자동으로 수행합니다</div>
+    <div class="sec-desc">
+      차트 분석 버튼을 누르면 아래 3가지 AI 분석이 실행됩니다. 시계열 및 빈도/확율 데이터를 각각 첨부하여 AI에 전달하며,
+      결과는 HTML 리포트 한 파일에 통합 출력됩니다.
+    </div>
+
+    <!-- 프롬프트 1 -->
+    <div style="margin-bottom:20px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+      <div style="background:var(--navy);padding:14px 20px;display:flex;align-items:center;gap:12px">
+        <span style="background:#2563eb;color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px">분석 ①</span>
+        <span style="color:#e2e8f0;font-size:15px;font-weight:500">기술적 지표 AI 분석보고서</span>
+      </div>
+      <div style="padding:20px 22px">
+        <p style="font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:14px">
+          1년~20년 시계열 및 기술적 지표 데이터를 첨부하여 AI에 전달합니다.
+          주가·거래량·SMA·볼린저밴드·Z-score·MACD·RSI·Slow STC를 종합 분석하여 아래 3가지 구조로 보고서를 생성합니다.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:14px">
+          <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:12px 14px;font-size:13px;color:#0c4a6e;text-align:center;font-weight:500">📌 시장 상황<br><span style="font-weight:400;font-size:12px">과매수 · 과매도 여부</span></div>
+          <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:12px 14px;font-size:13px;color:#0c4a6e;text-align:center;font-weight:500">🔍 지표 분석<br><span style="font-weight:400;font-size:12px">개별 지표 해석</span></div>
+          <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:12px 14px;font-size:13px;color:#0c4a6e;text-align:center;font-weight:500">💡 매수 전략<br><span style="font-weight:400;font-size:12px">추천 매수 시점 및 전략</span></div>
+        </div>
+        <div style="background:#f1f5f9;border-radius:8px;padding:14px 16px;font-size:12.5px;color:#475569;line-height:1.85;border-left:3px solid var(--blue)">
+          <strong>데이터:</strong> 시계열 (주가, 거래량, SMA, BB, Z-score, MACD, RSI, Slow STC)<br>
+          <strong>분석 기간:</strong> 사용자 설정 (1개월 ~ 20년)<br>
+          <strong>출력 구조:</strong> [시장 상황] → [지표 분석] → [추천 매수 전략 및 시점]
+        </div>
+      </div>
+    </div>
+
+    <!-- 프롬프트 2 -->
+    <div style="margin-bottom:20px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+      <div style="background:#064e3b;padding:14px 20px;display:flex;align-items:center;gap:12px">
+        <span style="background:#059669;color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px">분석 ②</span>
+        <span style="color:#d1fae5;font-size:15px;font-weight:500">과매도 시 AI 반전 확률 분석</span>
+      </div>
+      <div style="padding:20px 22px">
+        <p style="font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:14px">
+          과매도 시그널 분석 결과를 AI에 전달하여, 지표별·기간별 상승 전환 확률을 핵심 요약합니다.
+          개별 지표 및 복합 지표 단위로 상승 전환 확률이 정리된 보고서가 생성됩니다.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:14px">
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:11px 14px;font-size:13px;color:#14532d">
+            <strong>분석 대상:</strong> 과매도 신호 발생일 기준<br>1·5·10·20·30 거래일 후 상승 전환 확률
+          </div>
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:11px 14px;font-size:13px;color:#14532d">
+            <strong>중복 신호:</strong> 제거 방식 + 포함 방식<br>두 가지 모두 분석하여 비교
+          </div>
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:11px 14px;font-size:13px;color:#14532d">
+            <strong>상승 판정:</strong> 기간 내 종가가 신호 발생일 종가보다 높은 날 1일 이상 존재
+          </div>
+        </div>
+        <div style="background:#f1f5f9;border-radius:8px;padding:14px 16px;font-size:12.5px;color:#475569;line-height:1.85;border-left:3px solid #059669">
+          <strong>과매도 기준:</strong> BB ≤ Lower | MACD &lt; 0 &amp; 하향 | RSI ≤ 30 | STC ≤ 20 | Z-score ≤ −2.0<br>
+          <strong>데이터 형식:</strong> 지표별 신호 발생일 · 빈도 · 기간별 전환 횟수 · 확률<br>
+          <strong>보고서 구성:</strong> 질의 요약 → 지표별 핵심 상승 전환 확률 정리
+        </div>
+      </div>
+    </div>
+
+    <!-- 프롬프트 3 -->
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+      <div style="background:#7c1d1d;padding:14px 20px;display:flex;align-items:center;gap:12px">
+        <span style="background:#dc2626;color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px">분석 ③</span>
+        <span style="color:#fee2e2;font-size:15px;font-weight:500">과매수 시 AI 반전 확률 분석</span>
+      </div>
+      <div style="padding:20px 22px">
+        <p style="font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:14px">
+          과매수 시그널 분석 결과를 AI에 전달하여, 지표별·기간별 하락 전환 확률을 핵심 요약합니다.
+          과매수 구간에서 실제로 조정이 발생한 빈도와 확률을 통계적으로 확인할 수 있습니다.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:14px">
+          <div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:11px 14px;font-size:13px;color:#7f1d1d">
+            <strong>분석 대상:</strong> 과매수 신호 발생일 기준<br>1·5·10·20·30 거래일 후 하락 전환 확률
+          </div>
+          <div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:11px 14px;font-size:13px;color:#7f1d1d">
+            <strong>중복 신호:</strong> 제거 방식 + 포함 방식<br>두 가지 모두 분석하여 비교
+          </div>
+          <div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:11px 14px;font-size:13px;color:#7f1d1d">
+            <strong>하락 판정:</strong> 기간 내 종가가 신호 발생일 종가보다 낮은 날 1일 이상 존재
+          </div>
+        </div>
+        <div style="background:#f1f5f9;border-radius:8px;padding:14px 16px;font-size:12.5px;color:#475569;line-height:1.85;border-left:3px solid #dc2626">
+          <strong>과매수 기준:</strong> BB ≥ Upper | MACD &gt; 0 &amp; 상향 | RSI ≥ 70 | STC ≥ 80 | Z-score ≥ +2.0<br>
+          <strong>데이터 형식:</strong> 지표별 신호 발생일 · 빈도 · 기간별 전환 횟수 · 확률<br>
+          <strong>보고서 구성:</strong> 질의 요약 → 지표별 핵심 하락 전환 확률 정리
+        </div>
       </div>
     </div>
   </div>
@@ -1047,9 +1267,13 @@ footer a:hover { text-decoration: underline; }
         <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
         <div class="step-body">
           <h4>AI 분석 실행</h4>
-          <p>AI 분석버튼을 클릭하면 CSV 저장 → API 전송 → 리포트 생성 순으로 자동 진행됩니다. 
-            완료 후 HTML 파일이 브라우저로 자동 열립니다. 소요 시간은 분석 기간, AI 모델, PC 성능 등에 따라 약 10초~3분 입니다.</p>
-          <div class="step-tip">⏱ J4 셀에 실행 경과 시간이 자동 기록됩니다.</div>
+          <p>AI 분석 버튼을 클릭하면 아래 보고서를 브라우저로 확인할 수 있습니다.</p>
+          <div style="margin-top:10px;background:#f8fafc;border-left:3px solid #c7e3ff;border-radius:8px;padding:12px 14px;font-size:13px;color:#334155;line-height:1.9">
+            <strong>① 기술적 지표 분석</strong> — 시계열 CSV → AI 전송 → [시장 상황 / 지표 분석 / 매수 전략] 리포트 생성<br>
+            <strong>② 과매도 반전 확률 분석</strong> — 과매도 시그널 JSON → AI 전송 → 기간별 상승 전환 확률 보고서 생성<br>
+            <strong>③ 과매수 반전 확률 분석</strong> — 과매수 시그널 JSON → AI 전송 → 기간별 하락 전환 확률 보고서 생성<br>
+          </div>
+          <p style="margin-top:10px;font-size:14px;color:var(--text-sub)">소요 시간은 분석 기간, AI 모델, PC 성능 등에 따라 약 10초~3분 입니다.</p>
         </div>
       </div>
     </div>
@@ -1063,6 +1287,30 @@ footer a:hover { text-decoration: underline; }
     <div class="sec-title">궁금한 점을 확인하세요</div>
 
     <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          과매도·과매수 시그널 분석은 어떻게 활용하나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">신호 발생일 이후 실제로 주가가 반전한 비율(빈도·확률)을 기간별로 보여줍니다. 예를 들어 "RSI 30 이하에서 10 거래일 내 상승 전환 확률이 85%였다"는 식의 과거 통계를 확인해, 현재 신호의 신뢰도를 스스로 판단하는 데 활용할 수 있습니다. 단, 과거 확률이 미래를 보장하지는 않으므로 참고 지표로만 사용하세요.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          중복 신호 제거 방식과 포함 방식의 차이는 무엇인가요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <strong>제거 방식</strong>은 연속으로 신호가 발생한 경우 첫 번째 신호 날만 분석에 포함합니다. 독립적인 과매도·과매수 구간을 기준으로 통계를 내므로 중복 계산을 방지하고 신호의 순수한 신뢰도를 측정할 때 적합합니다.<br><br>
+          <strong>포함 방식</strong>은 연속 신호를 포함해 모든 신호 발생일을 분석에 포함합니다. 신호 발생 빈도가 높아 통계 표본이 늘어나지만, 연속 구간이 결과에 더 많이 반영됩니다. 두 방식을 비교해 결과가 일치하면 신뢰도가 높은 신호로 볼 수 있습니다.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          AI 분석이 3회 실행된다면 API 요청도 3배 소모되나요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">맞습니다. 기술적 지표 분석(①), 과매도 반전 확률(②), 과매수 반전 확률(③) 각각 별도 API 요청이 발생합니다. Gemini 무료 플랜 기준 하루 20회(일부 모델) 한도이므로, 하루에 약 6~7회 분석이 가능합니다. 한도 초과 시 다른 API 키를 새로 발급해 사용하거나, 일일 한도가 높은 경량 모델(gemini-flash-lite 등)을 선택하세요.</div>
+      </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           엑셀 버전 제한이 있나요?
