@@ -706,7 +706,7 @@ footer a:hover { text-decoration: underline; }
       <div class="feat-card">
         <div class="feat-icon">🚨</div>
         <h3>과매도·과매수 자동 감지</h3>
-        <p>BB·MACD·RSI·STC·Z-score 지표가 임계값을 넘으면 자동으로 신호를 표시합니다. 신호 발생 빈도와 기간별 상승·하락 전환 확률도 함께 출력합니다.</p>
+        <p>BB·RSI·STC·Z-score 지표가 임계값을 넘으면 자동으로 신호를 표시합니다. 신호 발생 빈도와 기간별 상승·하락 전환 확률도 함께 출력합니다.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">📊</div>
@@ -780,11 +780,6 @@ footer a:hover { text-decoration: underline; }
             <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">종가 ≥ BB Upper</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border)">
-            <td style="padding:9px 14px;color:var(--text)"><strong>MACD</strong></td>
-            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">MACD &lt; 0 &amp; 하향</td>
-            <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">MACD &gt; 0 &amp; 상향</td>
-          </tr>
-          <tr style="border-bottom:1px solid var(--border)">
             <td style="padding:9px 14px;color:var(--text)"><strong>RSI</strong></td>
             <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">RSI ≤ 30</td>
             <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">RSI ≥ 70</td>
@@ -855,11 +850,6 @@ footer a:hover { text-decoration: underline; }
             <td><strong style="color:var(--text)">볼린저밴드 (BB)</strong></td>
             <td>종가 ≤ BB Lower</td>
             <td>종가 ≥ BB Upper</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--text)">MACD</strong></td>
-            <td>MACD &lt; 0 AND 하향 교차</td>
-            <td>MACD &gt; 0 AND 상향 교차</td>
           </tr>
           <tr>
             <td><strong style="color:var(--text)">RSI</strong></td>
@@ -967,7 +957,7 @@ footer a:hover { text-decoration: underline; }
           </div>
         </div>
         <div style="background:#f1f5f9;border-radius:8px;padding:14px 16px;font-size:12.5px;color:#475569;line-height:1.85;border-left:3px solid #059669">
-          <strong>과매도 기준:</strong> BB ≤ Lower | MACD &lt; 0 &amp; 하향 | RSI ≤ 30 | STC ≤ 20 | Z-score ≤ −2.0<br>
+          <strong>과매도 기준:</strong> BB ≤ Lower | RSI ≤ 30 | STC ≤ 20 | Z-score ≤ −2.0<br>
           <strong>데이터 형식:</strong> 지표별 신호 발생일 · 빈도 · 기간별 전환 횟수 · 확률<br>
           <strong>보고서 구성:</strong> 질의 요약 → 지표별 핵심 상승 전환 확률 정리
         </div>
@@ -997,7 +987,7 @@ footer a:hover { text-decoration: underline; }
           </div>
         </div>
         <div style="background:#f1f5f9;border-radius:8px;padding:14px 16px;font-size:12.5px;color:#475569;line-height:1.85;border-left:3px solid #dc2626">
-          <strong>과매수 기준:</strong> BB ≥ Upper | MACD &gt; 0 &amp; 상향 | RSI ≥ 70 | STC ≥ 80 | Z-score ≥ +2.0<br>
+          <strong>과매수 기준:</strong> BB ≥ Upper | RSI ≥ 70 | STC ≥ 80 | Z-score ≥ +2.0<br>
           <strong>데이터 형식:</strong> 지표별 신호 발생일 · 빈도 · 기간별 전환 횟수 · 확률<br>
           <strong>보고서 구성:</strong> 질의 요약 → 지표별 핵심 하락 전환 확률 정리
         </div>
