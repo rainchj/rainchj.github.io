@@ -877,8 +877,8 @@ footer a:hover { text-decoration: underline; }
         <div style="font-size:20px;margin-bottom:10px">🔁</div>
         <h4 style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">중복 신호 처리 — 두 가지 방식 동시 적용</h4>
         <p style="font-size:13.5px;color:var(--text-sub);line-height:1.8">
-          <strong>제거 방식</strong>: 연속으로 신호가 발생한 경우 첫 신호 발생일만 분석 대상에 포함.<br>
-          <strong>포함 방식</strong>: 연속 신호를 포함한 모든 신호 발생일을 분석 대상에 포함.<br>
+          <strong>첫날 방식</strong>: 연속으로 신호가 발생한 경우 첫 신호 발생일만 분석 대상에 포함.<br>
+          <strong>전부 방식</strong>: 연속 신호를 포함한 모든 신호 발생일을 분석 대상에 포함.<br>
           두 방식을 비교하면 신호의 독립성·신뢰도를 함께 평가할 수 있습니다.
         </p>
       </div>
@@ -951,7 +951,7 @@ footer a:hover { text-decoration: underline; }
             <strong>분석 대상:</strong> 과매도 신호 발생일 기준<br>1·5·10·20·30 거래일 후 상승 전환 확률
           </div>
           <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:11px 14px;font-size:13px;color:#14532d">
-            <strong>중복 신호:</strong> 제거 방식 + 포함 방식<br>두 가지 모두 분석하여 비교
+            <strong>중복 신호:</strong> 첫날 방식 + 전부 방식<br>두 가지 모두 분석하여 비교
           </div>
           <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:11px 14px;font-size:13px;color:#14532d">
             <strong>상승 판정:</strong> 기간 내 종가가 신호 발생일 종가보다 높은 날 1일 이상 존재
@@ -981,7 +981,7 @@ footer a:hover { text-decoration: underline; }
             <strong>분석 대상:</strong> 과매수 신호 발생일 기준<br>1·5·10·20·30 거래일 후 하락 전환 확률
           </div>
           <div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:11px 14px;font-size:13px;color:#7f1d1d">
-            <strong>중복 신호:</strong> 제거 방식 + 포함 방식<br>두 가지 모두 분석하여 비교
+            <strong>중복 신호:</strong> 첫날 방식 + 전부 방식<br>두 가지 모두 분석하여 비교
           </div>
           <div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:11px 14px;font-size:13px;color:#7f1d1d">
             <strong>하락 판정:</strong> 기간 내 종가가 신호 발생일 종가보다 낮은 날 1일 이상 존재
@@ -1307,12 +1307,12 @@ footer a:hover { text-decoration: underline; }
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          중복 신호 제거 방식과 포함 방식의 차이는 무엇인가요?
+          중복 신호 첫날 방식과 전부 방식의 차이는 무엇인가요?
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-a">
-          <strong>제거 방식</strong>은 연속으로 신호가 발생한 경우 첫 번째 신호 날만 분석에 포함합니다. 독립적인 과매도·과매수 구간을 기준으로 통계를 내므로 중복 계산을 방지하고 신호의 순수한 신뢰도를 측정할 때 적합합니다.<br><br>
-          <strong>포함 방식</strong>은 연속 신호를 포함해 모든 신호 발생일을 분석에 포함합니다. 신호 발생 빈도가 높아 통계 표본이 늘어나지만, 연속 구간이 결과에 더 많이 반영됩니다. 두 방식을 비교해 결과가 일치하면 신뢰도가 높은 신호로 볼 수 있습니다.
+          <strong>첫날 방식</strong>은 연속으로 신호가 발생한 경우 첫 번째 신호 날만 분석에 포함합니다. 독립적인 과매도·과매수 구간을 기준으로 통계를 내므로 중복 계산을 방지하고 신호의 순수한 신뢰도를 측정할 때 적합합니다.<br><br>
+          <strong>전부 방식</strong>은 연속 신호를 포함해 모든 신호 발생일을 분석에 포함합니다. 신호 발생 빈도가 높아 통계 표본이 늘어나지만, 연속 구간이 결과에 더 많이 반영됩니다. 두 방식을 비교해 결과가 일치하면 신뢰도가 높은 신호로 볼 수 있습니다.
         </div>
       </div>
       <div class="faq-item">
