@@ -706,7 +706,7 @@ footer a:hover { text-decoration: underline; }
       <div class="feat-card">
         <div class="feat-icon">🚨</div>
         <h3>과매도·과매수 자동 감지</h3>
-        <p>BB·RSI·STC·Z-score 지표가 임계값을 넘으면 자동으로 신호를 표시합니다. 신호 발생 빈도와 기간별 상승·하락 전환 확률도 함께 출력합니다.</p>
+        <p>BB·RSI·STC·Z-score 외에 MACD 골든/데드 크로스, SMA 정/역배열, BB 패턴, 복합 신호까지 자동으로 탐지합니다. 신호 발생 빈도와 기간별 전환 확률도 함께 출력합니다.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">📊</div>
@@ -764,8 +764,8 @@ footer a:hover { text-decoration: underline; }
 
     <div style="margin-top:28px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;">
       <p style="font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:8px">
-        <strong style="color:var(--text)">지표별 과매도 · 과매수 자동 감지</strong><br>
-        아래 임계값을 넘으면 차트에 자동으로 신호를 표시하고, 신호 발생 횟수와 기간별 전환 확률을 함께 출력합니다.
+        <strong style="color:var(--text)">지표별 과매도 · 과매수 및 시그널 신호 자동 감지</strong><br>
+        아래 임계값을 넘으면 차트에 자동으로 신호를 표시하고, 신호 발생 횟수와 기간별 전환 확률을 함께 출력합니다. MACD·BB·SMA·복합 신호를 모두 반영하여 보다 정교한 분석을 제공합니다.
       </p>
       <div style="overflow-x:auto;margin-top:14px;margin-bottom:16px">
         <table style="width:100%;border-collapse:collapse;font-size:13px">
@@ -801,9 +801,10 @@ footer a:hover { text-decoration: underline; }
       <div style="margin-top:28px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;">
       <p style="font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:8px">
         <strong style="color:var(--text)">시그널 신호</strong><br>
+        이 프로그램은 과매도·과매수 임계값뿐 아니라 MACD 교차·추세 강도, BB 패턴, SMA 배열, 복합 지표 조건을 모두 자동으로 분류해 시그널 신호를 생성합니다.
         <ul>
           <li>과매수/과매도: BB, RSI, Slow STC, Z-score의 개별지표 or 복합지표</li>
-          <li>BB=무릅차트: BB 상하단밴드선이 동시 하락하다 하단밴드선이 수평되는 시점</li>
+          <li>BB=무릎차트: BB 상하단밴드선이 동시 하락하다 하단밴드선이 수평되는 시점</li>
           <li>BB=갈비뼈차트: BB 상하단밴드선이 동시 상승하다 상단밴드선이 수평되는 시점</li>
           <li>BB=상승차트: BB 상하단밴드선이 모두 상승하는 시점</li>
           <li>BB=하락차트: BB 상하단밴드선이 모두 하락하는 시점</li>
@@ -813,10 +814,10 @@ footer a:hover { text-decoration: underline; }
           <li>SMA=역배열: SMA단기 < SMA중기 < SMA장기</li>
           <li>MACD=골든크로스: MACD선이 Signal선을 밑에서 위로 교차하는 시점</li>
           <li>MACD=데드크로스: MACD선이 Signal선을 위에서 아래로 교차하는 시점</li>
-          <li>MACD=강상승추세: MACD > 0  & 상승 + 히스토그램 > 0 & 상승</li>
-          <li>MACD=강하락추세: MACD < 0  & 하락 + 히스토그램 < 0 & 하락</li>
-          <li>MACD=상승추세약화: MACD > 0  & 하락 + 히스토그램 > 0 & 하락</li>
-          <li>MACD=하락추세약화: MACD < 0  & 상승 + 히스토그램 < 0 & 상승</li>
+          <li>MACD=강상승추세: MACD > 0 & 상승 + 히스토그램 > 0 & 상승</li>
+          <li>MACD=강하락추세: MACD < 0 & 하락 + 히스토그램 < 0 & 하락</li>
+          <li>MACD=상승추세약화: MACD > 0 & 하락 + 히스토그램 > 0 & 하락</li>
+          <li>MACD=하락추세약화: MACD < 0 & 상승 + 히스토그램 < 0 & 상승</li>
           <li>복합=매수신호1: BB 하단밴드 기울기 상승 + MACD Histogram 2일 연속 증가 + RSI < 40 & 상승 + STC < 20 & 상승</li>
         </ul>
       </p>
@@ -832,7 +833,7 @@ footer a:hover { text-decoration: underline; }
     <div class="sec-title">신호 발생 후 주가 전환 확률을 자동 계산</div>
     <div class="sec-desc">
       과매도·과매수 신호가 발생한 날을 기준으로, <strong>1·5·10·20·30 거래일</strong> 후 주가가 실제로 반전했는지 통계적으로 분석합니다.
-      단순 지표 해석을 넘어 "이 신호가 과거에 얼마나 맞았는가"를 수치로 확인할 수 있습니다.
+      단순 지표 해석을 넘어 "이 신호가 과거에 얼마나 맞았는가"를 수치로 확인할 수 있습니다. 또한 MACD·BB·SMA·복합 시그널 신호별로 결과를 분류해 보다 정교한 전환 확률을 제공합니다.
     </div>
 
     <!-- 판별 기준표 -->
@@ -1312,6 +1313,15 @@ footer a:hover { text-decoration: underline; }
         <div class="faq-a">
           <strong>제거 방식</strong>은 연속으로 신호가 발생한 경우 첫 번째 신호 날만 분석에 포함합니다. 독립적인 과매도·과매수 구간을 기준으로 통계를 내므로 중복 계산을 방지하고 신호의 순수한 신뢰도를 측정할 때 적합합니다.<br><br>
           <strong>포함 방식</strong>은 연속 신호를 포함해 모든 신호 발생일을 분석에 포함합니다. 신호 발생 빈도가 높아 통계 표본이 늘어나지만, 연속 구간이 결과에 더 많이 반영됩니다. 두 방식을 비교해 결과가 일치하면 신뢰도가 높은 신호로 볼 수 있습니다.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          시그널 신호는 과매도/과매수와 어떻게 다른가요?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">
+          과매도/과매수는 단일 지표 임계값 기반 신호입니다. 시그널 신호는 MACD 교차, BB 패턴, SMA 배열, 복합 지표 조건 등 추세와 모멘텀 변화를 함께 고려해 보조 신호를 제공합니다.
         </div>
       </div>
       <div class="faq-item">
