@@ -108,12 +108,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Image URLs mapping
     const images = {
-        '경기점수-date': 'https://rainchj.github.io/weekly_money/주간_경기점수.jpg',
-        '환율시장-date': 'https://rainchj.github.io/weekly_money/주간_환율.jpg',
-        '미국CPI-date': 'https://rainchj.github.io/weekly_money/주간_미국CPI.jpg',
+        '경기점수-date': 'https://rainchj.github.io/weekly/주간_경기점수.jpg',
+        '환율시장-date': 'https://rainchj.github.io/weekly/주간_환율.jpg',
+        '미국CPI-date': 'https://rainchj.github.io/weekly/주간_미국CPI.jpg',
+        '아파트가격조사-date': 'https://rainchj.github.io/weekly/주간_가격조사.jpg',
 
         '분석보고서-date': 'https://rainchj.github.io/market_report/Apt_market_report1.pdf',
-        '아파트가격조사-date': 'https://rainchj.github.io/weekly_estate/주간_가격조사.jpg',
         '실거래가서울-date': 'https://rainchj.github.io/weekly_estate/실거래_서울.jpg',
         '실거래가경기-date': 'https://rainchj.github.io/weekly_estate/실거래_경기.jpg',
         '실거래가인천-date': 'https://rainchj.github.io/weekly_estate/실거래_인천.jpg',
