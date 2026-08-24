@@ -367,27 +367,22 @@ function initializeBoard() {
         if (!imgWidth || !imgHeight) return;
 
         // Use modal dimensions to exclude scrollbars and ensure perfect centering
-        const viewportWidth = modal.clientWidth;
-        const viewportHeight = modal.clientHeight;
+        const viewportWidth = modal.clientWidth || window.innerWidth;
+        const viewportHeight = modal.clientHeight || window.innerHeight;
 
-        const containerRect = imageContainer.getBoundingClientRect();
-
-        // 1. Scale to fit window width with fixed margin (e.g. 20px total = 10px left + 10px right)
-        const targetWidth = viewportWidth - 20;
-        const targetHeight = viewportHeight - 20;
-        scale = targetWidth / imgWidth;
-        if (scale > targetHeight / imgHeight) scale = targetHeight / imgHeight;
+        // 1. Scale to fit window width/height with comfortable margins
+        const marginX = 40;
+        const marginY = 40;
+        const targetWidth = Math.max(viewportWidth - marginX, 100);
+        const targetHeight = Math.max(viewportHeight - marginY, 100);
+        scale = Math.min(targetWidth / imgWidth, targetHeight / imgHeight, 1);
 
         // Minimum scale safety
         if (scale < 0.01) scale = 0.01;
 
-        // 2. Calculate Position
-        // Center horizontally: (viewportWidth - visualWidth) / 2
-        // We calculate the offset relative to the container's current position
-        pointX = (viewportWidth - imgWidth * scale) / 2 - containerRect.left;
-
-        // Center vertically
-        pointY = (viewportHeight - imgHeight * scale) / 2 - containerRect.top;
+        // 2. Calculate Position (perfect viewport center)
+        pointX = (viewportWidth - imgWidth * scale) / 2;
+        pointY = (viewportHeight - imgHeight * scale) / 2;
 
         applyTransform();
     };
@@ -401,13 +396,14 @@ function initializeBoard() {
     function zoomAtViewportCenter(factor) {
         const oldScale = scale;
         scale *= factor;
-        if (scale < 0.1) scale = 0.1;
-        if (scale > 5) scale = 5;
+        if (scale < 0.05) scale = 0.05;
+        if (scale > 10) scale = 10;
 
-        // Get viewport center (container center)
-        const rect = imageContainer.getBoundingClientRect();
-        const viewportCenterX = rect.width / 2;
-        const viewportCenterY = rect.height / 2;
+        // Get viewport center
+        const viewportWidth = modal.clientWidth || window.innerWidth;
+        const viewportHeight = modal.clientHeight || window.innerHeight;
+        const viewportCenterX = viewportWidth / 2;
+        const viewportCenterY = viewportHeight / 2;
 
         // Calculate the point in the image that's currently at viewport center
         const imagePointX = (viewportCenterX - pointX) / oldScale;

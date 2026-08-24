@@ -729,30 +729,32 @@
       z-index: 9999;
       left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       background-color: rgba(0, 0, 0, 0.95);
       overflow: hidden;
     }
 
     .image-modal.active {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
     }
 
     .modal-content {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
     }
 
     .modal-image-container {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       touch-action: none;
       cursor: grab;
     }
@@ -762,6 +764,9 @@
     }
 
     .modal-image {
+      position: absolute;
+      top: 0;
+      left: 0;
       max-width: none;
       max-height: none;
       user-select: none;
