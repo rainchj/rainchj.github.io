@@ -943,60 +943,62 @@
           일봉 데이터를 기반으로 주요 패턴 시그널 감지, 과매도/과매수 후 기간별 반전 확률, 그리고 당일 하락폭(증감률) 기준 과거 유사 구간의 반등 통계를 분석합니다.
         </p>
 
-        <!-- 지표별 임계값 기준표 -->
-        <div style="overflow-x:auto;margin-bottom:16px">
-          <table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden">
-            <tr style="background:#f8fafc">
-              <th style="padding:9px 14px;text-align:left;font-weight:600;color:var(--text);border-bottom:1px solid var(--border)">지표</th>
-              <th style="padding:9px 14px;text-align:center;font-weight:600;color:#dc2626;border-bottom:1px solid var(--border)">과매도 임계값</th>
-              <th style="padding:9px 14px;text-align:center;font-weight:600;color:#f59e0b;border-bottom:1px solid var(--border)">과매수 임계값</th>
-            </tr>
-            <tr style="border-bottom:1px solid var(--border)">
-              <td style="padding:9px 14px;color:var(--text)"><strong>볼린저밴드 (BB)</strong></td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">종가 ≤ BB Lower</td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">종가 ≥ BB Upper</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--border)">
-              <td style="padding:9px 14px;color:var(--text)"><strong>RSI</strong></td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">RSI ≤ 30</td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">RSI ≥ 70</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--border)">
-              <td style="padding:9px 14px;color:var(--text)"><strong>Slow STC</strong></td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">STC K ≤ 20</td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">STC K ≥ 80</td>
-            </tr>
-            <tr>
-              <td style="padding:9px 14px;color:var(--text)"><strong>Z-score</strong></td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">Z-score ≤ −2.0</td>
-              <td style="padding:9px 14px;text-align:center;color:var(--text-sub)">Z-score ≥ +2.0</td>
-            </tr>
-          </table>
-        </div>
 
-        <!-- 시그널 신호 상세 설명 (최초 원본 복구) -->
+
+        <!-- 시그널 신호 상세 설명 (Check_OverSignal 함수 기반) -->
         <div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin-bottom:16px">
           <strong style="color:var(--text);font-size:14.5px;display:block;margin-bottom:6px">시그널 신호</strong>
           <p style="font-size:13.5px;color:var(--text-sub);line-height:1.8;margin-bottom:8px">
-            이 프로그램은 과매도·과매수 임계값뿐 아니라 MACD 교차·추세 강도, BB 패턴, SMA 배열, 복합 지표 조건을 모두 자동으로 분류해 시그널 신호를 생성합니다.
+            이 프로그램은 과매도·과매수 판단뿐 아니라 거래량, 볼린저밴드 패턴, 복합 반등, 이평선 배열, MACD 크로스/추세, STC 추세전환, RSI/MACD 다이버전스를 실시간으로 자동 판별하여 시그널 신호를 생성합니다.
           </p>
           <ul style="font-size:13px;color:var(--text-sub);padding-left:20px;line-height:1.85">
-            <li><strong>과매수/과매도</strong>: BB, RSI, Slow STC, Z-score의 개별지표 or 복합지표</li>
-            <li><strong>BB=무릎차트</strong>: BB 상하단밴드선이 동시 하락하다 하단밴드선이 수평되는 시점</li>
-            <li><strong>BB=갈비뼈차트</strong>: BB 상하단밴드선이 동시 상승하다 상단밴드선이 수평되는 시점</li>
-            <li><strong>BB=상승차트</strong>: BB 상하단밴드선이 모두 상승하는 시점</li>
-            <li><strong>BB=하락차트</strong>: BB 상하단밴드선이 모두 하락하는 시점</li>
-            <li><strong>BB=급락주의</strong>: 상하단 밴드폭이 벌어지면서 종가가 하단밴드선을 타고 내려오는 시점</li>
-            <li><strong>BB=급등주의</strong>: 상하단 밴드폭이 벌어지면서 종가가 상단밴드선을 타고 올라가는 시점</li>
-            <li><strong>SMA=정배열</strong>: SMA단기 &gt; SMA중기 &gt; SMA장기</li>
-            <li><strong>SMA=역배열</strong>: SMA단기 &lt; SMA중기 &lt; SMA장기</li>
-            <li><strong>MACD=골든크로스</strong>: MACD선이 Signal선을 밑에서 위로 교차하는 시점</li>
-            <li><strong>MACD=데드크로스</strong>: MACD선이 Signal선을 위에서 아래로 교차하는 시점</li>
-            <li><strong>MACD=강상승추세</strong>: MACD &gt; 0 &amp; 상승 + 히스토그램 &gt; 0 &amp; 상승</li>
-            <li><strong>MACD=강하락추세</strong>: MACD &lt; 0 &amp; 하락 + 히스토그램 &lt; 0 &amp; 하락</li>
-            <li><strong>MACD=상승추세약화</strong>: MACD &gt; 0 &amp; 하락 + 히스토그램 &gt; 0 &amp; 하락</li>
-            <li><strong>MACD=하락추세약화</strong>: MACD &lt; 0 &amp; 상승 + 히스토그램 &lt; 0 &amp; 상승</li>
-            <li><strong>복합=매수신호1</strong>: BB 하단밴드 기울기 상승 + MACD Histogram 2일 연속 증가 + RSI &lt; 40 &amp; 상승 + STC &lt; 20 &amp; 상승</li>
+            <li><strong>과매수 / 과매도</strong>:
+              <ul style="padding-left:16px;margin:4px 0">
+                <li><code>+BB_Lower</code> / <code>+BB_Upper</code>: 종가가 볼린저밴드 하단 이하 / 상단 이상</li>
+                <li><code>+RSI</code>: RSI(14) ≤ 30 (과매도) / ≥ 70 (과매수)</li>
+                <li><code>+Slow_STC</code>: Slow STC %K ≤ 20 (과매도) / ≥ 80 (과매수)</li>
+                <li><em>신호 조합에 따라 <strong>과매도</strong>, <strong>과매수</strong>, <strong>중립</strong>으로 최종 분류</em></li>
+              </ul>
+            </li>
+            <li><strong>거래량 (Vol)</strong>: <code>Vol {XX}%</code> (5일 평균 거래량 대비 당일 거래량 비율)</li>
+            <li><strong>볼린저밴드 패턴</strong>:
+              <ul style="padding-left:16px;margin:4px 0">
+                <li><code>BB무릎차트</code>: 상·하단 밴드 2일 연속 하락 후 하단밴드가 수평(변화율 0.1% 이내) 전환 &amp; Z-score &lt; -1 (바닥권 형성)</li>
+                <li><code>BB갈비차트</code>: 상·하단 밴드 2일 연속 상승 후 상단밴드가 수평(변화율 0.1% 이내) 전환 &amp; Z-score &gt; +1 (천장권 형성)</li>
+                <li><code>BB급락주의</code>: 밴드폭 확대 + 종가 하락 + Z-score &lt; -2 + 하단밴드 근접(밴드폭 10% 이내)</li>
+                <li><code>BB급등주의</code>: 밴드폭 확대 + 종가 상승 + Z-score &gt; +2 + 상단밴드 근접(밴드폭 10% 이내)</li>
+              </ul>
+            </li>
+            <li><strong>복합 매수신호</strong>:
+              <ul style="padding-left:16px;margin:4px 0">
+                <li><code>역추세반등</code>: BB 하단밴드 상승 + MACD Hist 2일 연속 증가 + RSI &lt; 40 상승 + STC %K &lt; 20 상승</li>
+              </ul>
+            </li>
+            <li><strong>이동평균선 배열</strong>:
+              <ul style="padding-left:16px;margin:4px 0">
+                <li><code>SMA정배열</code>: 단기(I) &gt; 중기(J) &gt; 장기(K)</li>
+                <li><code>SMA역배열</code>: 단기(I) &lt; 중기(J) &lt; 장기(K)</li>
+              </ul>
+            </li>
+            <li><strong>MACD 크로스 및 추세</strong>:
+              <ul style="padding-left:16px;margin:4px 0">
+                <li><code>MACD골든</code>: MACD Hist &gt; 0 및 전일 Hist ≤ 0 (골든크로스)</li>
+                <li><code>MACD데드</code>: MACD Hist &lt; 0 및 전일 Hist ≥ 0 (데드크로스)</li>
+                <li><code>MACD강상승</code>: MACD선 &gt; 0 &amp; Hist &gt; 0 &amp; MACD선·Hist 동시 상승</li>
+                <li><code>MACD강하락</code>: MACD선 &lt; 0 &amp; Hist &lt; 0 &amp; MACD선·Hist 동시 하락</li>
+              </ul>
+            </li>
+            <li><strong>Slow STC 모멘텀</strong>:
+              <ul style="padding-left:16px;margin:4px 0">
+                <li><code>STC추세전환</code>: STC %K ≤ 20 (과매도 구간)에서 전일 대비 반등(전일 &lt; 전전일, 금일 ≥ 전일)</li>
+              </ul>
+            </li>
+            <li><strong>다이버전스 (RSI / MACD Divergence)</strong>:
+              <ul style="padding-left:16px;margin:4px 0">
+                <li><code>RSI강세다전</code> / <code>MACD강세다전</code>: 최근 20일 피봇 저점 대비 주가 신저가(1% 이상 하락) 갱신 시 RSI 또는 MACD Hist는 저점 이상 유지 (상승 반전)</li>
+                <li><code>RSI약세다전</code> / <code>MACD약세다전</code>: 최근 20일 피봇 고점 대비 주가 신고가(1% 이상 상승) 갱신 시 RSI 또는 MACD Hist는 고점 이하 유지 (하락 반전)</li>
+              </ul>
+            </li>
           </ul>
         </div>
 
@@ -1019,15 +1021,7 @@
           </div>
         </div>
 
-        <!-- 증감률 통계 예시 박스 -->
-        <div
-          style="background:#f1f5f9;border-left:4px solid var(--blue);border-radius:6px;padding:12px 16px;font-size:13px;color:#334155;line-height:1.8">
-          <strong>💡 증감률 분석 출력 예시:</strong><br>
-          <code>KOSPI 분석결과 (최종일 증감률 -2.29%, 증감률 이하 일수 46일 / 총 314일)</code><br>
-          <code>1일후 종가 | 상승확률 57% | 평균 0.17% | Min -8.77% | Max 11.49%</code><br>
-          <code>5일후 종가 | 상승확률 60% | 평균 1.46% | Min -22.62% | Max 24.11%</code><br>
-          <code>10일후 종가 | 상승확률 71% | 평균 8.85% | Min -14.49% | Max 55.31%</code>
-        </div>
+
       </div>
 
       <!-- 2. 주봉 / 월봉 분석 -->
