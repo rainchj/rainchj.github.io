@@ -239,120 +239,132 @@
       line-height: 1.4;
     }
 
-    /* ==========================================================================
-       Dashboard Interactive Showcase (Real Image)
-       ========================================================================== */
-    .showcase-wrapper {
-      position: relative;
+    .screenshot-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      background: #0b1120;
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), var(--shadow-glow);
-      overflow: hidden;
-      margin-bottom: 80px;
-    }
-    .image-container {
-      position: relative;
-      width: 100%;
-      background: #000000;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-    }
-    .dashboard-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.3s ease;
-      cursor: zoom-in;
+      padding: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .04);
     }
 
-    .image-lightbox {
+    .screenshot-wrap img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: zoom-in;
+      transition: transform .3s;
+      display: block;
+    }
+
+    .screenshot-wrap img:hover {
+      transform: scale(1.008);
+    }
+
+    .image-modal {
+      display: none;
       position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(2, 6, 23, 0.92);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow: hidden;
     }
-    .image-lightbox.is-open {
-      opacity: 1;
-      visibility: visible;
+
+    .image-modal.active {
+      display: block;
     }
-    .image-lightbox img {
-      max-width: 96vw;
-      max-height: 92vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      cursor: grab;
+
+    .modal-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .modal-image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       touch-action: none;
-      user-select: none;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      cursor: grab;
     }
-    .image-lightbox img.is-dragging {
+
+    .modal-image-container.dragging {
       cursor: grabbing;
     }
-    .image-lightbox-controls {
+
+    .modal-image {
       position: absolute;
-      left: 50%;
-      bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transform: translateX(-50%);
-      padding: 8px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.85);
-      color: #fff;
-    }
-    .image-lightbox-controls button {
-      width: 34px;
-      height: 30px;
-      border: 0;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      font-size: 20px;
-      line-height: 1;
-      cursor: pointer;
-    }
-    .image-lightbox-controls button:hover,
-    .image-lightbox-controls button:focus-visible {
-      background: rgba(6, 182, 212, 0.8);
-      outline: none;
-    }
-    .image-lightbox-scale {
-      min-width: 48px;
-      text-align: center;
-      font-size: 13px;
-    }
-    .image-lightbox-close {
-      position: absolute;
-      top: 18px;
-      right: 22px;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 50%;
-      background: rgba(15, 23, 42, 0.8);
-      color: #fff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-    }
-    .image-lightbox-close:hover,
-    .image-lightbox-close:focus-visible {
-      background: rgba(6, 182, 212, 0.8);
-      outline: none;
+      top: 0;
+      left: 0;
+      max-width: none;
+      max-height: none;
+      user-select: none;
+      -webkit-user-select: none;
+      pointer-events: none;
+      transform-origin: 0 0;
     }
 
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      user-select: none;
+      -webkit-user-select: none;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .zoom-controls {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10000;
+    }
+
+    .zoom-btn {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .zoom-info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 10000;
+    }
 
     /* Section Layout */
     .section-header {
@@ -492,6 +504,7 @@
       border: 1px solid var(--border-subtle);
       position: relative;
     }
+    .step-card h4 {
       color: var(--text-primary);
     }
     .step-card p {
@@ -713,10 +726,9 @@
       <!-- ====================================================================
            Real Screenshot Showcase & Hotspots
            ==================================================================== -->
-      <div class="showcase-wrapper">
-        <div class="image-container">
-          <img src="/img_EQP.png" alt="대시보드" class="dashboard-img" id="main-dashboard-img" />
-        </div>
+      <div class="screenshot-wrap">
+        <img src="/img_EQP.png" alt="Excel Quant Pro 대시보드" title="클릭하면 확대/축소 모달로 볼 수 있습니다"
+          data-zoomable>
       </div>
     </div>
 
@@ -1044,123 +1056,23 @@
     <span id="toast-msg">복사되었습니다!</span>
   </div>
 
-  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
-    <button class="image-lightbox-close" type="button" aria-label="확대 이미지 닫기">&times;</button>
-    <img src="./img_EQP.png" alt="엑셀 퀀트 프로그램 실제 결과 대시보드 확대 이미지" />
-    <div class="image-lightbox-controls" aria-label="이미지 확대 축소 도구">
-      <button type="button" id="image-zoom-out" aria-label="축소">−</button>
-      <span class="image-lightbox-scale" id="image-scale">100%</span>
-      <button type="button" id="image-zoom-in" aria-label="확대">+</button>
-      <button type="button" id="image-zoom-reset" aria-label="크기 초기화">↺</button>
-    </div>
-  </div>
-
+  <script src="scripts.js"></script>
   <script>
-    const dashboardImage = document.getElementById('main-dashboard-img');
-    const imageLightbox = document.getElementById('image-lightbox');
-    const lightboxImage = imageLightbox.querySelector('img');
-    const lightboxClose = imageLightbox.querySelector('.image-lightbox-close');
-    const imageScaleLabel = document.getElementById('image-scale');
-    const minImageScale = 1;
-    const maxImageScale = 4;
-    let imageScale = minImageScale;
-    let imageOffsetX = 0;
-    let imageOffsetY = 0;
-    let activePointers = new Map();
-    let pinchStartDistance = 0;
-    let pinchStartScale = minImageScale;
-    let dragStart = null;
-
-    function updateImageTransform() {
-      lightboxImage.style.transform = `translate(${imageOffsetX}px, ${imageOffsetY}px) scale(${imageScale})`;
-      imageScaleLabel.textContent = `${Math.round(imageScale * 100)}%`;
-    }
-
-    function setImageScale(nextScale) {
-      imageScale = Math.min(maxImageScale, Math.max(minImageScale, nextScale));
-      if (imageScale === minImageScale) {
-        imageOffsetX = 0;
-        imageOffsetY = 0;
-      }
-      updateImageTransform();
-    }
-
-    function resetImageZoom() {
-      imageScale = minImageScale;
-      imageOffsetX = 0;
-      imageOffsetY = 0;
-      updateImageTransform();
-    }
-
-    function closeImageLightbox() {
-      imageLightbox.classList.remove('is-open');
-      document.body.style.overflow = '';
-      activePointers.clear();
-      dragStart = null;
-      resetImageZoom();
-    }
-
-    dashboardImage.addEventListener('click', () => {
-      imageLightbox.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      resetImageZoom();
-      lightboxClose.focus();
-    });
-
-    lightboxClose.addEventListener('click', closeImageLightbox);
-    document.getElementById('image-zoom-in').addEventListener('click', () => setImageScale(imageScale + 0.25));
-    document.getElementById('image-zoom-out').addEventListener('click', () => setImageScale(imageScale - 0.25));
-    document.getElementById('image-zoom-reset').addEventListener('click', resetImageZoom);
-    lightboxImage.addEventListener('wheel', (event) => {
-      event.preventDefault();
-      setImageScale(imageScale + (event.deltaY < 0 ? 0.2 : -0.2));
-    }, { passive: false });
-    lightboxImage.addEventListener('pointerdown', (event) => {
-      lightboxImage.setPointerCapture(event.pointerId);
-      activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-      if (activePointers.size === 1 && imageScale > minImageScale) {
-        dragStart = { x: event.clientX, y: event.clientY, offsetX: imageOffsetX, offsetY: imageOffsetY };
-        lightboxImage.classList.add('is-dragging');
-      } else if (activePointers.size === 2) {
-        const points = [...activePointers.values()];
-        pinchStartDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-        pinchStartScale = imageScale;
-        dragStart = null;
-      }
-    });
-    lightboxImage.addEventListener('pointermove', (event) => {
-      if (!activePointers.has(event.pointerId)) return;
-      activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-      if (activePointers.size === 2) {
-        const points = [...activePointers.values()];
-        const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-        if (pinchStartDistance > 0) setImageScale(pinchStartScale * distance / pinchStartDistance);
-      } else if (dragStart && imageScale > minImageScale) {
-        imageOffsetX = dragStart.offsetX + event.clientX - dragStart.x;
-        imageOffsetY = dragStart.offsetY + event.clientY - dragStart.y;
-        updateImageTransform();
-      }
-    });
-    ['pointerup', 'pointercancel'].forEach((eventName) => {
-      lightboxImage.addEventListener(eventName, (event) => {
-        activePointers.delete(event.pointerId);
-        if (activePointers.size === 0) {
-          dragStart = null;
-          pinchStartDistance = 0;
-          lightboxImage.classList.remove('is-dragging');
-        }
+    function initModal() {
+      const zoomableImages = document.querySelectorAll('img[data-zoomable]');
+      zoomableImages.forEach(img => {
+        img.addEventListener('click', function () {
+          if (window.openImageModal) {
+            window.openImageModal(this.src);
+          }
+        });
       });
-    });
-    imageLightbox.addEventListener('click', (event) => {
-      if (event.target === imageLightbox) {
-        closeImageLightbox();
-      }
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && imageLightbox.classList.contains('is-open')) {
-        closeImageLightbox();
-      }
-    });
+    }
+    if (document.readyState !== 'loading') {
+      initModal();
+    } else {
+      document.addEventListener('DOMContentLoaded', initModal);
+    }
   </script>
 
 </body>
