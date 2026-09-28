@@ -560,6 +560,62 @@
       line-height: 1.4;
     }
 
+    .ai-export-guide {
+      margin: 0 0 32px;
+      padding: 24px;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.09), rgba(15, 23, 42, 0.82) 55%);
+    }
+
+    .ai-export-guide h3 {
+      margin-bottom: 6px;
+      color: var(--text-primary);
+      font-size: 1.15rem;
+    }
+
+    .ai-export-guide > p {
+      margin-bottom: 18px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .ai-export-files {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .ai-export-file {
+      padding: 14px 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background: rgba(7, 10, 17, 0.55);
+    }
+
+    .ai-export-file strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #67e8f9;
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+      overflow-wrap: anywhere;
+    }
+
+    .ai-export-file span {
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+    }
+
+    .ai-export-instruction {
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
     /* Parameter Input Table */
     .param-guide-box {
       background: #0b1120;
@@ -773,9 +829,8 @@
 
       <p class="hero-subtitle">
         복잡한 파이썬 설치나 유료 프로그램 없이, 오직 <strong>Microsoft Excel</strong> 하나로
-        네이버·야후·인베스팅 10년 주가 데이터를 자동 크롤링하고
-        <strong>일·주·월·분기·연 5대 주기 차트</strong> 및
-        <strong>Z-Score/이격도 기반 목표수익 달성 승률</strong>을 실시간 산출합니다.
+        네이버·야후·인베스팅에서 10년간 데이터를 수집하여 <strong>일·주·월·분기·연 5대 주기 차트</strong> 및
+        <strong>Z-Score/이격도 기반 목표수익 달성 승률</strong>을 산출하며, AI에 첨부할 데이터까지 원클릭으로 생성하는 <strong>퀀트 투자용 프로그램</strong>입니다.  
       </p>
 
       <div class="dl-btn-group">
@@ -1100,6 +1155,24 @@
           <span class="step-badge">STEP 04</span>
           <h4>파라미터 입력 & 실행</h4>
           <p>종목명과 종목코드, 소스를 입력하고 <strong>[실행]</strong> 버튼을 누르면 끝!</p>
+        </div>
+      </div>
+
+      <div class="ai-export-guide">
+        <h3>AI 분석용 파일 생성</h3>
+        <p>종목 분석 실행 후 생성된 파일 2개를 AI에 함께 첨부해 분석을 요청할 수 있습니다.</p>
+        <div class="ai-export-files">
+          <div class="ai-export-file">
+            <strong>문서\종목명.xlsx</strong>
+            <span>일봉·주봉·월봉·분기봉·연간봉 주가 데이터</span>
+          </div>
+          <div class="ai-export-file">
+            <strong>문서\종목명 질의.txt</strong>
+            <span>AI에 질의할 문장</span>
+          </div>
+        </div>
+        <div class="ai-export-instruction">
+          사용 방법: 두 파일을 AI 입력창에 끌어다 놓거나 파일 첨부로 추가한 뒤, 엔터를 눌러 전송합니다.
         </div>
       </div>
 
