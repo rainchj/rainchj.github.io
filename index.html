@@ -5,165 +5,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>유행살이 공유자료</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <meta name="description" content="유행살이 공유자료 - 자금시장현황, 아파트시장현황, 실거래/매물현황, 아파트매매시점 등 부동산 및 경제 데이터 분석 자료">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="icon.png">
 </head>
 
-
 <body>
+    <div class="bg-overlay"></div>
+    <div class="bg-particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
     <div class="container">
         <header>
+            <div class="header-badge">📊 데이터 분석 플랫폼</div>
             <h1>유행살이 공유자료</h1>
+            <p class="header-sub">부동산 · 금융시장 · 경제지표 통합 분석</p>
         </header>
 
         <main>
 
-            <!-- Daily Charts -->
-            <section>
-                <h2 class="section-title">📊 자금시장현황</h2>
-                <div class="card-grid">
-                    <a href="index_m1.html" class="glass card">
-                        <span class="card-title">경제지표, 경기순환국면</span>
-                        <span class="card-date" id="경제지표월간-date">Loading...</span>
-                    </a>
-                    <a href="index_d2.html" class="glass card">
-                        <span class="card-title">환율/채권/주식시장</span>
-                        <span class="card-date" id="환율시장-date">Loading...</span>
-                    </a>
-                    <a href="index_m6.html" class="glass card">
-                        <span class="card-title">미국 소비자물가지수</span>
-                        <span class="card-date" id="미국CPI-date">Loading...</span>
-                    </a>
-                     <a href="index_mm.html" class="glass card">
-                        <span class="card-title">Market Monitor Pro 프로그램</span>
-                        <span class="card-date">프리웨어</span>
-                    </a>
-                    <a href="index_chartAI.html" class="glass card">
-                        <span class="card-title">AI 증권차트분석 프로그램</span>
-                        <span class="card-date">지인한정</span>
-                    </a>    
-                    <a href="index_EQP.html" class="glass card">
-                        <span class="card-title">Excel Quant Pro 프로그램</span>
-                        <span class="card-date">지인한정</span>
-                    </a>                
+            <!-- 자금시장현황 -->
+            <section class="section-block">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <h2 class="section-title">자금시장현황</h2>
                 </div>
-            </section>
-            
-            <!-- Weekly Charts -->
-            <section>
-                <h2 class="section-title">📅 아파트시장현황</h2>
                 <div class="card-grid">
-                    <a href="index_w1.html" class="glass card">
-                        <span class="card-title">KB아파트가격동향</span>
-                        <span class="card-date" id="아파트가격조사-date">Loading...</span>
+                    <a href="index_m1.html" class="card" id="card-m1">
+                        <div class="card-icon-wrap">🌐</div>
+                        <div class="card-body">
+                            <span class="card-title">경제지표, 경기순환국면</span>
+                            <span class="card-date" id="경제지표월간-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="index_m2.html" class="glass card">
-                        <span class="card-title">시도별 주택지표 총괄</span>
-                        <span class="card-date" id="총괄전국-date">Loading...</span>
+                    <a href="index_d2.html" class="card" id="card-d2">
+                        <div class="card-icon-wrap">💱</div>
+                        <div class="card-body">
+                            <span class="card-title">환율/채권/주식시장</span>
+                            <span class="card-date" id="환율시장-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="index_m3.html" class="glass card">
-                        <span class="card-title">시도별 주택지표 세부현황</span>
-                        <span class="card-date" id="주민등록인구-date">Loading...</span>
+                    <a href="index_m6.html" class="card" id="card-m6">
+                        <div class="card-icon-wrap">🇺🇸</div>
+                        <div class="card-body">
+                            <span class="card-title">미국 소비자물가지수</span>
+                            <span class="card-date" id="미국CPI-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="index_m4.html" class="glass card">
-                        <span class="card-title">수도권 주택지표 세부현황</span>
-                        <span class="card-date" id="주민등록인구2-date">Loading...</span>
+                    <a href="index_mm.html" class="card card-special" id="card-mm">
+                        <div class="card-icon-wrap">🖥️</div>
+                        <div class="card-body">
+                            <span class="card-title">Market Monitor Pro 프로그램</span>
+                            <span class="card-date card-badge-free">프리웨어</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="index_report.html" class="glass card">
-                        <span class="card-title">AI 정밀 분석보고서</span>
-                        <span class="card-date" id="분석보고서-date">Loading...</span>
+                    <a href="index_chartAI.html" class="card card-ai" id="card-chartai">
+                        <div class="card-icon-wrap">🤖</div>
+                        <div class="card-body">
+                            <span class="card-title">AI 증권차트분석 프로그램</span>
+                            <span class="card-date card-badge-limited">지인한정</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title">📅 실거래/매물현황</h2>
-                <div class="card-grid">
-                    <a href="index_w2.html" class="glass card">
-                        <span class="card-title">서울 실거래현황</span>
-                        <span class="card-date" id="실거래가서울-date">Loading...</span>
-                    </a>
-                    <a href="index_w3.html" class="glass card">
-                        <span class="card-title">경기 실거래현황</span>
-                        <span class="card-date" id="실거래가경기-date">Loading...</span>
-                    </a>
-                    <a href="index_w4.html" class="glass card">
-                        <span class="card-title">인천 실거래현황</span>
-                        <span class="card-date" id="실거래가인천-date">Loading...</span>
-                    </a>
-                    <a href="index_w6.html" class="glass card">
-                        <span class="card-title">서울 매물현황</span>
-                        <span class="card-date" id="매물서울총괄-date">Loading...</span>
-                    </a>
-                    <a href="index_w7.html" class="glass card">
-                        <span class="card-title">경기 매물현황</span>
-                        <span class="card-date" id="매물경기총괄-date">Loading...</span>
-                    </a>
-                    <a href="index_w8.html" class="glass card">
-                        <span class="card-title">인천 매물현황</span>
-                        <span class="card-date" id="매물인천총괄-date">Loading...</span>
+                    <a href="index_EQP.html" class="card card-ai" id="card-eqp">
+                        <div class="card-icon-wrap">📈</div>
+                        <div class="card-body">
+                            <span class="card-title">Excel Quant Pro 프로그램</span>
+                            <span class="card-date card-badge-limited">지인한정</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
                 </div>
             </section>
 
-            <!-- 매매시점/매물분석 -->
-            <section>
-                <h2 class="section-title">🏠 아파트매매시점</h2>
+            <!-- 아파트시장현황 -->
+            <section class="section-block">
+                <div class="section-header">
+                    <div class="section-icon">🏙️</div>
+                    <h2 class="section-title">아파트시장현황</h2>
+                </div>
                 <div class="card-grid">
-                    <a href="index_y1.html" class="glass card">
-                        <span class="card-title">시도별 매매시점</span>
-                        <span class="card-date" id="전국매매시점-date">Loading...</span>
+                    <a href="index_w1.html" class="card" id="card-w1">
+                        <div class="card-icon-wrap">🏢</div>
+                        <div class="card-body">
+                            <span class="card-title">KB아파트가격동향</span>
+                            <span class="card-date" id="아파트가격조사-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="index_y2.html" class="glass card">
-                        <span class="card-title">서울구별 매매시점</span>
-                        <span class="card-date" id="서울매매시점-date">Loading...</span>
+                    <a href="index_m2.html" class="card" id="card-m2">
+                        <div class="card-icon-wrap">🗺️</div>
+                        <div class="card-body">
+                            <span class="card-title">시도별 주택지표 총괄</span>
+                            <span class="card-date" id="총괄전국-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="index_y3.html" class="glass card">
-                        <span class="card-title">경기구별 매매시점</span>
-                        <span class="card-date" id="경기매매시점-date">Loading...</span>
+                    <a href="index_m3.html" class="card" id="card-m3">
+                        <div class="card-icon-wrap">📋</div>
+                        <div class="card-body">
+                            <span class="card-title">시도별 주택지표 세부현황</span>
+                            <span class="card-date" id="주민등록인구-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="index_y4.html" class="glass card">
-                        <span class="card-title">인천구별 매매시점</span>
-                        <span class="card-date" id="인천매매시점-date">Loading...</span>
+                    <a href="index_m4.html" class="card" id="card-m4">
+                        <div class="card-icon-wrap">🌆</div>
+                        <div class="card-body">
+                            <span class="card-title">수도권 주택지표 세부현황</span>
+                            <span class="card-date" id="주민등록인구2-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_report.html" class="card card-ai" id="card-report">
+                        <div class="card-icon-wrap">🤖</div>
+                        <div class="card-body">
+                            <span class="card-title">AI 정밀 분석보고서</span>
+                            <span class="card-date" id="분석보고서-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
                 </div>
             </section>
 
-            <!-- Downloads & Links -->
-            <section>
-                <h2 class="section-title">📂 공지사항등</h2>
+            <!-- 실거래/매물현황 -->
+            <section class="section-block">
+                <div class="section-header">
+                    <div class="section-icon">🔖</div>
+                    <h2 class="section-title">실거래 / 매물현황</h2>
+                </div>
                 <div class="card-grid">
-                    <a href="index_icon.html" class="glass card">
-                        <span class="card-title">PC/모바일 홈화면추가</span>
-                        <span class="card-date">바로가기/앱설치</span>
+                    <a href="index_w2.html" class="card" id="card-w2">
+                        <div class="card-icon-wrap">🏛️</div>
+                        <div class="card-body">
+                            <span class="card-title">서울 실거래현황</span>
+                            <span class="card-date" id="실거래가서울-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
-                    <a href="#" onclick="sharePage(event)" class="glass card">
-                        <span class="card-title">주소 공유하기</span>
-                        <span class="card-date">카카오톡/문자</span>
+                    <a href="index_w3.html" class="card" id="card-w3">
+                        <div class="card-icon-wrap">🏙️</div>
+                        <div class="card-body">
+                            <span class="card-title">경기 실거래현황</span>
+                            <span class="card-date" id="실거래가경기-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_w4.html" class="card" id="card-w4">
+                        <div class="card-icon-wrap">🌊</div>
+                        <div class="card-body">
+                            <span class="card-title">인천 실거래현황</span>
+                            <span class="card-date" id="실거래가인천-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_w6.html" class="card" id="card-w6">
+                        <div class="card-icon-wrap">🏠</div>
+                        <div class="card-body">
+                            <span class="card-title">서울 매물현황</span>
+                            <span class="card-date" id="매물서울총괄-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_w7.html" class="card" id="card-w7">
+                        <div class="card-icon-wrap">🏘️</div>
+                        <div class="card-body">
+                            <span class="card-title">경기 매물현황</span>
+                            <span class="card-date" id="매물경기총괄-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_w8.html" class="card" id="card-w8">
+                        <div class="card-icon-wrap">⚓</div>
+                        <div class="card-body">
+                            <span class="card-title">인천 매물현황</span>
+                            <span class="card-date" id="매물인천총괄-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 아파트매매시점 -->
+            <section class="section-block">
+                <div class="section-header">
+                    <div class="section-icon">🏠</div>
+                    <h2 class="section-title">아파트매매시점</h2>
+                </div>
+                <div class="card-grid">
+                    <a href="index_y1.html" class="card" id="card-y1">
+                        <div class="card-icon-wrap">🗾</div>
+                        <div class="card-body">
+                            <span class="card-title">시도별 매매시점</span>
+                            <span class="card-date" id="전국매매시점-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_y2.html" class="card" id="card-y2">
+                        <div class="card-icon-wrap">🏛️</div>
+                        <div class="card-body">
+                            <span class="card-title">서울구별 매매시점</span>
+                            <span class="card-date" id="서울매매시점-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_y3.html" class="card" id="card-y3">
+                        <div class="card-icon-wrap">🌳</div>
+                        <div class="card-body">
+                            <span class="card-title">경기구별 매매시점</span>
+                            <span class="card-date" id="경기매매시점-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="index_y4.html" class="card" id="card-y4">
+                        <div class="card-icon-wrap">⚓</div>
+                        <div class="card-body">
+                            <span class="card-title">인천구별 매매시점</span>
+                            <span class="card-date" id="인천매매시점-date">Loading...</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 공지사항등 -->
+            <section class="section-block">
+                <div class="section-header">
+                    <div class="section-icon">📂</div>
+                    <h2 class="section-title">공지사항 등</h2>
+                </div>
+                <div class="card-grid">
+                    <a href="index_icon.html" class="card" id="card-icon">
+                        <div class="card-icon-wrap">📱</div>
+                        <div class="card-body">
+                            <span class="card-title">PC/모바일 홈화면추가</span>
+                            <span class="card-date">바로가기/앱설치</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </a>
+                    <a href="#" onclick="sharePage(event)" class="card" id="card-share">
+                        <div class="card-icon-wrap">🔗</div>
+                        <div class="card-body">
+                            <span class="card-title">주소 공유하기</span>
+                            <span class="card-date">카카오톡/문자</span>
+                        </div>
+                        <div class="card-arrow">→</div>
                     </a>
                 </div>
             </section>
 
             <!-- Notice Board -->
-            <section>
-                <div class="card-grid notice-container">
-                    <a href="index_board.html" class="glass card">
-                        <div id="latestPost" class="notice-message">
-                            최근 방문 흔적 가져오는 중...</div>
+            <section class="section-block notice-section">
+                <div class="notice-card">
+                    <a href="index_board.html" id="latestPost" class="notice-message">
+                        최근 방문 흔적 가져오는 중...
                     </a>
                 </div>
             </section>
+
         </main>
 
         <footer>
-            <p>블로그 <a href="https://blog.naver.com/rainchj" target="_blank">U와 함께하는 행복한 세상살이</a> | 유튜브 <a
-                    href="https://www.youtube.com/@rainchj" target="_blank">백점경제학</a></p>
-            <p>Total Visits: <strong><span id="counter">0000</span></strong></p>
-            <p style="margin-top: 10px;">ⓒ 2025.1.30. 유행살이. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://blog.naver.com/rainchj" target="_blank" class="footer-link">✍️ U와 함께하는 행복한 세상살이</a>
+                <span class="footer-divider">|</span>
+                <a href="https://www.youtube.com/@rainchj" target="_blank" class="footer-link">▶ 백점경제학</a>
+            </div>
+            <p class="footer-visits">Total Visits: <strong><span id="counter">0000</span></strong></p>
+            <p class="footer-copy">ⓒ 2025.1.30. 유행살이. All rights reserved.</p>
         </footer>
     </div>
+
     <script src="scripts.js"></script>
 </body>
 
