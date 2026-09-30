@@ -41,7 +41,7 @@
    ======================================== */
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg-deep) url('background.png') center/cover fixed no-repeat;
+    background: var(--bg-deep);
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
@@ -61,14 +61,7 @@ a {
    Animated Background
    ======================================== */
 .bg-overlay {
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(167, 139, 250, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 60% 40%, rgba(34, 211, 238, 0.05) 0%, transparent 40%);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .bg-particles {
@@ -527,45 +520,31 @@ main {
 }
 
 #game-bounce {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/bounce_bg.png');
-    background-size: cover;
-    background-position: center;
+    background: rgba(15, 23, 42, 0.8);
 }
 
 #game-pacman {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/pacman_bg.png');
-    background-size: cover;
-    background-position: center;
+    background: rgba(15, 23, 42, 0.8);
 }
 
 #game-puzzle {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/puzzle_bg.png');
-    background-size: cover;
-    background-position: center;
+    background: rgba(15, 23, 42, 0.8);
 }
 
 #game-snake {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/snake_bg.png');
-    background-size: cover;
-    background-position: center;
+    background: rgba(15, 23, 42, 0.8);
 }
 
 #game-tetris-1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/tetris_bg_3d_1.png');
-    background-size: cover;
-    background-position: center;
+    background: rgba(15, 23, 42, 0.8);
 }
 
 #game-flappybird {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/flappybird_bg.png');
-    background-size: cover;
-    background-position: center;
+    background: rgba(15, 23, 42, 0.8);
 }
 
 #game-tetris-2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/games/images/tetris_bg_3d_2.png');
-    background-size: cover;
-    background-position: center;
+    background: rgba(15, 23, 42, 0.8);
 }
 
 /* Ensure hover state maintains the image but lightens the overlay slightly or just uses the default hover effect */
