@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         '경기순환진단-date': 'https://rainchj.github.io/market/자금_경기순환진단.jpg',
         '경제지표월간-date': 'https://rainchj.github.io/market/자금_경제지표월간.jpg',
 
-        '분석보고서-date': 'https://rainchj.github.io/apt_report/Apt_market_report1.pdf',
+        '분석보고서-date': 'https://rainchj.github.io/apt_report/AI분석_Gemini.pdf',
 
         '실거래가서울-date': 'https://rainchj.github.io/apt_real/실거래_서울.jpg',
         '실거래가경기-date': 'https://rainchj.github.io/apt_real/실거래_경기.jpg',
