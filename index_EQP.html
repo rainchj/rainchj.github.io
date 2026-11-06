@@ -215,7 +215,7 @@
     /* Key Feature Highlight Bar */
     .highlight-strip {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
       margin-top: 20px;
       margin-bottom: 60px;
@@ -253,6 +253,45 @@
       font-size: 0.8rem;
       color: var(--text-secondary);
       line-height: 1.4;
+    }
+
+    .screenshot-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .screenshot-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .screenshot-card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .screenshot-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .screenshot-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .screenshot-card-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
 
     .screenshot-wrap {
@@ -829,19 +868,20 @@
 
       <p class="hero-subtitle">
         복잡한 파이썬 설치나 유료 프로그램 없이, 오직 <strong>Microsoft Excel</strong> 하나로
+        <strong>여러 관심종목의 현재가를 한 화면에서 일괄 조회</strong>하고, <strong>종목명 더블클릭으로 5대 주기 차트분석을 자동 실행</strong>합니다.
         네이버·야후·인베스팅에서 10년간 데이터를 수집하여 <strong>일·주·월·분기·연 5대 주기 차트</strong> 및
-        <strong>Z-Score/이격도 기반 목표수익 달성 승률</strong>을 산출하며, AI에 첨부할 데이터까지 원클릭으로 생성하는 <strong>퀀트 투자용 프로그램</strong>입니다.  
+        <strong>Z-Score/이격도 기반 목표수익 달성 승률</strong>을 산출하며, AI에 첨부할 데이터까지 원클릭으로 생성하는 <strong>올인원 퀀트 투자 프로그램</strong>입니다.  
       </p>
 
       <div class="dl-btn-group">
-        <a href="https://drive.google.com/file/d/1RZ8KtH0mtKMTAUqcHTxEHgon3g0SZKA0/view?usp=sharing"
+        <a href="https://drive.google.com/file/d/1479IpzfK2oAeKHiCmU14NKU2dGz1wblU/view?usp=sharing"
           class="btn btn-emerald" style="font-size:1.1rem; padding:16px 36px;" id="main-download-button">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          다운로드(2026.9.29)
+          다운로드(2026.11.6)
         </a>
         <p class="stat-box-desc">지인에 한해 제공 (압축암호 필요)</p>
       </div><br>
@@ -902,13 +942,60 @@
             <p>과거 2,500봉(일봉) 동일 구간을 전수 매칭하여 목표 수익률 달성 승률과 수익률 산출</p>
           </div>
         </div>
+
+        <div class="highlight-item">
+          <div class="highlight-icon-box" style="background:rgba(236,72,153,0.15); color:#f472b6;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div>
+            <h4>관심종목 일괄 조회 &amp; 더블클릭</h4>
+            <p>여러 관심종목의 현재가를 한 화면에서 조회하고, 종목명 더블클릭 시 차트분석 자동 실행</p>
+          </div>
+        </div>
       </div>
 
       <!-- ====================================================================
            Real Screenshot Showcase & Hotspots
            ==================================================================== -->
-      <div class="screenshot-wrap">
-        <img src="/img_EQP.png" alt="Excel Quant Pro 대시보드" title="클릭하면 확대/축소 모달로 볼 수 있습니다" data-zoomable>
+      <div class="screenshot-showcase">
+        <!-- 대시보드 1 -->
+        <div class="screenshot-card">
+          <div class="screenshot-card-header">
+            <div class="screenshot-card-meta">
+              <span class="badge badge-purple">DASHBOARD 01</span>
+              <span class="badge badge-cyan" style="font-size:0.75rem;">5대 주기 퀀트 분석</span>
+            </div>
+            <h3 class="screenshot-card-title">일·주·월·분기·연 5대 주기 차트 &amp; 지표·승률 백테스팅 대시보드</h3>
+            <p class="screenshot-card-desc">
+              단일 화면에서 5대 주기를 한눈에 비교 분석하며, 10년치 시계열 데이터와 Z-Score / 이격도 기반 목표수익 달성 승률을 제공합니다.
+            </p>
+          </div>
+          <div class="screenshot-wrap">
+            <img src="/img_EQP.png" alt="Excel Quant Pro 5대 주기 차트 대시보드" title="클릭하면 확대/축소 모달로 볼 수 있습니다" data-zoomable>
+          </div>
+        </div>
+
+        <!-- 대시보드 2 -->
+        <div class="screenshot-card">
+          <div class="screenshot-card-header">
+            <div class="screenshot-card-meta">
+              <span class="badge badge-emerald">DASHBOARD 02</span>
+              <span class="badge badge-amber" style="font-size:0.75rem;">NEW 사용자 편의성 강화</span>
+            </div>
+            <h3 class="screenshot-card-title">관심종목 일괄 현재가 모니터링 &amp; 종목명 더블클릭 자동 차트분석</h3>
+            <p class="screenshot-card-desc">
+              국내 주식·ETF, 미국 주식·지수, 가상자산 등 <strong>여러 관심종목을 입력하여 한 화면에서 현재가, 증감율, 1년 고저, 시그널(과열/침체)</strong>을 일괄 조회하고,
+              목록에서 <strong>해당 종목명을 더블클릭하면 5대 주기 차트분석이 자동으로 즉시 실행</strong>됩니다.
+            </p>
+          </div>
+          <div class="screenshot-wrap">
+            <img src="/img_EQP2.png" alt="Excel Quant Pro 관심종목 일괄 현재가 조회 및 더블클릭 자동 차트분석" title="클릭하면 확대/축소 모달로 볼 수 있습니다" data-zoomable>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1235,6 +1322,31 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- 관심종목 일괄 조회 & 더블클릭 실행 가이드 -->
+      <div class="param-guide-box" style="margin-top: 24px; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.04);">
+        <h4 style="color: #34d399;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          관심종목 일괄 현재가 모니터링 &amp; 더블클릭 자동 차트분석 활용법
+        </h4>
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+          <p style="margin-bottom: 12px;">
+            사용자 편의성을 위해 <strong>관심종목 일괄 현재가 조회 및 원클릭 차트분석 연동 기능</strong>이 추가되었습니다. (Main2 시트)
+          </p>
+          <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+            <li>
+              <strong style="color: var(--text-primary);">다종목 동시 현재가 조회:</strong> 국내 주식(삼성전자, SK하이닉스 등), ETF(KODEX200, TIGER미국나스닥 등), 미국 지수/ETF/종목(S&P500, QQQ, 애플, 엔비디아 등), 가상자산(비트코인, 이더리움) 등 여러 관심종목을 입력 후 <strong>[현재가 실행]</strong> 버튼을 클릭하면 단 수 초 만에 일괄 크롤링되어 최신 현재가, 증감율, 1년 고저가, 과매수/과매도 시그널, Z-Score, RSI, SlowSTC를 한 화면에서 한눈에 비교할 수 있습니다.
+            </li>
+            <li>
+              <strong style="color: var(--text-primary);">종목명 더블클릭 시 차트분석 자동 실행:</strong> 표에서 정밀 분석을 원하는 <strong>종목명을 더블클릭</strong>하면, 종목코드나 소스를 다시 입력할 필요 없이 해당 종목의 10년 시세 데이터 수집 및 <strong>일·주·월·분기·연 5대 주기 차트와 통계적 승률 백테스팅이 자동으로 즉시 실행</strong>됩니다.
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
