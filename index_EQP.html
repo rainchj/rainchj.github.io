@@ -215,13 +215,14 @@
     /* Key Feature Highlight Bar */
     .highlight-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
       gap: 16px;
       margin-top: 20px;
       margin-bottom: 60px;
     }
 
     .highlight-item {
+      grid-column: span 2;
       padding: 20px;
       border-radius: var(--radius-md);
       background: rgba(15, 23, 42, 0.6);
@@ -230,6 +231,11 @@
       display: flex;
       align-items: flex-start;
       gap: 14px;
+    }
+
+    .highlight-item:nth-child(4),
+    .highlight-item:nth-child(5) {
+      grid-column: span 3;
     }
 
     .highlight-icon-box {
@@ -747,6 +753,18 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .highlight-item {
+        grid-column: span 1;
+      }
+
+      .highlight-item:nth-child(4) {
+        grid-column: span 1;
+      }
+
+      .highlight-item:nth-child(5) {
+        grid-column: span 2;
+      }
+
       .detail-grid {
         grid-template-columns: 1fr;
       }
@@ -767,6 +785,12 @@
 
       .highlight-strip {
         grid-template-columns: 1fr;
+      }
+
+      .highlight-item,
+      .highlight-item:nth-child(4),
+      .highlight-item:nth-child(5) {
+        grid-column: auto;
       }
 
       .steps-container {
